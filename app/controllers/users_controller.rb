@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      redirect_to '/', notice: "Welcome to Rockwood Productions"
+      current_user = user
+      redirect_to after_sign_in_path, notice: "Welcome to Rockwood Productions"
     else
       render :new
     end

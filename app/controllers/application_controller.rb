@@ -6,4 +6,18 @@ class ApplicationController < ActionController::Base
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def current_user=(user)
+    @current_user = user
+  end
+
+  helper_method :current_user
+
+  def after_sign_in_path
+    root_path
+  end
 end
