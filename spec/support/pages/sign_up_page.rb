@@ -5,12 +5,12 @@ class SignUpPage
     visit '/sign_up'
   end
 
-  def fill_form
-    fill_in 'First name', with: 'Lester'
-    fill_in 'Last name', with: 'McTester'
-    fill_in 'Email', with: 'tester@test.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Confirm password', with: 'password'
+  def fill_form(user)
+    fill_in 'First name', with: user.first_name
+    fill_in 'Last name', with: user.last_name
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    fill_in 'Confirm password', with: user.password
   end
 
   def submit_form
