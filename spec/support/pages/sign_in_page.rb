@@ -15,7 +15,13 @@ class SignInPage
   end
 
   def successful?
-    page.current_path == '/' && page.has_content?("Welcome back!")
+    page.current_path == '/recordings' && page.has_content?("Welcome back!")
+  end
+
+  def sign_in(user)
+    visit_page
+    fill_form(user)
+    submit_form
   end
 end
 

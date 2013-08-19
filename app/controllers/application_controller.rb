@@ -10,14 +10,21 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-
-  def current_user=(user)
-    @current_user = user
-  end
-
   helper_method :current_user
 
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+
+  def require_login
+    redirect_to root_path and return if current_user.blank?
+  end
+
   def after_sign_in_path
-    root_path
+    recordings_path
+  end
+
+  def after_sign_up_path
+    new_recording_path
   end
 end

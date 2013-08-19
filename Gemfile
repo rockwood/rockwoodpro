@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'simple_form'
+gem 'state_machine'
 
 group :development do
   gem 'better_errors'
