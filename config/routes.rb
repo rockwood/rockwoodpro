@@ -7,4 +7,9 @@ Rockwoodpro::Application.routes.draw do
   get "sign_out", to: "sessions#destroy"
 
   root to: "sessions#new"
+
+  namespace :api, defaults: {format: :json} do
+    resources :recordings
+    resources :pieces
+  end
 end

@@ -1,0 +1,16 @@
+<div class="four columns">
+  {{#each recording in controller}}
+    <ul class="recordings">
+      <li class="recording">
+        {{#linkTo "recording" recording}}
+          <p>{{recording.location}}</p>
+        {{/linkTo}}
+      </li>
+    </ul>
+  {{else}}
+    <h4>You don't have any recordings yet. <a href="/recordings/new">Request one here</a></h4>
+  {{/each}}
+</div>
+<div class="eight columns">
+  {{outlet}}
+</div>

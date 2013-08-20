@@ -6,7 +6,7 @@ class RecordingsController < ApplicationController
 
   def create
     if recording.save
-      redirect_to recording_path(recording), notice: "Thanks! I'll be contacting you soon"
+      redirect_to recordings_path, notice: "Thanks! I'll be contacting you soon"
     else
       render :new
     end

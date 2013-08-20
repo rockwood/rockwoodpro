@@ -1,0 +1,14 @@
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Composer</th>
+  </tr>
+</thead>
+<tbody>
+  {{#each piece in controller itemController="piece"}}
+    <tr {{action play piece}} {{bindAttr class="piece.playing:active"}}>
+      <td>{{piece.title}}</td>
+      <td>{{piece.performer}}</td>
+    </tr>
+  {{/each}}
+</tbody>
