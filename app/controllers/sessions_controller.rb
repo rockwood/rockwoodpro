@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  def new
+    redirect_to after_sign_in_path if current_user.present?
+  end
+
   def create
     user = User.find_by_email(session_params[:email])
     if user && user.authenticate(session_params[:password])

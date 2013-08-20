@@ -18,5 +18,12 @@ feature 'Sign in' do
     sign_in_page.submit_form
     sign_in_page.should_not be_successful
   end
+
+  scenario 'when already signed in' do
+    existing_user = FactoryGirl.create(:user)
+    sign_in_page.sign_in(existing_user)
+    sign_in_page.visit_page
+    page.current_path.should == "/recordings"
+  end
 end
 
