@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
+  def sign_out
+    session[:user_id] = nil
+    @current_user = nil
+  end
+
   def require_login
     redirect_to root_path and return if current_user.blank?
   end

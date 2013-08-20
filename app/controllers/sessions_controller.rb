@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    current_user = nil
+    sign_out
     redirect_to root_path, notice: "See ya later"
   end
 
