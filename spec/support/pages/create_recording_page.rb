@@ -1,4 +1,4 @@
-class NewRecordingPage
+class CreateRecordingPage
   include Capybara::DSL
 
   def visit_page
@@ -20,6 +20,12 @@ class NewRecordingPage
 
   def successful?
     page.has_content?("Thanks! I'll be contacting you soon")
+  end
+
+  def create(recording)
+    visit_page
+    fill_form(recording)
+    submit_form
   end
 end
 
