@@ -1,4 +1,10 @@
 ActiveAdmin.register Recording do
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
+
   index do
     column :user
     column "Date/Time", :datetime
@@ -21,20 +27,18 @@ ActiveAdmin.register Recording do
       row :level
       row :cds
       row :dvds
-      # row :pieces do
-      #   table_for recording.pieces do |t|
-      #     t.column(:title)
-      #     t.column(:performer)
-      #     t.column(:composer)
-      #     t.column(:track_number)
-      #     t.column(:track_count)
-      #     t.column(:year)
-      #     t.column(:filetype)
-      #     t.column(:filename)
-      #   end
-      # end
+      row :pieces do
+        table_for recording.pieces do |t|
+          t.column(:title)
+          t.column(:performer)
+          t.column(:composer)
+          t.column(:track_number)
+          t.column(:year)
+          t.column(:filetype)
+          t.column(:filename)
+        end
+      end
     end
-
   end
   form do |f|
     f.inputs do
@@ -47,16 +51,6 @@ ActiveAdmin.register Recording do
       f.input :directory
       f.input :cds
       f.input :dvds
-      # f.has_many :pieces do |piece|
-      #   piece.input :title
-      #   piece.input :performer
-      #   piece.input :composer
-      #   piece.input :track_number
-      #   piece.input :year
-      #   piece.input :filename
-      #   piece.input :filetype, :collection => Piece::FILETYPES, :include_blank => false
-      #   piece.input :_destroy, :as=>:boolean, :required => false, :label=>'Remove'
-      # end
     end
     f.actions
   end

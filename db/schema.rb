@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821034256) do
+ActiveRecord::Schema.define(version: 20130821151407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pieces", force: true do |t|
+    t.string   "title"
+    t.string   "performer"
+    t.string   "composer"
+    t.integer  "track_number"
+    t.integer  "year"
+    t.string   "filetype"
+    t.string   "filename"
+    t.integer  "recording_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "recordings", force: true do |t|
     t.integer  "state"

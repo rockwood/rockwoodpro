@@ -1,5 +1,6 @@
 class Recording < ActiveRecord::Base
   belongs_to :user
+  has_many :pieces
 
   validates :cds, :datetime, :dvds, :location, :state, :level, :context, :user, :presence => true
 
