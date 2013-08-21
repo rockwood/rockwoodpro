@@ -28,6 +28,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin_login
+    redirect_to '/' and return if current_user.present? && !current_user.admin?
+    require_login
+  end
+
+  def current_admin_user
+    return nil if current_user.present? && !current_user.admin?
+    current_user
+  end
+
   def after_sign_in_path
     recordings_path
   end

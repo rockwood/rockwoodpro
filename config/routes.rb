@@ -1,4 +1,7 @@
 Rockwoodpro::Application.routes.draw do
+
+  ActiveAdmin.routes(self)
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :recordings
