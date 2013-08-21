@@ -30,7 +30,7 @@ describe Piece do
         piece.recording.directory = nil
       end
       it "returns false" do
-        expect(piece.file_url).to eq(false)
+        expect(piece.file_url).to eq(nil)
       end
     end
 
@@ -40,7 +40,7 @@ describe Piece do
         piece.recording.directory = "recording_directory"
       end
       it "returns false" do
-        expect(piece.file_url).to eq(false)
+        expect(piece.file_url).to eq(nil)
       end
     end
   end

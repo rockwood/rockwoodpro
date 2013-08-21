@@ -8,7 +8,7 @@ class Piece < ActiveRecord::Base
   end
 
   def file_url
-    return false unless filename? && recording.directory?
+    return nil unless filename.present? && recording.directory.present?
     [base_url, recording.directory, filename].join('/')
   end
 end
