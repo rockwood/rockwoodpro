@@ -1,9 +1,6 @@
 Rockcloud.PieceController = Ember.ObjectController.extend
-  needs: ['player']
+  needs: ['currentlyPlaying']
 
   playing: (->
-    @get('controllers.player.content') is @get('content')
-  ).property('controllers.player.content')
-
-  play: ->
-    @set('controllers.player.content', @get('content'))
+    @get('controllers.currentlyPlaying.model') is @get('model')
+  ).property('controllers.currentlyPlaying.model')

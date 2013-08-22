@@ -1,0 +1,1 @@
+Rockcloud.CurrentlyPlayingController = Ember.ObjectController.extend()

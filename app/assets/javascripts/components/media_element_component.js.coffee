@@ -1,5 +1,4 @@
-Rockcloud.PlayerView = Ember.View.extend
-
+Rockcloud.MediaElementComponent = Ember.Component.extend
   playerOptions:
     pluginPath: '/assets/'
 
@@ -13,7 +12,7 @@ Rockcloud.PlayerView = Ember.View.extend
 
   loadVideo: ( ->
     return unless @player
-    @player.setSrc(@get('controller.fileUrl'))
+    @player.setSrc(@get('src'))
     @player.load()
     @player.play()
-  ).observes('controller.content.fileUrl')
+  ).observes('src')

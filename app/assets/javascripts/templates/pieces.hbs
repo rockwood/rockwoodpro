@@ -5,10 +5,10 @@
   </tr>
 </thead>
 <tbody>
-  {{#each piece in controller itemController="piece"}}
-    <tr {{action play piece}} {{bindAttr class="piece.playing:active"}}>
-      <td>{{piece.title}}</td>
-      <td>{{piece.performer}}</td>
+  {{#each itemController="piece"}}
+    <tr {{action play this}} {{bindAttr class="playing:active"}}>
+      <td>{{title}}</td>
+      <td>{{performer}}</td>
     </tr>
   {{/each}}
 </tbody>
