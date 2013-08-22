@@ -1,3 +1,20 @@
 <h4>{{location}}</h4>
+
 {{media-element src=controllers.currentlyPlaying.fileUrl}}
-{{render pieces pieces}}
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Composer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each pieces itemController="piece"}}
+      <tr {{action play this}} {{bindAttr class="playing:active"}}>
+        <td>{{title}}</td>
+        <td>{{performer}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
