@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :piece do
-    performer    "John Do"
-    title        "An Awesome Piece"
-    composer     "Bach"
-    track_number 1
-    year         1999
-    filetype     "video"
-    filename     "awesome.mp4"
-    recording
+    sequence(:title) {|n| "title-#{n}" }
+    sequence(:filename) {|n| "filename-#{n}.mp4" }
+    sequence(:track_number)
+    performer "John Do"
+    composer "Bach"
+    year 1999
+    filetype "video"
+    association :recording
   end
 end

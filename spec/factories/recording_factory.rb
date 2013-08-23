@@ -6,6 +6,7 @@ FactoryGirl.define do
     location "here"
     level "Audio and Video"
     context "Concert Recording"
-    user
+    directory "testing"
+    association :user
   end
 end

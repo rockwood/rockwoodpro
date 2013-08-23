@@ -1,8 +1,7 @@
 module Features
   module SessionHelpers
-    def sign_in
-      generic_user = FactoryGirl.create(:user)
-      SignInPage.new.sign_in(generic_user)
+    def sign_in(user = nil)
+      SignInPage.new.sign_in(user || FactoryGirl.create(:user))
     end
   end
 end

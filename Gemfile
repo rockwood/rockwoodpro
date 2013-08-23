@@ -35,6 +35,7 @@ end
 
 group :test do
   gem 'poltergeist'
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'timecop'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers' , branch: 'dp-rails-four'
