@@ -2,8 +2,11 @@
 %html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title Rockwood Productions
+    %meta{ "http-equiv" => "X-UA-Compatible", "content" => "IE=edge" }
+
     = stylesheet_link_tag "application", media: "all"
     = csrf_meta_tags
+
   %body
     = render partial: 'shared/flash_messages'
     = yield
