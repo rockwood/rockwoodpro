@@ -1,0 +1,4 @@
+= simple_form_for password_reset do |f|
+  = f.simple_fields_for :user do |user_form|
+    = user_form.input :email
+  = f.submit "Reset Password"
