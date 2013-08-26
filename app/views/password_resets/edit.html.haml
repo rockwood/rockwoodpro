@@ -1,0 +1,4 @@
+= simple_form_for :user, method: :patch, url: password_reset_path(params[:id]) do |f|
+  = f.input :password, label: "New password"
+  = f.input :password_confirmation, label: "Confirm new password"
+  = f.submit "Reset Password"
