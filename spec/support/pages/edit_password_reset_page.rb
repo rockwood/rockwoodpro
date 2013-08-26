@@ -5,9 +5,9 @@ class EditPasswordResetPage
     visit "/password_resets/#{token}/edit/"
   end
 
-  def submit_form(user)
-    fill_in "New password", with: user.email
-    fill_in "Confirm new password", with: user.email
+  def submit_form(new_password)
+    fill_in "New password", with: new_password
+    fill_in "Confirm new password", with: new_password
     click_on "Reset Password"
   end
 
@@ -16,11 +16,11 @@ class EditPasswordResetPage
   end
 
   def unsuccessful?
-    page.has_content?("Please try again")
+    page.has_content?("Reset token is incorrect or has expired")
   end
 
-  def edit(user)
+  def edit(user, new_password)
     visit_page(user.password_reset_token)
-    submit_form(user)
+    submit_form(new_password)
   end
 end

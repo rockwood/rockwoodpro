@@ -15,7 +15,7 @@ class CreatePasswordResetPage
   end
 
   def unsuccessful?
-    page.has_content?("we don't have that email in our system")
+    page.has_content?("That email doesn't seem to be here")
   end
 
   def create(user)
