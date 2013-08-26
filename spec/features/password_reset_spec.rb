@@ -15,7 +15,7 @@ feature "Requesting a password reset" do
   scenario "with an invalid email" do
     user.email = "incorrect@email.com"
     create_password_reset_page.create(user)
-    expect(create_password_reset_page).to_not be_successful
+    expect(create_password_reset_page).to be_unsuccessful
   end
 end
 
@@ -25,5 +25,11 @@ feature "Verifying a password reset" do
   scenario 'with a valid token' do
     edit_password_reset_page.edit(user)
     expect(edit_password_reset_page).to be_successful
+  end
+
+  scenario 'with an expired token' do
+    user.update_attributes(password_reset_expiration: 1.day.ago)
+    edit_password_reset_page.visit_page(user.password_reset_token)
+    expect(edit_password_reset_page).to be_unsuccessful
   end
 end

@@ -14,6 +14,10 @@ class CreatePasswordResetPage
     page.has_content?("Password reset sent to: ")
   end
 
+  def unsuccessful?
+    page.has_content?("we don't have that email in our system")
+  end
+
   def create(user)
     visit_page
     submit_form(user)
