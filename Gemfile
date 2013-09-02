@@ -20,6 +20,8 @@ gem 'state_machine'
 gem 'ember-rails'
 gem 'aws-s3'
 gem 'ember-source', '~> 1.0.0.rc7'
+gem "compass-rails", github: "milgner/compass-rails", ref: "1749c06f15dc4b058427e7969810457213647fb8"
+gem 'zurb-foundation', '~> 4.0.0'
 
 group :development do
   gem 'better_errors'
