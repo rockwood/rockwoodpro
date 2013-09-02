@@ -1,0 +1,45 @@
+.navbar
+  border-bottom: 2px solid #ddd
+  padding: 10px 0
+
+.main-nav
+  .button
+    margin: 0 10px 0 0
+
+.hero
+  background: image-url('hero.jpg') no-repeat
+  @include background-size(cover)
+  min-height: 500px
+  margin-bottom: 50px
+
+.panel
+  @include box-shadow(0 0 2px #000)
+
+.panel--default
+  background: #fff
+
+.panel--within-hero
+  margin-top: 150px
+
+.panel--featured
+  min-height: 300px
+  .panel__content
+    text-align: center
+
+.panel__title
+  font-size: 16px
+  text-align: center
+  background: $brand-2
+  padding: 1em
+  border-bottom: 1px solid #ddd
+
+.panel__subheading
+  font-size: 16px
+  margin-bottom: 20px
+
+.panel__content
+  padding: 20px
+
+.icon--large
+  font-size: 60px
+

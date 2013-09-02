@@ -1,4 +1,31 @@
-= simple_form_for :session, url: sessions_path do |f|
-  = f.input :email, required: true
-  = f.input :password, required: true
-  = f.submit "Sign in now"
+.hero
+  .row
+    .large-5.columns.large-offset-7
+      .panel.panel--default.panel--within-hero
+        .panel__content
+          = simple_form_for :session, url: sessions_path do |f|
+            = f.input :email, required: true, autofocus: true
+            = f.input :password, required: true
+            = f.submit "Sign in now"
+
+.row
+  .large-4.columns
+    .panel.panel--featured
+      .panel__content
+        %i.icon--large.icon-microphone
+        %h2.panel__subheading Highest quality recordings
+        %p Using professional equipment and the most advanced recording techniques, Rockwood productions delivers the highest quality recordings available
+
+  .large-4.columns
+    .panel.panel--featured
+      .panel__content
+        %i.icon--large.icon-cloud-download
+        %h2.panel__subheading Digital downloads
+        %p All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
+
+  .large-4.columns
+    .panel.panel--featured
+      .panel__content
+        %i.icon--large.icon-rocket
+        %h2.panel__subheading Fast turnaround
+        %p Get your recordings delivered quickly and without hassle.

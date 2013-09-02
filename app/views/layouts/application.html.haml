@@ -8,6 +8,17 @@
     = csrf_meta_tags
 
   %body
+    .navbar
+      .row
+        .large-4.columns
+          %img.logo{src: image_path('logo.png'), alt: "Rockwood Productions"}
+        %nav.main-nav.large-6.columns
+          - if current_user
+            %a.button{href: sign_out_path} Sign Out
+            %a.button{href: new_recording_path} Request a Recording
+          - else
+            %a.button{href: new_user_path} Sign Up
+
     = render partial: 'shared/flash_messages'
     = yield
     = yield :javascript
