@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem 'puma'
 gem 'haml', '~> 4.0'
@@ -21,7 +20,6 @@ gem 'state_machine'
 gem 'ember-rails'
 gem 'aws-s3'
 gem 'ember-source', '~> 1.0.0.rc7'
-gem 'polar-express'
 
 group :development do
   gem 'better_errors'
@@ -38,8 +36,6 @@ group :test do
   gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails'
-  gem 'timecop'
-  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers' , branch: 'dp-rails-four'
   gem 'launchy'
   gem 'database_cleaner'
 end

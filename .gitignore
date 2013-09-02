@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# Vendor Everything
+/vendor/ruby/
+
 config/database.yml
 .env
 chromedriver.log
