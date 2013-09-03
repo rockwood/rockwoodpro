@@ -11,7 +11,7 @@ feature 'Create Recording' do
   end
 
   scenario 'with an invalid recording' do
-    invalid_recording = FactoryGirl.build(:recording, context: nil)
+    invalid_recording = FactoryGirl.build(:recording, location: nil)
     create_recording_page.create(invalid_recording)
     expect(create_recording_page).to_not be_successful
   end

@@ -6,12 +6,11 @@ class CreateRecordingPage
   end
 
   def fill_form(recording)
-    fill_in 'When', with: recording.datetime
     fill_in 'Where', with: recording.location
-    fill_in 'Context', with: recording.context
-    fill_in 'Level', with: recording.level
-    fill_in 'Cds', with: recording.cds
-    fill_in 'Dvds', with: recording.dvds
+    choose recording.context
+    choose recording.level
+    fill_in 'Number of CDs - $15', with: recording.cds
+    fill_in 'Number of DVDs - $20', with: recording.dvds
   end
 
   def submit_form

@@ -4,8 +4,8 @@ FactoryGirl.define do
     cds 1
     dvds 2
     location "here"
-    level "Audio and Video"
-    context "Concert Recording"
+    level "Audio and Video - $130"
+    context "Live Performance"
     directory "testing"
     association :user
   end
