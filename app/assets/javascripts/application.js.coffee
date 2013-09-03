@@ -1,5 +1,6 @@
 #= require jquery
 #= require mediaelement
+#= require moment
 #= require handlebars
 #= require ember
 #= require ember-data

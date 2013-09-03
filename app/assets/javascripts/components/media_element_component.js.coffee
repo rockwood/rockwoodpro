@@ -1,4 +1,6 @@
 Rockcloud.MediaElementComponent = Ember.Component.extend
+  classNames: ['player']
+
   playerOptions:
     pluginPath: '/assets/'
 
@@ -6,8 +8,8 @@ Rockcloud.MediaElementComponent = Ember.Component.extend
     @createPlayer()
 
   createPlayer: ->
-    @playerOptions.videoWidth = @$('video').width()
-    @playerOptions.videoHeight = @$('video').width() * (9/16)
+    @playerOptions.videoWidth = @$().width()
+    @playerOptions.videoHeight = @$().width() * (9/16)
     @player = new MediaElementPlayer @$('video'), @playerOptions
 
   loadVideo: ( ->

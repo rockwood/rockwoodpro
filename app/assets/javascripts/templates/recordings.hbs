@@ -1,16 +1,19 @@
-<div class="four columns">
-  {{#each recording in controller}}
-    <ul class="recordings">
-      <li class="recording">
-        {{#linkTo "recording" recording}}
-          {{recording.location}}
-        {{/linkTo}}
-      </li>
-    </ul>
-  {{else}}
-    <h4>You don't have any recordings yet. <a href="/recordings/new">Request one here</a></h4>
-  {{/each}}
-</div>
-<div class="eight columns">
-  {{outlet}}
+<div class="row main">
+  <div class="large-4 columns">
+    {{#each}}
+      <div class="panel-list">
+        <div {{action goTo this}} class="panel panel--linked">
+          <h3 class="panel__title">{{location}}</h3>
+          <div class="panel__content">
+            <p>{{datetime datetime}}</p>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <p>You don't have any recordings yet. <a href="/recordings/new">Request one here</a></p>
+    {{/each}}
+  </div>
+  <div class="large-8 columns">
+    {{outlet}}
+  </div>
 </div>

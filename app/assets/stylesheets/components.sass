@@ -10,10 +10,10 @@
     line-height: 48px
 
 .flash--notice
-  background: $brand-2
+  background: $brand-green
 
 .flash--error
-  background: $brand-4
+  background: $brand-red
 
 .flash__message
   text-align: center
@@ -27,7 +27,10 @@
   margin-bottom: 50px
 
 .panel
-  @include box-shadow(0 0 2px #000)
+  display: block
+  margin-bottom: 20px
+  border: 1px solid #666
+  @include box-shadow(0 0 3px #666)
 
 .panel--default
   background: #fff
@@ -35,17 +38,24 @@
 .panel--within-hero
   margin-top: 150px
 
+.panel--linked
+  cursor: pointer
+  &:hover
+    @include box-shadow(none)
+
 .panel--featured
   min-height: 300px
   .panel__content
     text-align: center
 
 .panel__title
+  background: $brand-blue
   font-size: 16px
   text-align: center
-  background: $brand-2
+  color: #fff
   padding: 1em
   border-bottom: 1px solid #ddd
+  margin: 0
 
 .panel__subheading
   font-size: 16px
@@ -57,3 +67,26 @@
 .icon--large
   font-size: 60px
 
+.main
+  margin-top: 20px
+  margin-bottom: 20px
+
+.player__video
+  width: 100%
+
+.playlist
+  width: 100%
+
+.playlist__item
+  &:nth-of-type(even)
+    background: #eee
+  &:hover
+    background: $brand-turquois
+    cursor: pointer
+
+.playlist__item--active
+  background: $brand-green !important
+
+.playlist__actions
+  width: 20px
+  text-align: right

@@ -3,7 +3,7 @@ class ShowRecordingPage
 
   def visit_page(recording)
     visit "/recordings"
-    click_on recording.location
+    find('.panel__title', text: recording.location).click
   end
 
   def play_piece(piece)
