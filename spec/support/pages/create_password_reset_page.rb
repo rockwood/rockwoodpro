@@ -7,7 +7,7 @@ class CreatePasswordResetPage
 
   def submit_form(user)
     fill_in 'Email', with: user.email
-    click_on "Reset Password"
+    click_on "Send password reset"
   end
 
   def successful?
