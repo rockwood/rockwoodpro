@@ -30,10 +30,9 @@
   display: block
   margin-bottom: 20px
   border: 1px solid #666
-  @include box-shadow(0 0 3px #666)
-
-.panel--default
   background: #fff
+  @include clearfix
+  @include box-shadow(0 0 3px #666)
 
 .panel--within-hero
   margin-top: 150px
@@ -48,21 +47,31 @@
   .panel__content
     text-align: center
 
+.panel--pricing
+  text-align: center
+  .panel__content
+    min-height: 425px
+
 .panel__title
   background: $brand-blue
-  font-size: 16px
+  font-size: 24px
   text-align: center
   color: #fff
-  padding: 1em
+  padding: 8px
+  font-weight: normal
   border-bottom: 1px solid #ddd
   margin: 0
 
-.panel__subheading
-  font-size: 16px
-  margin-bottom: 20px
+.callout
+  text-align: center
 
 .panel__content
   padding: 20px
+
+.panel__content--split
+  width: 50%
+  float: left
+  border-right: 1px solid #ddd
 
 .icon--large
   font-size: 60px

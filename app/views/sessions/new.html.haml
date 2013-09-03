@@ -1,31 +1,97 @@
 .hero
   .row
     .large-5.columns.large-offset-7
-      .panel.panel--default.panel--within-hero
+      .panel.panel--within-hero
         .panel__content
           = simple_form_for :session, url: sessions_path do |f|
             = f.input :email, required: true, autofocus: true
             = f.input :password, required: true
             = f.submit "Sign in now"
+          %label
+            Don't have an account?
+            %a{href: new_user_path} Sign up
+          %label
+            Forgot your password?
+            %a{href: new_password_reset_path} Reset it
+
 
 .row
   .large-4.columns
     .panel.panel--featured
       .panel__content
         %i.icon--large.icon-microphone
-        %h2.panel__subheading Highest quality recordings
-        %p Using professional equipment and the most advanced recording techniques, Rockwood productions delivers the highest quality recordings available
+        %h3 Highest quality
+        %p We use professional equipment and the most advanced recording techniques
 
   .large-4.columns
     .panel.panel--featured
       .panel__content
         %i.icon--large.icon-cloud-download
-        %h2.panel__subheading Digital downloads
+        %h3 Digital downloads
         %p All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
 
   .large-4.columns
     .panel.panel--featured
       .panel__content
         %i.icon--large.icon-rocket
-        %h2.panel__subheading Fast turnaround
+        %h3 Fast turnaround
         %p Get your recordings delivered quickly and without hassle.
+
+.row
+  .columns
+    %h1.callout Pricing
+
+.row
+  .large-6.columns
+    .panel.panel--pricing
+      %h2.panel__title Live Performance
+      .panel__content.panel__content--split
+        %h3 Audio & Video
+
+        %h4 $150
+
+        %p Includes audio and video files available for download
+
+        %h4 $10 each
+
+        %p High Definition Printed & Packaged CD or DVD
+
+      .panel__content.panel__content--split
+        %h3 Audio Only
+
+        %h4 $90
+
+        %p Includes audio files available for download
+
+        %h4 $10 each
+
+        %p High Definition Printed & Packaged CD
+
+  .large-6.columns
+    .panel.panel--pricing
+      %h2.panel__title Private Recording Session
+      .panel__content.panel__content--split
+        %h3 Audio & Video
+
+        %h4 $75/hour
+
+        %p Includes audio and video files available for download
+
+        %h4 $10 each
+
+        %p High Definition Printed & Packaged CD or DVD
+
+        %p Additional editing charge of $25/hour may apply
+
+      .panel__content.panel__content--split
+        %h3 Audio & Video
+
+        %h4 $50/hour
+
+        %p Includes audio and video files available for download
+
+        %h4 $10 each
+
+        %p High Definition Printed & Packaged CD or DVD
+
+        %p Additional editing charge of $25/hour may apply
