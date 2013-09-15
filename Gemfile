@@ -30,6 +30,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec-core'
   gem 'rspec-rails'
   gem 'dotenv-rails'
   gem 'pry'
