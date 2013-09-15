@@ -1,20 +1,21 @@
 Rockcloud.MediaElementComponent = Ember.Component.extend
   classNames: ['player']
 
+  defaultSrc: "http://cdn.rockwoodpro.com/RockwoodPro.m4v"
+
   playerOptions:
     pluginPath: '/assets/'
+    enableAutosize: false
 
   didInsertElement: ->
     @createPlayer()
 
   createPlayer: ->
-    @playerOptions.videoWidth = @$().width()
-    @playerOptions.videoHeight = @$().width() * (9/16)
+    @$('video').attr('src', @get('defaultSrc')) unless @get('src')?
     @player = new MediaElementPlayer @$('video'), @playerOptions
 
   loadVideo: ( ->
-    return unless @player? && @get('src')?
     @player.setSrc(@get('src'))
+    @player.setPoster(@get('poster'))
     @player.load()
-    @player.play()
   ).observes('src')

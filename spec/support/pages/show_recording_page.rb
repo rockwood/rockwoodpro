@@ -11,7 +11,7 @@ class ShowRecordingPage
   end
 
   def playing?(piece)
-    page.find('video', visible: false)['src']
+    page.find('video', visible: false)['src'] == piece.file_url
   end
 end
 
