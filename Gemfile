@@ -32,6 +32,7 @@ end
 group :development, :test do
   gem 'rspec-core'
   gem 'rspec-rails'
+  gem 'email_spec'
   gem 'dotenv-rails'
   gem 'pry'
 end

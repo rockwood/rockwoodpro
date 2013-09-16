@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Recording Request</title>
+
+  </head>
+  <body>
+    <p>Hi <%= user.first_name %>,</p>
+
+    <p>
+        I've finished your recording from <%= @recording.datetime %>. Please visit <a href="<%= @recording_url %>">this link</a> to view and download your recordings.
+    </p>
+
+    <p>
+        Please let me know if you have any questions.
+    </p>
+
+    <p>
+      Thanks,<br />
+      Kevin
+    </p>
+  </body>
+</html>

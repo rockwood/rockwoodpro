@@ -2,10 +2,34 @@ class Recording < ActiveRecord::Base
   belongs_to :user
   has_many :pieces
 
-  validates :cds, :datetime, :dvds, :location, :state, :level, :context, :user, :presence => true
+  validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
 
-  state_machine initial: :unconfirmed do
-    state :unconfirmed, value: 0
+  state_machine do
+
+
+    before_transition any => :requested do |recording|
+      UserMailer.requested_recording(recording).deliver
+    end
+
+    before_transition any => :confirmed do |recording|
+      UserMailer.confirmed_recording(recording).deliver
+    end
+
+    before_transition any => :finished do |recording|
+      UserMailer.finished_recording(recording).deliver
+    end
+
+    event :request do
+      transition all => :requested
+    end
+
+    event :confirm do
+      transition all => :confirmed
+    end
+
+    event :finish do
+      transition all => :finished
+    end
   end
 
   def create_directory(service = S3Object)
