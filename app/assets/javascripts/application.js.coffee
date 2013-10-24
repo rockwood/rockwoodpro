@@ -10,5 +10,7 @@
 $.ajaxPrefilter (options, originalOptions, xhr) ->
   xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
 
+Ember.LOG_VERSION = false
+
 window.Rockcloud = Ember.Application.create
   rootElement: "#app"
