@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       sign_in(user)
       redirect_to after_sign_in_path, notice: "Welcome back!"
     else
-      flash[:notice] = "Invalid email or password"
+      flash[:error] = "Invalid email or password"
       render :new
     end
   end
