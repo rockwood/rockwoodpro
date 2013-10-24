@@ -22,7 +22,7 @@ gem 'aws-s3'
 gem 'ember-source', '~> 1.0.0.rc7'
 gem "compass-rails", '2.0.alpha.0 '
 gem 'zurb-foundation', '~> 4.0.0'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '~> 4.0.0'
 
 group :development do
   gem 'better_errors'
