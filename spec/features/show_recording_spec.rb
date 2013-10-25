@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Recording', js: true do
+feature 'Show recording', js: true do
   let(:show_recording_page) { ShowRecordingPage.new }
   let(:piece) { FactoryGirl.create(:piece) }
 
