@@ -5,7 +5,9 @@ Rockwoodpro::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
   resources :recordings
-  resources :password_resets
+  resources :password_resets do
+    get :edit_legacy, on: :member
+  end
 
   get "sign_up", to: "users#new"
   get "sign_out", to: "sessions#destroy"
