@@ -2,8 +2,7 @@ class ShowRecordingPage
   include Capybara::DSL
 
   def visit_page(recording)
-    visit "/recordings"
-    find('.panel__title', text: recording.location).click
+    visit "/recordings/#/recordings/#{recording.id}"
   end
 
   def play_piece(piece)
