@@ -6,7 +6,7 @@
         = simple_form_for :session, url: sessions_path do |f|
           = f.input :email, required: true, autofocus: true
           = f.input :password, required: true
-          = f.submit "Sign in now", class: "button secondary expand"
+          = f.submit "Sign in now", class: "button secondary"
         %label
           Don't have an account?
           %a{href: new_user_path} Sign up
