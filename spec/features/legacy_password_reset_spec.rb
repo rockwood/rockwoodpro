@@ -12,5 +12,9 @@ feature 'Resetting a legacy account' do
 
     legacy_reset_page.submit_form("new_password")
     expect(legacy_reset_page).to be_successful
+
+    legacy_user.reload
+    expect(legacy_user.authenticate("new_password")).to eq(legacy_user)
+    expect(legacy_user.legacy).to eq(false)
   end
 end

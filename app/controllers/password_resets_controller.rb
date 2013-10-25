@@ -20,10 +20,14 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
+    user.legacy = false
     if user.save
       user.clear_password_reset
       sign_in(user)
       redirect_to after_sign_in_path, notice: "Congratulations! Your password has been reset."
+    else
+      flash[:alert] = "Opps, please try again"
+      render :edit
     end
   end
 
