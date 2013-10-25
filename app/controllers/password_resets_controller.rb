@@ -3,7 +3,9 @@ class PasswordResetsController < ApplicationController
 
   def create
     user = User.find_by_email(user_params[:email])
-    if user && user.send_password_reset_email
+    if user
+      user.generate_password_reset
+      UserMailer.password_reset(user).deliver
       redirect_to root_path, notice: "Password reset sent to: #{user.email}."
     else
       flash[:alert] = "That email doesn't seem to be here. Perhaps you used another?"
