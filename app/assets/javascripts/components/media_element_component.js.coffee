@@ -10,12 +10,20 @@ Rockcloud.MediaElementComponent = Ember.Component.extend
   didInsertElement: ->
     @createPlayer()
 
+  willDestroyElement: ->
+    @player.remove()
+
   createPlayer: ->
     @$('video').attr('src', @get('defaultSrc')) unless @get('src')?
     @player = new MediaElementPlayer @$('video'), @playerOptions
 
-  loadVideo: ( ->
+  loadVideo: ->
+    return unless @player
     @player.setSrc(@get('src'))
     @player.setPoster(@get('poster'))
     @player.load()
+    @player.load()
+
+  srcDidChange: (->
+    Ember.run.scheduleOnce('afterRender', this, 'loadVideo');
   ).observes('src')
