@@ -32,8 +32,10 @@ class Recording < ActiveRecord::Base
     end
   end
 
-  def list_directory
-    file_store.list_directory(directory)
+  def discover_pieces!
+    file_store.list_directory(directory).each do |filename|
+      pieces.create!(filename: filename)
+    end
   end
 
   def create_directory

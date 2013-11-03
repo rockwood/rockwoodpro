@@ -29,16 +29,19 @@ describe Recording do
     end
   end
 
-  describe "#list_directory" do
-    let(:recording) { FactoryGirl.build(:recording, directory: "test_directory") }
-    let(:file_list) { ["file1.mp4", "file1.mp4"] }
+  describe "#discover_pieces!" do
+    let(:recording) { FactoryGirl.create(:recording, directory: "test_dir") }
+    let(:file_list) { ["file1.mp4", "file2.mp4"] }
     let(:file_store_mock) { double("file_store") }
     before do
       allow(file_store_mock).to receive(:list_directory).and_return(file_list)
       allow(recording).to receive(:file_store).and_return(file_store_mock)
     end
-    it "returns a list of files" do
-      expect(recording.list_directory).to eq(file_list)
+    it "creates pieces for each file" do
+      recording.discover_pieces!
+      expect(recording.pieces.count).to eq(2)
+      expect(recording.pieces.first.filename).to include("file1.mp4")
+      expect(recording.pieces.first.filetype).to include("video")
     end
   end
 
