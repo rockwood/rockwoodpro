@@ -5,6 +5,16 @@ ActiveAdmin.register Recording do
     end
   end
 
+  member_action :discover, :method => :post do
+    recording = Recording.find(params[:id])
+    recording.discover_pieces!
+    redirect_to action: :show, notice: "Pieces Discovered!"
+  end
+
+  action_item do
+    link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
+  end
+
   index do
     column :user
     column "Date/Time", :datetime

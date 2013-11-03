@@ -14,7 +14,8 @@ describe FileStore do
   end
 
   describe "#list_directory" do
-    let(:file_list) { ["test_dir/file1.mp4", "test_dir/file2.mp4"] }
+    let(:file_struct) { Struct.new(:key) }
+    let(:file_list) { [file_struct.new("test_dir/file1.mp4"), file_struct.new("test_dir/file2.mp4")] }
     let(:file_store) { FileStore.new }
     let(:objects_mock) { double("objects") }
     before { allow(file_store).to receive(:objects).and_return(objects_mock) }

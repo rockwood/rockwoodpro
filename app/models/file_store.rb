@@ -9,7 +9,8 @@ class FileStore
 
   def list_directory(path)
     path = "#{path}/" unless path[-1,1] == "/"
-    objects.with_prefix(path).collect{ |obj| obj.sub(path, '') }
+    keys = objects.with_prefix(path).collect { |o| o.key.sub(path, '') }
+    keys.reject { |k| k == "" }
   end
 
   private
