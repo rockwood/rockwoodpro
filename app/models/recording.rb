@@ -32,16 +32,20 @@ class Recording < ActiveRecord::Base
     end
   end
 
-  def create_directory(service = S3Object)
   def list_directory
     file_store.list_directory(directory)
   end
 
+  def create_directory
     self.directory = default_directory if directory.blank?
-    service.store("#{directory}/temp.txt", location)
+    file_store.write_file("#{directory}/temp.txt", location)
   end
 
   def default_directory
     [datetime.strftime("%Y-%m-%d"), user.first_name, user.last_name, SecureRandom.hex(4)].join('_')
+  end
+
+  def file_store
+    @store ||= FileStore.new
   end
 end
