@@ -9,8 +9,8 @@ class CreateRecordingPage
     fill_in 'Where', with: recording.location
     choose recording.context
     choose recording.level
-    fill_in 'Number of CDs - $15', with: recording.cds
-    fill_in 'Number of DVDs - $20', with: recording.dvds
+    fill_in 'Number of CDs', with: recording.cds
+    fill_in 'Number of DVDs', with: recording.dvds
   end
 
   def submit_form
