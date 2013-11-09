@@ -8,13 +8,13 @@
     = csrf_meta_tags
 
   %body
-    .navbar
+    .brand-bar
       .row
         .large-4.columns
           %a{href: root_path}
             %img.logo{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-        %nav.main-nav.large-6.columns
+        %nav.brand-bar__nav.large-6.columns
           - if current_user
             %a{href: sign_out_path} Sign Out
             %a{href: new_recording_path} Request a Recording
