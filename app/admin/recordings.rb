@@ -7,7 +7,7 @@ ActiveAdmin.register Recording do
 
   member_action :discover, :method => :post do
     recording = Recording.find(params[:id])
-    recording.discover_pieces!
+    recording.discover_pieces
     redirect_to action: :show
   end
 

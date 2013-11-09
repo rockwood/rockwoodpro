@@ -3,7 +3,10 @@ class Piece < ActiveRecord::Base
   AUDIO_EXTENSIONS = ["mp3", "wav", "aiff", "aac"]
 
   belongs_to :recording
+
   validates :recording, presence: true
+  validates :filename, uniqueness: { scope: :recording, message: "No duplicate files, please" }
+
   before_save :parse_filetype
 
   def parse_filetype
