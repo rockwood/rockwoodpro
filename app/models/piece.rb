@@ -19,7 +19,7 @@ class Piece < ActiveRecord::Base
   end
 
   def base_url
-    "http://s3.amazonaws.com/#{ENV['S3_BUCKET']}"
+    "http://s3.amazonaws.com/#{ENV.fetch('S3_BUCKET')}"
   end
 
   def file_url
