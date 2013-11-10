@@ -1,4 +1,4 @@
-<nav class="recording-nav nav nav--vertical">
+<nav class="nav nav--vertical">
   {{#each}}
     {{#link-to 'recording' this class="nav__item"}}
       <h3 class="nav__supertitle">{{datetime datetime}}</h3>
@@ -9,6 +9,6 @@
   {{/each}}
 </nav>
 
-<div class="recording">
+<div class="main">
   {{outlet}}
 </div>
