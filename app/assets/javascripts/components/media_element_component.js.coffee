@@ -22,7 +22,6 @@ Rockcloud.MediaElementComponent = Ember.Component.extend
     @player.setSrc(@get('src'))
     @player.setPoster(@get('poster'))
     @player.load()
-    @player.load()
 
   srcDidChange: (->
     Ember.run.scheduleOnce('afterRender', this, 'loadVideo');
