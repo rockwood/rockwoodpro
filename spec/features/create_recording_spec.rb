@@ -11,11 +11,12 @@ feature 'Create Recording' do
   scenario 'with a valid recording' do
     create_recording_page.create(valid_recording)
     expect(create_recording_page).to be_successful
-    expect(MostRecentEmail).to be_sent_to(user.email)
+    expect(Email.recipients).to include(user.email)
   end
 
   scenario 'with an invalid recording' do
     create_recording_page.create(invalid_recording)
     expect(create_recording_page).to_not be_successful
+    expect(Email.recipients).to_not include(user.email)
   end
 end

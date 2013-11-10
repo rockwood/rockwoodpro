@@ -7,11 +7,10 @@ feature "Requesting a password reset" do
   scenario "with a valid email" do
     create_password_reset_page.create(user)
 
-    # reload to get the updated password
-    user.reload
+    user.reload #  reload to get the updated password
     expect(create_password_reset_page).to be_successful
-    expect(MostRecentEmail).to be_sent_to(user.email)
-    expect(MostRecentEmail).to have_in_body(user.password_reset_token)
+    expect(Email.last.to).to include(user.email)
+    expect(Email.last.body).to match(user.password_reset_token)
   end
 
   scenario "with an invalid email" do
@@ -27,8 +26,7 @@ feature "Verifying a password reset" do
   scenario 'with a valid token' do
     edit_password_reset_page.edit(user, "new_password")
 
-    # reload to authenticate against the updated password
-    user.reload
+    user.reload # reload to authenticate against the updated password
     expect(edit_password_reset_page).to be_successful
     expect(user.authenticate("new_password")).to eq(user)
   end
