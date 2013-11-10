@@ -9,7 +9,7 @@ describe Piece do
 
   describe "base_url" do
     it "has a base_url" do
-      expect(piece.base_url).to match(ENV['S3_BUCKET'])
+      expect(piece.base_url).to match(ENV['CDN_ROOT'])
     end
   end
 

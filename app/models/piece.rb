@@ -22,11 +22,11 @@ class Piece < ActiveRecord::Base
   end
 
   def base_url
-    "http://s3.amazonaws.com/#{ENV.fetch('S3_BUCKET')}"
+    ENV.fetch("CDN_ROOT")
   end
 
   def file_url
     return nil unless filename.present? && recording.directory.present?
-    [base_url, recording.directory, filename].join('/')
+    File.join(base_url, recording.directory, filename)
   end
 end
