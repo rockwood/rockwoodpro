@@ -24,7 +24,7 @@ describe User do
       end
     end
     context "with incorrect token" do
-      it "is true" do
+      it "is false" do
         expect(user.verify_password_reset("1234")).to eq(false)
       end
     end
