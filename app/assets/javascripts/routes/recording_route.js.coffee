@@ -1,4 +1,4 @@
 Rockcloud.RecordingRoute = Ember.Route.extend
-  events:
+  actions:
     play: (piece) ->
       @controllerFor('currentlyPlaying').set('model', piece)
