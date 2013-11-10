@@ -5,9 +5,9 @@
     <title>Recording Request</title>
   </head>
   <body>
-    <p>Hi <%= @user.first_name %>,</p>
+    <p>Hi <%= @recording.user.first_name %>,</p>
     <p>
-      Your recording request for <%= @recording.datetime %> has been confirmed. I typically show up about 45 minutes prior to the performance.
+      Your recording request for <%= @recording.datetime.strftime("%A, %B %e at %l:%M%P") %> has been confirmed. I typically show up about 45 minutes prior to the performance.
     </p>
 
     <p>

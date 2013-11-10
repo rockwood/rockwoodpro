@@ -6,10 +6,10 @@
 
   </head>
   <body>
-    <p>Hi <%= user.first_name %>,</p>
+    <p>Hi <%= @recording.user.first_name %>,</p>
 
     <p>
-        I've finished your recording from <%= @recording.datetime %>. Please visit <a href="<%= @recording_url %>">this link</a> to view and download your recordings.
+        I've finished your recording from <%= @recording.datetime.strftime("%A, %B %e") %>. Please visit <a href="<%= recording_url(@recording) %>">this link</a> to view and download your recordings.
     </p>
 
     <p>

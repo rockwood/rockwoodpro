@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'kevin@rockwoodpro.com'
+  default from: 'kevin@rockwoodpro.com', subject: 'Rockwood Productions - Your Recording'
 
   def password_reset(user)
     @user = user
@@ -8,17 +8,17 @@ class UserMailer < ActionMailer::Base
   end
 
   def requested_recording(recording)
-    @user = recording.user
-    mail(to: @user.email, subject: 'Rockwood Productions - Recording Request')
+    @recording = recording
+    mail(to: @recording.user.email)
   end
 
   def confirmed_recording(recording)
-    @user = recording.user
-    mail(to: @user.email, subject: 'Rockwood Productions - Recording Confirmation')
+    @recording = recording
+    mail(to: @recording.user.email)
   end
 
   def finished_recording(recording)
-    @user = recording.user
-    mail(to: @user.email, subject: 'Rockwood Productions - Recording Finished')
+    @recording = recording
+    mail(to: @recording.user.email)
   end
 end
