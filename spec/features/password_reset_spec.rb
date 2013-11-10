@@ -6,7 +6,6 @@ feature "Requesting a password reset" do
 
   scenario "with a valid email" do
     create_password_reset_page.create(user)
-
     user.reload #  reload to get the updated password
     expect(create_password_reset_page).to be_successful
     expect(Email.last.to).to include(user.email)
@@ -25,7 +24,6 @@ feature "Verifying a password reset" do
   let(:edit_password_reset_page) { EditPasswordResetPage.new }
   scenario 'with a valid token' do
     edit_password_reset_page.edit(user, "new_password")
-
     user.reload # reload to authenticate against the updated password
     expect(edit_password_reset_page).to be_successful
     expect(user.authenticate("new_password")).to eq(user)
