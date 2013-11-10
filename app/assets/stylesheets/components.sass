@@ -50,16 +50,6 @@
   @include clearfix
   @include box-shadow(0 0 3px #666)
 
-.panel--linked
-  cursor: pointer
-  &:hover
-    @include box-shadow(none)
-
-.panel--featured
-  min-height: 300px
-  .panel__content
-    text-align: center
-
 .panel--pricing
   text-align: center
   .panel__content
@@ -73,6 +63,35 @@
   padding: 8px
   font-weight: normal
   border-bottom: 1px solid #ddd
+  margin: 0
+
+.player
+  @include clearfix
+
+.player__nav
+  width: 30%
+  float: left
+
+.player__content
+  width: 70%
+  float: left
+
+.nav__item
+  display: block
+  padding: 10px
+  background: #eee
+  background: darken($brand-blue, 15%)
+  &:hover, &.active
+    background: $brand-blue
+
+.nav__supertitle
+  font-size: 14px
+  color: #fff
+  margin: 0
+
+.nav__title
+  font-size: 18px
+  color: #fff
   margin: 0
 
 .callout
@@ -109,3 +128,4 @@
 .playlist__actions
   width: 20px
   text-align: right
+

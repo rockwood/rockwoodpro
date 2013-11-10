@@ -1,19 +1,18 @@
-<div class="row main">
-  <div class="large-4 columns">
-    {{#each}}
-      <div class="panel-list">
-        <div {{action goTo this}} class="panel panel--linked">
-          <h3 class="panel__title">{{location}}</h3>
-          <div class="panel__content">
-            <p>{{datetime datetime}}</p>
-          </div>
-        </div>
-      </div>
-    {{else}}
-      <p>You don't have any recordings yet. <a href="/recordings/new">Request one here</a></p>
-    {{/each}}
+<div class="player">
+  <div class="player__nav">
+    <nav class="nav--vertical">
+      {{#each}}
+        {{#link-to 'recording' this class="nav__item"}}
+          <h3 class="nav__supertitle">{{datetime datetime}}</h3>
+          <h2 class="nav__title">{{location}}</h2>
+        {{/link-to}}
+      {{else}}
+        <div class="nav__item">You don't have any recordings yet. <a href="/recordings/new">Request one here</a></div>
+      {{/each}}
+    </nav>
   </div>
-  <div class="large-8 columns">
+
+  <div class="player__content">
     {{outlet}}
   </div>
 </div>
