@@ -4,9 +4,10 @@
       <h3 class="nav__supertitle">{{datetime datetime}}</h3>
       <h2 class="nav__title">{{location}}</h2>
     {{/link-to}}
-  {{else}}
-    <div class="nav__item">You don't have any recordings yet. <a href="/recordings/new">Request one here</a></div>
   {{/each}}
+  <a href="/recordings/new" class="nav__item">
+    <h2 class="nav__title">Request a Recording</h2>
+  </a>
 </nav>
 
 <div class="main">
