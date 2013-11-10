@@ -1,3 +1,7 @@
+/////////////////////////////////
+// Brand Bar
+/////////////////////////////////
+
 .brand-bar
   position: fixed
   top: 0
@@ -41,6 +45,10 @@
     display: inline-block
     line-height: 48px
 
+/////////////////////////////////
+// Hero
+/////////////////////////////////
+
 .hero
   background: image-url('hero.jpg') no-repeat
   @include background-size(cover)
@@ -59,6 +67,11 @@
     color: $brand-white
     font-size: 20px
     font-weight: normal
+
+
+/////////////////////////////////
+// Panels
+/////////////////////////////////
 
 .panel
   display: block
@@ -83,6 +96,18 @@
   border-bottom: 1px solid #ddd
   margin: 0
 
+.panel__content
+  padding: 20px
+
+.panel__content--split
+  width: 50%
+  float: left
+  border-right: 1px solid #ddd
+
+/////////////////////////////////
+// Nav
+/////////////////////////////////
+
 .nav
   position: fixed
   width: 30%
@@ -105,25 +130,18 @@
   font-size: 18px
   margin: 0
 
+/////////////////////////////////
+// Main Content
+/////////////////////////////////
+
 .main
   width: 70%
   min-height: 100%
   float: right
 
-.callout
-  text-align: center
-  margin: 50px 0
-
-.panel__content
-  padding: 20px
-
-.panel__content--split
-  width: 50%
-  float: left
-  border-right: 1px solid #ddd
-
-.icon--featured
-  color: $brand-orange
+/////////////////////////////////
+// Player
+/////////////////////////////////
 
 .video
   width: 100%
@@ -144,4 +162,16 @@
 .playlist__actions
   width: 20px
   text-align: right
+
+
+/////////////////////////////////
+// Extras
+/////////////////////////////////
+
+.callout
+  text-align: center
+  margin: 50px 0
+
+.icon--featured
+  color: $brand-orange
 
