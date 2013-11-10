@@ -34,7 +34,7 @@ class Recording < ActiveRecord::Base
 
   def discover_pieces
     file_store.list_directory(directory).each do |filename|
-      pieces.create(filename: filename)
+      pieces.from_filename(filename).save
     end
   end
 

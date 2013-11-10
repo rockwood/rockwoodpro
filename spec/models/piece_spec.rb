@@ -45,18 +45,29 @@ describe Piece do
     end
   end
 
-  describe "#parse_filetype" do
-    let(:piece) { FactoryGirl.build(:piece, filename: filename) }
+  describe ".from_filename" do
+    let(:filename) { "test.mp4" }
+    let(:piece) { Piece.from_filename(filename) }
+    it "returns a new piece with the appropriate filetype" do
+      expect(piece.filename).to eq(filename)
+      expect(piece.filetype).to eq("video")
+    end
+  end
+end
+
+describe FileParser do
+  describe ".parse_filetype" do
+    let(:file_parser) { FileParser.new(filename) }
     context "video" do
       let(:filename) { "test.mp4" }
       it "parses the filetype" do
-        expect(piece.parse_filetype).to eq("video")
+        expect(file_parser.filetype).to eq("video")
       end
     end
     context "audio" do
       let(:filename) { "test.mp3" }
       it "parses the filetype" do
-        expect(piece.parse_filetype).to eq("audio")
+        expect(file_parser.filetype).to eq("audio")
       end
     end
   end
