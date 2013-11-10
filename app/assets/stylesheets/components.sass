@@ -3,20 +3,23 @@
   top: 0
   width: 100%
   height: $brand-bar-height
-  padding: 5px 0
+  padding: 5px 20px
   border-bottom: 2px solid #ddd
   background: #fff
   z-index: 100
 
-.brand-bar__nav
-  text-align: right
-  a
-    margin: 0 0 0 30px
-    display: inline-block
-    line-height: 48px
+.brand-bar__flashes
+  position: absolute
+  left: 50%
+  width: 500px
+  margin-left: -250px
+  margin-top: 8px
 
 .flash
   color: #fff
+  text-align: center
+  padding: 6px
+  border-radius: 4px
 
 .flash--notice
   background: $brand-green
@@ -24,10 +27,19 @@
 .flash--error
   background: $brand-red
 
-.flash__message
-  text-align: center
-  margin: 0
-  padding: 6px
+.brand-bar__logo
+  float: left
+  max-width: 30%
+  img
+    width: 100%
+
+.brand-bar__nav
+  float: right
+  text-align: right
+  a
+    margin: 0 0 0 30px
+    display: inline-block
+    line-height: 48px
 
 .hero
   background: image-url('hero.jpg') no-repeat

@@ -9,18 +9,19 @@
 
   %body
     .brand-bar
-      .row
-        .large-4.columns
-          %a{href: root_path}
-            %img.logo{src: image_path('logo.png'), alt: "Rockwood Productions"}
+      %a.brand-bar__logo{href: root_path}
+        %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-        %nav.brand-bar__nav.large-6.columns
-          - if current_user
-            %a{href: sign_out_path} Sign Out
-            %a{href: new_recording_path} Request a Recording
-          - else
-            %a.main-nav{href: new_user_path} Sign Up
+      .brand-bar__flashes
+        - flash.each do |level, message|
+          %div{class: "flash flash--#{level}"}= message
 
-    = render partial: 'shared/flash_messages'
+      %nav.brand-bar__nav
+        - if current_user
+          %a{href: sign_out_path} Sign Out
+          %a{href: new_recording_path} Request a Recording
+        - else
+          %a.main-nav{href: new_user_path} Sign Up
+
     = yield
     = yield :javascript
