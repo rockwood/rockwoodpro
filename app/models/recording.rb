@@ -5,9 +5,10 @@ class Recording < ActiveRecord::Base
   validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
 
   state_machine do
-
-
     before_transition any => :requested do |recording|
+      User.admins.each do |admin|
+        AdminMailer.requested_recording(admin, recording).deliver
+      end
       UserMailer.requested_recording(recording).deliver
     end
 

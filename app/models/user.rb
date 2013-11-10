@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     full_name
   end
 
+  def self.admins
+    where(admin: true)
+  end
+
   private
 
   def generate_token

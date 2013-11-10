@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Recording Request</title>
+
+  </head>
+  <body>
+    <a href="<%= admin_recording_url(@recording) %>">Direct Link</a></br>
+
+    </br>
+
+    From: <a href="mailto:<%= @recording.user.email %>"><%= @recording.user.full_name %></a><br />
+    Time: <%= @recording.datetime %><br />
+    Location: <%= @recording.location %><br />
+    For: <%= @recording.context %><br />
+    Type: <%= @recording.level %><br />
+    CDs: <%= @recording.cds %><br />
+    DVDs: <%= @recording.dvds %><br />
+  </body>
+</html>

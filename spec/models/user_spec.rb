@@ -48,4 +48,11 @@ describe User do
       expect(user.password_reset_expiration).to be_nil
     end
   end
+
+  describe ".admins" do
+    let(:admin_user) { FactoryGirl.create(:user, admin: true) }
+    it "returns only admins" do
+      expect(User.admins).to eq([admin_user])
+    end
+  end
 end
