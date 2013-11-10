@@ -8,4 +8,4 @@ Rockcloud.Piece = DS.Model.extend
   year         : DS.attr('number')
   updatedAt    : DS.attr('date')
 
-  recording    : DS.belongsTo('Rockcloud.Recording')
+  recording    : DS.belongsTo('recording')

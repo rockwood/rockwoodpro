@@ -15,4 +15,4 @@ Rockcloud.Recording = DS.Model.extend
 
   programFile  : DS.attr('string')
 
-  pieces: DS.hasMany('Rockcloud.Piece')
+  pieces: DS.hasMany('piece')
