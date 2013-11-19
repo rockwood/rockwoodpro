@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: rockwoodpro_dev
+  min_messages: 'warning'
+  pool: 5
+  timeout: 5000
+
+test: &test
+  adapter: postgresql
+  database: rockwoodpro_test
+  min_messages: 'warning'
+  pool: 5
+  timeout: 5000
