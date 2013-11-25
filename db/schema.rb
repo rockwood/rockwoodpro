@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20131025142902) do
     t.datetime "datetime"
     t.string   "program_file"
     t.string   "directory"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "recordings", ["state"], name: "index_recordings_on_state", using: :btree
