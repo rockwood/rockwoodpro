@@ -16,3 +16,7 @@ Rockcloud.Recording = DS.Model.extend
   programFile  : DS.attr('string')
 
   pieces: DS.hasMany('piece')
+
+  isFinished: (->
+    @get('state') == 'finished'
+  ).property('state')

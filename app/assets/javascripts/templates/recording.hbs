@@ -1,13 +1,42 @@
-{{media-element src=controllers.currentlyPlaying.fileUrl}}
+{{#if isFinished}}
+  {{media-element src=controllers.currentlyPlaying.fileUrl}}
 
-<table class="playlist">
-  <tbody>
-    {{#each pieces itemController="piece"}}
-      <tr {{action play this}} {{bindAttr class=":playlist__item playing:playlist__item--active"}}>
-        <td class="playlist__actions"><i class="icon-play-circle"></td>
-        <td>{{title}}</td>
-        <td>{{performer}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+  <table class="playlist">
+    <tbody>
+      {{#each pieces itemController="piece"}}
+        <tr {{action play this}} {{bindAttr class=":playlist__item playing:playlist__item--active"}}>
+          <td class="playlist__actions"><i class="icon-play-circle"></td>
+          <td>{{title}}</td>
+          <td>{{performer}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <dl>
+    <dt>Status:</dt>
+    <dd class="recording__state">
+      <label {{bind-attr class=":badge badgeClass"}}>{{state}}</label>
+    </dd>
+  </dl>
+
+  <dl>
+    <dt>When:</dt>
+    <dd class="recording__datetime">{{datetime datetime}}</dd>
+  </dl>
+
+  <dl>
+    <dt>Where:</dt>
+    <dd class="recording__location">{{location}}</dd>
+  </dl>
+
+  <dl>
+    <dt>CDs:</dt>
+    <dd class="recording__cds">{{cds}}</dd>
+  </dl>
+
+  <dl>
+    <dt>DVDs:</dt>
+    <dd class="recording__dvds">{{dvds}}</dd>
+  </dl>
+{{/if}}

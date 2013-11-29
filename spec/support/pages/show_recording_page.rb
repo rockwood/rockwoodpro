@@ -12,5 +12,9 @@ class ShowRecordingPage
   def playing?(piece)
     find('video', visible: false)['src'] == piece.file_url
   end
+
+  def state
+    find('.recording__state').text
+  end
 end
 

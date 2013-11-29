@@ -146,8 +146,8 @@ $paragraph-font-size: 1.1em;
 // $list-style-position: outside;
 // $list-side-margin: emCalc(18px);
 // $definition-list-header-weight: bold;
-// $definition-list-header-margin-bottom: .3em;
-// $definition-list-margin-bottom: emCalc(12px);
+$definition-list-header-margin-bottom: 0;
+$definition-list-margin-bottom: 0;
 
 // We use these to style blockquotes
 // $blockquote-font-color: lighten($header-font-color, 30%);
