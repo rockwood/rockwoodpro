@@ -7,12 +7,11 @@ feature "process recording" do
   before { sign_in admin_user }
 
   describe 'confirming' do
-    let(:recording){ FactoryGirl.create(:recording) }  
-    
+    let(:recording){ FactoryGirl.create(:recording) }
+
     scenario do
       edit_admin_recording_page.visit_page(recording)
       edit_admin_recording_page.confirm_recording
-
       recording.reload
       expect(recording.state).to eq("confirmed")
       expect(Email.last.to).to include(recording.user.email)
@@ -25,7 +24,6 @@ feature "process recording" do
     scenario do
       edit_admin_recording_page.visit_page(recording)
       edit_admin_recording_page.finish_recording
-
       recording.reload
       expect(recording.state).to eq("finished")
       expect(Email.last.to).to include(recording.user.email)
