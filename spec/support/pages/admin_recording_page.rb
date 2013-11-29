@@ -9,6 +9,10 @@ class AdminRecordingPage
     click_on "Discover Pieces"
   end
 
+  def state
+    find('.row-state td').text
+  end
+
   def pieces
     all('td.col-filename').collect(&:text)
   end

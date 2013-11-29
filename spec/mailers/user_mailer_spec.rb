@@ -31,7 +31,7 @@ describe UserMailer do
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
       expect(Email.last.subject).to match("Your Recording")
-      expect(Email.last.body).to match(recording_url(recording))
+      expect(Email.last.body).to match("#/recordings/#{recording.id}")
     end
   end
 

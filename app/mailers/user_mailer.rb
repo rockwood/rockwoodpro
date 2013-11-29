@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
   default from: 'kevin@rockwoodpro.com', subject: 'Rockwood Productions - Your Recording'
+  add_template_helper(ApplicationHelper)
 
   def password_reset(user)
     @user = user
