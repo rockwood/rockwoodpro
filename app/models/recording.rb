@@ -6,9 +6,7 @@ class Recording < ActiveRecord::Base
 
   state_machine do
     before_transition any => :requested do |recording|
-      User.admins.each do |admin|
-        AdminMailer.requested_recording(admin, recording).deliver
-      end
+      User.admins.each { |admin| AdminMailer.requested_recording(admin, recording).deliver }
       UserMailer.requested_recording(recording).deliver
     end
 
