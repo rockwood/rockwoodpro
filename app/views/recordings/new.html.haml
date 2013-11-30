@@ -4,8 +4,8 @@
     = simple_form_for recording do |f|
       = f.input :datetime, label: "When", ampm: true
       = f.input :location, label: "Where"
-      = f.input :level, label: "What will this recording be for?", as: :radio, collection: ["Live Performance", "Private Recording Session"]
-      = f.input :context, label: "What type of recording will you be needing?", as: :radio, collection: ["Audio and Video", "Audio Only"]
+      = f.input :context, label: "What will this recording be for?", as: :radio, collection: ["Live Performance", "Private Recording Session"]
+      = f.input :level, label: "What type of recording will you be needing?", as: :radio, collection: ["Audio and Video", "Audio Only"]
       = f.input :cds, label: "Number of CDs"
       = f.input :dvds, label: "Number of DVDs"
       = f.submit "Request recording", class: "button"
