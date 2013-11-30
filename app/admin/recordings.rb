@@ -54,8 +54,8 @@ ActiveAdmin.register Recording do
       f.input :datetime, :ampm => true
       f.input :location
       f.input :state_event, as: :radio, collection: recording.state_transitions.map { |s| [s.human_to_name, s.event, checked: recording.state == s.human_to_name] }
-      f.input :context, as: :radio, collection: ["Audio and Video", "Audio Only"]
-      f.input :level, as: :radio, collection: ["Live Performance", "Private Recording Session"]
+      f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]
+      f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
       f.input :directory
       f.input :cds
       f.input :dvds
