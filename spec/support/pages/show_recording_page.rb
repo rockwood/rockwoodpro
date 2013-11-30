@@ -2,7 +2,7 @@ class ShowRecordingPage
   include Capybara::DSL
 
   def visit_page(recording)
-    visit "/recordings/#/recordings/#{recording.id}"
+    visit "/app/#/recordings/#{recording.id}"
   end
 
   def play_piece(piece)

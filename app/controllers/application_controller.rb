@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path
-    recordings_path
+    app_path
   end
 
   def after_sign_up_path

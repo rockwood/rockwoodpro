@@ -15,7 +15,7 @@ class SignInPage
   end
 
   def successful?
-    page.current_path == '/recordings' && page.has_content?("Welcome back!")
+    page.current_path == '/app' && page.has_content?("Welcome back!")
   end
 
   def sign_in(user)

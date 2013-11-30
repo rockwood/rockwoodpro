@@ -8,7 +8,7 @@ feature 'Sign out' do
   end
 
   scenario 'trying to access a secure path' do
-    visit "/recordings"
+    visit "/app"
     expect(page.current_path).to eq("/")
     expect(page).to have_content("Please sign in")
   end

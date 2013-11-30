@@ -7,7 +7,7 @@ class RecordingsController < ApplicationController
   def create
     if recording.create_directory && recording.save
       recording.request!
-      redirect_to recordings_path, notice: "Thanks! I'll be contacting you soon"
+      redirect_to app_path, notice: "Thanks! I'll be contacting you soon"
     else
       render :new
     end
