@@ -50,6 +50,7 @@ describe User do
   end
 
   describe ".admins" do
+    let(:user) { FactoryGirl.create(:user) }
     let(:admin_user) { FactoryGirl.create(:user, admin: true) }
     it "returns only admins" do
       expect(User.admins).to eq([admin_user])
