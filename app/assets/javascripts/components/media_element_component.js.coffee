@@ -1,5 +1,5 @@
 Rockcloud.MediaElementComponent = Ember.Component.extend
-  classNames: ['player']
+  classNames: ['media-element']
 
   defaultSrc: "http://cdn.rockwoodpro.com/RockwoodPro.m4v"
 

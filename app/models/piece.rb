@@ -4,6 +4,8 @@ class Piece < ActiveRecord::Base
   validates :recording, presence: true
   validates :filename, uniqueness: { scope: :recording, message: "No duplicate files, please" }
 
+  default_scope order('filename')
+
   def base_url
     ENV.fetch("CDN_ROOT")
   end
