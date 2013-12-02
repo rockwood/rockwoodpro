@@ -1,13 +1,14 @@
 <nav class="nav nav--vertical">
+  <header class="nav__header">
+    <h1>My Recordings</h1>
+    <a class="button button--info" href="/recordings/new">Request</a>
+  </header>
   {{#each}}
     {{#link-to 'recording' this class="nav__item"}}
       <h3 class="nav__supertitle">{{datetime datetime}}</h3>
       <h2 class="nav__title">{{location}}</h2>
     {{/link-to}}
   {{/each}}
-  <a href="/recordings/new" class="nav__item">
-    <h2 class="nav__title">Request a Recording</h2>
-  </a>
 </nav>
 
 <div class="main">

@@ -72,7 +72,6 @@
     font-size: 20px
     font-weight: normal
 
-
 /////////////////////////////////
 // Panels
 /////////////////////////////////
@@ -109,6 +108,26 @@
   border-right: 1px solid #ddd
 
 /////////////////////////////////
+// Buttons
+/////////////////////////////////
+
+.button
+  display: inline-block
+  padding: 10px 16px
+  border-radius: 5px
+  background: $brand-lightgrey
+  color: #fff
+  &:hover
+    background: lighten($brand-lightgrey, 10%)
+    color: #fff
+
+.button--info
+  background: $brand-blue
+  &:hover
+    background: lighten($brand-blue, 10%)
+
+
+/////////////////////////////////
 // Nav
 /////////////////////////////////
 
@@ -117,6 +136,19 @@
   width: 30%
   height: 100%
   border-right: 1px solid #ddd
+
+.nav__header
+  padding: 10px
+  border-bottom: 1px solid #ddd
+  @include background-image(linear-gradient(lighten($brand-grey, 80%), lighten($brand-grey, 70%)))
+  @include clearfix
+  h1
+    float: left
+    font-size: 22px
+    margin-bottom: 0
+  .button
+    float: right
+    margin: 0
 
 .nav__item
   display: block
