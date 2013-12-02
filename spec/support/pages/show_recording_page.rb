@@ -6,7 +6,7 @@ class ShowRecordingPage
   end
 
   def play_piece(piece)
-    find('td', text: piece.title).click
+    find('td', text: piece.filename).click
   end
 
   def playing?(piece)
