@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+dropdb rockwoodpro_dev
+createdb rockwoodpro_dev
+
+heroku pgbackups:capture --expire --app rockwoodpro
+curl -Lo latest.dump `heroku pgbackups:url --app rockwoodpro`
+pg_restore --verbose --no-acl --no-owner -d rockwoodpro_dev latest.dump
+
