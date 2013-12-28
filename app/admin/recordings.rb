@@ -41,7 +41,9 @@ ActiveAdmin.register Recording do
       row :dvds
       row :pieces do
         table_for recording.pieces do |t|
-          t.column(:filename)
+          t.column(:filename) do |obj|
+            link_to obj.filename, edit_admin_piece_path(obj)
+          end
           t.column(:filetype)
         end
       end

@@ -49,4 +49,8 @@ class Recording < ActiveRecord::Base
   def file_store
     @store ||= FileStore.new
   end
+
+  def to_s
+    "#{datetime.strftime("%Y-%m-%d")} #{user.full_name}"
+  end
 end
