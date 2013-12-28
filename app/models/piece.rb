@@ -23,6 +23,7 @@ end
 class FileParser
   VIDEO_EXTENSIONS = [".mp4", ".mov", ".ogg"]
   AUDIO_EXTENSIONS = [".mp3", ".wav", ".aiff", ".aac"]
+  ZIP_EXTENSIONS = [".zip", ".tz"]
 
   attr_reader :filename
 
@@ -39,6 +40,8 @@ class FileParser
       return "video"
     elsif AUDIO_EXTENSIONS.include?(extension)
       return "audio"
+    elsif ZIP_EXTENSIONS.include?(extension)
+      return "zip"
     end
   end
 end

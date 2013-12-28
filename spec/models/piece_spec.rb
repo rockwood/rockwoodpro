@@ -70,5 +70,11 @@ describe FileParser do
         expect(file_parser.filetype).to eq("audio")
       end
     end
+    context "zip" do
+      let(:filename) { "test.zip" }
+      it "parses the filetype" do
+        expect(file_parser.filetype).to eq("zip")
+      end
+    end
   end
 end
