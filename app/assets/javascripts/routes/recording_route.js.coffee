@@ -4,5 +4,9 @@ Rockcloud.RecordingRoute = Ember.Route.extend
       return unless piece.get('isPlayable')
       @controllerFor('currentlyPlaying').set('model', piece)
 
-    willTransition: ->
-      @controllerFor('currentlyPlaying').set('model', null)
+    videoDidEnd: ->
+      @controllerFor('currentlyPlaying').next()
+
+  setupController: (controller, model) ->
+    @controller.set('model', model)
+    @controllerFor('currentlyPlaying').set('model', model.get('firstPiece'))

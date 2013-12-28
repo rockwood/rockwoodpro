@@ -14,3 +14,19 @@ Rockcloud.Piece = DS.Model.extend
   isPlayable: (->
     @get('filetype') == "audio" || @get('filetype') == "video"
   ).property('filetype')
+
+  siblings: (->
+    @get('recording.pieces')
+  ).property()
+
+  next: (->
+    @get('siblings').objectAt(@get('currentIndex') + 1)
+  ).property('currentIndex')
+
+  previous: (->
+    @get('siblings').objectAt(@get('currentIndex') - 1)
+  ).property('currentIndex')
+
+  currentIndex: (->
+    @get('siblings').indexOf(this)
+  ).property('siblings.@each')

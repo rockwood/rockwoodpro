@@ -20,3 +20,7 @@ Rockcloud.Recording = DS.Model.extend
   isFinished: (->
     @get('state') == 'finished'
   ).property('state')
+
+  firstPiece: (->
+    @get('pieces.firstObject')
+  ).property('pieces@each')

@@ -16,6 +16,8 @@ Rockcloud.MediaElementComponent = Ember.Component.extend
   createPlayer: ->
     @$('video').attr('src', @get('defaultSrc')) unless @get('src')?
     @player = new MediaElementPlayer @$('video'), @playerOptions
+    @$('video').on "ended", =>
+      @sendAction("didEnd")
 
   loadVideo: ->
     return unless @player
