@@ -6,7 +6,7 @@
 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -15px; }
 .row .row.large-collapse { margin: 0; }
 
-.column, .columns { float: left; min-height: 1px; padding: 0 15px; position: relative; }
+.row .column, .row .columns { float: left; min-height: 1px; padding: 0 15px; position: relative; }
 .column.large-centered, .columns.large-centered { float: none; margin: 0 auto; }
 
 [class*="column"] + [class*="column"]:last-child { float: right; }
