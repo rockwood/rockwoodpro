@@ -9,19 +9,23 @@
 
   %body
     .brand-bar
-      %a.brand-bar__logo{href: root_path}
-        %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
+      .row
+        .large-4.columns
+          %a.brand-bar__logo{href: root_path}
+            %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-      .brand-bar__flashes
-        - flash.each do |level, message|
-          %div{class: "flash flash--#{level}"}= message
+        .large-4.columns.hide-for-small
+          .brand-bar__flashes
+            - flash.each do |level, message|
+              %div{class: "flash flash--#{level}"}= message
 
-      %nav.brand-bar__nav
-        - if current_user
-          %a{href: sign_out_path} Sign Out
-          %a{href: new_recording_path} Request a Recording
-        - else
-          %a{href: new_user_path} Sign Up
+        .large-8.columns
+          %nav.brand-bar__nav
+            - if current_user
+              %a.button.button--info{href: sign_out_path} Sign Out
+              %a.button.button--info{href: new_recording_path} Request a Recording
+            - else
+              %a.button.button--info{href: new_user_path} Sign Up
 
     = yield
     = yield :javascript

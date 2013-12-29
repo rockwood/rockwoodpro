@@ -6,7 +6,7 @@
         = simple_form_for :session, url: sessions_path do |f|
           = f.input :email, required: true, autofocus: true
           = f.input :password, required: true
-          = f.submit "Sign in now", class: "button secondary"
+          = f.submit "Sign in now", class: "button button--info"
         %label
           Don't have an account?
           %a{href: new_user_path} Sign up
@@ -15,7 +15,7 @@
           %a{href: new_password_reset_path} Reset it
 
 .row
-  .large-4.columns
+  .large-4.columns.featured-tile
     .row
       .large-3.columns
         %span.fa-stack.fa-2x
@@ -26,7 +26,7 @@
         %h3 Highest quality
         %p.light We use professional equipment and the most advanced recording techniques
 
-  .large-4.columns
+  .large-4.columns.featured-tile
     .row
       .large-3.columns
         %span.fa-stack.fa-2x
@@ -37,7 +37,7 @@
         %h3 Digital downloads
         %p.light All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
 
-  .large-4.columns
+  .large-4.columns.featured-tile
     .row
       .large-3.columns
         %span.fa-stack.fa-2x
