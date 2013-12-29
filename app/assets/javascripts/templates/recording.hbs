@@ -11,32 +11,34 @@
             {{/if}}
           </td>
           <td>{{filename}}</td>
-          <td>{{performer}}</td>
+          <td>{{filetype}}</td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 {{else}}
-  <dl>
-    <dt>Status:</dt>
-    <dd class="recording__state">
-      <label {{bind-attr class=":badge badgeClass"}}>{{state}}</label>
-    </dd>
-  </dl>
-  <dl>
-    <dt>When:</dt>
-    <dd class="recording__datetime">{{datetime datetime}}</dd>
-  </dl>
-  <dl>
-    <dt>Where:</dt>
-    <dd class="recording__location">{{location}}</dd>
-  </dl>
-  <dl>
-    <dt>CDs:</dt>
-    <dd class="recording__cds">{{cds}}</dd>
-  </dl>
-  <dl>
-    <dt>DVDs:</dt>
-    <dd class="recording__dvds">{{dvds}}</dd>
-  </dl>
+  <div class="main__content">
+    <dl>
+      <dt>Status:</dt>
+      <dd class="recording__state">
+        <label {{bind-attr class=":badge badgeClass"}}>{{state}}</label>
+      </dd>
+    </dl>
+    <dl>
+      <dt>When:</dt>
+      <dd class="recording__datetime">{{datetime datetime}}</dd>
+    </dl>
+    <dl>
+      <dt>Where:</dt>
+      <dd class="recording__location">{{location}}</dd>
+    </dl>
+    <dl>
+      <dt>CDs:</dt>
+      <dd class="recording__cds">{{cds}}</dd>
+    </dl>
+    <dl>
+      <dt>DVDs:</dt>
+      <dd class="recording__dvds">{{dvds}}</dd>
+    </dl>
+  </div>
 {{/if}}

@@ -187,19 +187,24 @@
 
 .playlist__item
   &:nth-of-type(even)
-    background: #eee
+    background: #f1f1f1
   &:hover
-    background: $brand-turquois
+    background: lighten($brand-blue, 35%)
     cursor: pointer
 
 .playlist__item--active
-  background: $brand-green !important
+  background: lighten($brand-blue, 25%) !important
 
 .playlist__actions
-  width: 60px
+  width: 75px
   text-align: right
   a
+    font-size: 18px
+    margin: 0 3px
     display: inline-block
+    color: #666
+    &:hover
+      color: $brand-blue
 
 .media-element
   padding: 0 20px
