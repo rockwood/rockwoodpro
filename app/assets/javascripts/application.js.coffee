@@ -13,4 +13,6 @@ $.ajaxPrefilter (options, originalOptions, xhr) ->
 Ember.LOG_VERSION = false
 
 window.Rockcloud = Ember.Application.create
-  rootElement: "#app"
+  rootElement: "#rockcloud"
+
+Rockcloud.deferReadiness()
