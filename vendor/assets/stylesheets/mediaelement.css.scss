@@ -163,11 +163,6 @@
 	background-image: asset-url("controls.png");
 }
 
-/* :focus for accessibility */
-.mejs-controls .mejs-button button:focus {
-	outline: solid 1px yellow;
-}
-
 /* End: CONTROL BAR */
 
 /* Start: Time (current / duration) */
