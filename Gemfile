@@ -19,7 +19,7 @@ gem 'active_model_serializers'
 gem 'state_machine'
 gem 'ember-rails'
 gem 'aws-sdk'
-gem "compass-rails", '2.0.alpha.0 '
+gem 'compass-rails'
 gem 'zurb-foundation', '~> 4.0.0'
 gem 'font-awesome-rails', '~> 4.0.0'
 
