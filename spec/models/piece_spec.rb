@@ -53,6 +53,18 @@ describe Piece do
       expect(piece.filetype).to eq("video")
     end
   end
+
+  describe "default_scope" do
+    let!(:zip) { FactoryGirl.create(:piece, filetype: "", filename: "zipped audio") }
+    let!(:audio1) { FactoryGirl.create(:piece, filetype: "audio", filename: "01 audio 1") }
+    let!(:video1) { FactoryGirl.create(:piece, filetype: "video", filename: "01 video 1") }
+    let!(:audio2) { FactoryGirl.create(:piece, filetype: "audio", filename: "02 audio 2") }
+    let!(:video2) { FactoryGirl.create(:piece, filetype: "video", filename: "02 video 2") }
+
+    it "orders videos first" do
+      expect(Piece.all).to eq([video1, video2, audio1, audio2, zip])
+    end
+  end
 end
 
 describe FileParser do
@@ -68,12 +80,6 @@ describe FileParser do
       let(:filename) { "test.mp3" }
       it "parses the filetype" do
         expect(file_parser.filetype).to eq("audio")
-      end
-    end
-    context "zip" do
-      let(:filename) { "test.zip" }
-      it "parses the filetype" do
-        expect(file_parser.filetype).to eq("zip")
       end
     end
   end

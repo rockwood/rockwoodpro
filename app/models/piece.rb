@@ -4,7 +4,7 @@ class Piece < ActiveRecord::Base
   validates :recording, presence: true
   validates :filename, uniqueness: { scope: :recording, message: "No duplicate files, please" }
 
-  default_scope { order('filename') }
+  default_scope { order(filetype: :desc, filename: :asc) }
 
   def base_url
     ENV.fetch("CDN_ROOT")
@@ -23,7 +23,6 @@ end
 class FileParser
   VIDEO_EXTENSIONS = [".mp4", ".mov", ".ogg"]
   AUDIO_EXTENSIONS = [".mp3", ".wav", ".aiff", ".aac"]
-  ZIP_EXTENSIONS = [".zip", ".tz"]
 
   attr_reader :filename
 
@@ -40,8 +39,6 @@ class FileParser
       return "video"
     elsif AUDIO_EXTENSIONS.include?(extension)
       return "audio"
-    elsif ZIP_EXTENSIONS.include?(extension)
-      return "zip"
     end
   end
 end
