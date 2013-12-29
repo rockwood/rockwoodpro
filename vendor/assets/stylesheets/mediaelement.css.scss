@@ -74,7 +74,8 @@
 	width: 100px;
 	height: 100px;
 	margin: -50px 0 0 -50px;
-	background: asset-url("bigplay.svg") no-repeat;
+  // TODO - see why bigplay.svg wont compile on production
+	background: asset-url("bigplay.png") no-repeat;
 }
 .no-svg .mejs-overlay-button {
 	background-image: asset-url("bigplay.png");
