@@ -14,11 +14,6 @@
           %a.brand-bar__logo{href: root_path}
             %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-        .large-4.columns.hide-for-small
-          .brand-bar__flashes
-            - flash.each do |level, message|
-              %div{class: "flash flash--#{level}"}= message
-
         .large-8.columns
           %nav.brand-bar__nav
             - if current_user
@@ -26,6 +21,12 @@
               %a.button.button--info{href: new_recording_path} Request a Recording
             - else
               %a.button.button--info{href: new_user_path} Sign Up
+
+      .flashes
+        - flash.each do |level, message|
+          %div{class: "flash flash--#{level}"}
+            %span.flash__message= message
+            %a.flash__dismiss &times;
 
     = yield
     = javascript_include_tag "application"

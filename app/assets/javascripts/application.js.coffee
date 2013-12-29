@@ -16,3 +16,7 @@ window.Rockcloud = Ember.Application.create
   rootElement: "#rockcloud"
 
 Rockcloud.deferReadiness()
+
+$ ->
+  $('.flash').on "click", ->
+    $(this).remove()

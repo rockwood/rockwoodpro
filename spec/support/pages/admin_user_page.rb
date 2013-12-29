@@ -10,6 +10,6 @@ class AdminUserPage
   end
 
   def signed_in_as_user?(user)
-    find('.flash').text == "Signed in as: #{user.full_name}"
+    find('.flash__message').text == "Signed in as: #{user.full_name}"
   end
 end
