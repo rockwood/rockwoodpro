@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+APP_NAMES = {
+  'staging' => 'rockwoodpro',
+  'production' => 'rockwoodpro',
+}
+
+env = ARGV[0] || 'staging'
+app_name = APP_NAMES[env]
+
+system "heroku maintenance:on --app #{app_name}"
+system "git push #{env} HEAD:master"
+system "heroku run rake db:migrate --app #{app_name}"
+system "heroku maintenance:off --app #{app_name}"
