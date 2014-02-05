@@ -1,5 +1,12 @@
 Rockcloud.RecordingController = Ember.ObjectController.extend
   needs: ['currentlyPlaying']
+  actions:
+    play: (piece) ->
+      return unless piece.get('isPlayable')
+      @set('controllers.currentlyPlaying.model', piece)
+
+    videoDidEnd: ->
+      @get('controllers.currentlyPlaying').next()
 
   badgeClass: (->
     switch @get('state')

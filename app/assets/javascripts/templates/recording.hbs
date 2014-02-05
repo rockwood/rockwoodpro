@@ -3,11 +3,11 @@
   <table class="playlist">
     <tbody>
       {{#each pieces itemController="piece"}}
-        <tr {{action play this}} {{bindAttr class=":playlist__item playing:playlist__item--active"}}>
+        <tr {{action 'play' this}} {{bindAttr class=":playlist__item playing:playlist__item--active"}}>
           <td class="playlist__actions">
-            <a target="_blank" {{bind-attr href=this.fileUrl}}><i class="fa fa-cloud-download"></i></a>
+            <a {{action 'download' fileUrl bubbles=false}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
-              <a {{action play this}}><i class="fa fa-play-circle"></i></a>
+              <a {{action 'play' this}}><i class="fa fa-play-circle"></i></a>
             {{/if}}
           </td>
           <td>{{filename}}</td>
