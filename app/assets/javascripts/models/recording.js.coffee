@@ -22,5 +22,5 @@ Rockcloud.Recording = DS.Model.extend
   ).property('state')
 
   firstPiece: (->
-    @get('pieces.firstObject')
+    @get('pieces').filterBy('isPlayable', true).get('firstObject')
   ).property('pieces@each')
