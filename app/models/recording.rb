@@ -1,4 +1,6 @@
 class Recording < ActiveRecord::Base
+  PLACEHOLDER_FILE = "temp.txt"
+
   belongs_to :user
   has_many :pieces
 
@@ -33,13 +35,14 @@ class Recording < ActiveRecord::Base
 
   def discover_pieces
     file_store.list_directory(directory).each do |filename|
+      next if filename == PLACEHOLDER_FILE
       pieces.from_filename(filename).save
     end
   end
 
   def create_directory
     self.directory = default_directory if directory.blank?
-    file_store.write_file("#{directory}/temp.txt", location)
+    file_store.write_file("#{directory}/#{PLACEHOLDER_FILE}", location)
   end
 
   def default_directory

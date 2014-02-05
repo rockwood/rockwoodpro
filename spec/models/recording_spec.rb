@@ -47,8 +47,14 @@ describe Recording do
       recording.discover_pieces
       recording.discover_pieces
       expect(recording.pieces.count).to eq(2)
-      expect(recording.pieces.first.filename).to include("file1.mp4")
-      expect(recording.pieces.first.filetype).to include("video")
+      expect(recording.pieces.first.filename).to eq("file1.mp4")
+      expect(recording.pieces.first.filetype).to eq("video")
+    end
+
+    it "ignores the placeholder file" do
+      file_list << Recording::PLACEHOLDER_FILE
+      recording.discover_pieces
+      expect(recording.pieces.count).to eq(2)
     end
   end
 
