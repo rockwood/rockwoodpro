@@ -1,16 +1,24 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//RockwoodPro//Recording v1.0//EN
+CALSCALE:GREGORIAN
+PRODID:-//Rockwood Productions//RecordingCalendar//EN
+X-WR-CALNAME:RockwoodPro
+X-WR-TIMEZONE:UTC
 <% recordings.each do |recording| %>
-  BEGIN:VEVENT
-  UID:<%= recording.uid %>
-  DTSTAMP:<%= recording.created_at.utc %>
-  ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
-  DTSTART:<%= recording.datetime.utc %>
-  DTEND:<%= (recording.datetime + 1.hour).utc %>
-  SUMMARY:Recording - <%= recording.user.full_name %>
-  DESCRIPTION:<%= recording.user.full_name %> /n<%= recording.context %> /n<%= recording.level %> /nCDs: <%= recording.cds %> /nDVDs: <%= recording.dvds %>
-  LOCATION:<%= recording.location %>
-  END:VEVENT
+BEGIN:VEVENT
+UID:<%= recording.uid %>
+DTSTAMP:<%= l recording.created_at, format: :long %>
+STATUS:CONFIRMED
+ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
+DTSTART:<%= l recording.datetime, format: :long %>
+DTEND:<%= l recording.datetime + 1.hour, format: :long %>
+SUMMARY:Recording - <%= recording.user.full_name %>
+DESCRIPTION:<%= recording.user.full_name %> \n
+<%= recording.context %>\n
+<%= recording.level %>\n
+CDs: <%= recording.cds %>\n
+DVDs: <%= recording.dvds %>
+LOCATION:<%= recording.location %>
+END:VEVENT
 <% end %>
 END:VCALENDAR

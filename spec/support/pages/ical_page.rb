@@ -9,6 +9,6 @@ class IcalPage
   end
 
   def has_event_start?(datetime)
-    has_content?("DTSTART:#{datetime.utc}")
+    has_content?("DTSTART:#{I18n.l datetime, format: :long}")
   end
 end

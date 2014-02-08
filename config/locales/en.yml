@@ -25,4 +25,4 @@ en:
       long: "%Y-%m-%d"
   time:
     formats:
-      long: "%A, %B %e %l:%M%P"
+      long: "%Y%m%dT%H%M%S"
