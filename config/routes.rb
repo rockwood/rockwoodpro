@@ -8,6 +8,7 @@ Rockwoodpro::Application.routes.draw do
   resources :password_resets do
     get :edit_legacy, on: :member
   end
+  resource :calendar, only: [:show]
 
   get "sign_up", to: "users#new"
   get "sign_out", to: "sessions#destroy"
