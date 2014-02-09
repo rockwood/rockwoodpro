@@ -14,6 +14,10 @@ DTEND:<%= l recording.datetime + 1.hour, format: :ical %>
 SUMMARY:Recording - <%= recording.user.full_name %>
 DESCRIPTION:<%= recording.user.full_name %>\n<%= recording.context %>\n<%= recording.level %>\r\nCDs - <%= recording.cds %>\nDVDs - <%= recording.dvds %>
 LOCATION:<%= recording.location %>
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+END:VALARM
 END:VEVENT
 <% end %>
 END:VCALENDAR
