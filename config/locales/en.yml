@@ -23,6 +23,8 @@ en:
   date:
     formats:
       long: "%Y-%m-%d"
+      ical: "%Y%m%d"
   time:
     formats:
-      long: "%Y%m%dT%H%M%S"
+      long: "%A, %B %e %l:%M%P"
+      ical: "%Y%m%dT%H%M%SZ"

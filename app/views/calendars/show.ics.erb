@@ -3,17 +3,16 @@ VERSION:2.0
 CALSCALE:GREGORIAN
 PRODID:-//Rockwood Productions//RecordingCalendar//EN
 X-WR-CALNAME:RockwoodPro
-X-WR-TIMEZONE:UTC
 <% recordings.each do |recording| %>
 BEGIN:VEVENT
 UID:<%= recording.uid %>
-DTSTAMP:<%= l recording.created_at, format: :long %>
+DTSTAMP:<%= l recording.created_at, format: :ical %>
 STATUS:CONFIRMED
 ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
-DTSTART:<%= l recording.datetime, format: :long %>
-DTEND:<%= l recording.datetime + 1.hour, format: :long %>
+DTSTART:<%= l recording.datetime, format: :ical %>
+DTEND:<%= l recording.datetime + 1.hour, format: :ical %>
 SUMMARY:Recording - <%= recording.user.full_name %>
-DESCRIPTION:<%= recording.user.full_name %>\r\n <%= recording.context %>\r\n <%= recording.level %>\r\n CDs - <%= recording.cds %>\r\n DVDs - <%= recording.dvds %>\r\n
+DESCRIPTION:<%= recording.user.full_name %>\r\n <%= recording.context %>\r\n <%= recording.level %>\r\n CDs - <%= recording.cds %>\r\n DVDs - <%= recording.dvds %>
 LOCATION:<%= recording.location %>
 END:VEVENT
 <% end %>
