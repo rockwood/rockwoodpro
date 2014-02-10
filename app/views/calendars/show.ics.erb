@@ -12,7 +12,7 @@ ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
 DTSTART:<%= l recording.datetime, format: :ical %>
 DTEND:<%= l recording.datetime + 1.hour, format: :ical %>
 SUMMARY:Recording - <%= recording.user.full_name %>
-DESCRIPTION:<%= recording.user.full_name %>\n<%= recording.context %>\n<%= recording.level %>\r\nCDs - <%= recording.cds %>\nDVDs - <%= recording.dvds %>
+DESCRIPTION:<%= recording.user.full_name %>\n<%= recording.context %>\n<%= recording.level %>\nCDs - <%= recording.cds %>\nDVDs - <%= recording.dvds %>
 LOCATION:<%= recording.location %>
 STATUS:<%= recording.state == "confirmed" ? "CONFIRMED" : "TENTATIVE" %>
 BEGIN:VALARM
