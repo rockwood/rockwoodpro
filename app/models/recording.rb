@@ -7,19 +7,6 @@ class Recording < ActiveRecord::Base
   validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
 
   state_machine do
-    before_transition any => :requested do |recording|
-      User.admins.each { |admin| AdminMailer.requested_recording(admin, recording).deliver }
-      UserMailer.requested_recording(recording).deliver
-    end
-
-    before_transition any => :confirmed do |recording|
-      UserMailer.confirmed_recording(recording).deliver
-    end
-
-    before_transition any => :finished do |recording|
-      UserMailer.finished_recording(recording).deliver
-    end
-
     event :request do
       transition all => :requested
     end
