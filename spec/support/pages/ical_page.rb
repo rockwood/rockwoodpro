@@ -9,7 +9,7 @@ class IcalPage
   end
 
   def has_event_start?(datetime)
-    has_content?("DTSTART:#{I18n.l datetime, format: :ical}")
+    has_content?("DTSTART:#{I18n.l datetime.utc, format: :ical}")
   end
 
   def has_event_status?(status)

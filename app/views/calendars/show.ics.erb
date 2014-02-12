@@ -3,16 +3,23 @@ VERSION:2.0
 CALSCALE:GREGORIAN
 PRODID:-//Rockwood Productions//RecordingCalendar//EN
 X-WR-CALNAME:RockwoodPro
+X-WR-TIMEZONE:America/New_York
 <% recordings.each do |recording| %>
 BEGIN:VEVENT
-UID:<%= recording.uid %>
-DTSTAMP:<%= l recording.created_at, format: :ical %>
+UID:recording-<%= recording.uid %>@rockwoodpro.com
+DTSTAMP:<%= l recording.created_at.utc, format: :ical %>
 STATUS:CONFIRMED
 ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
-DTSTART:<%= l recording.datetime, format: :ical %>
-DTEND:<%= l recording.datetime + 1.hour, format: :ical %>
+DTSTART:<%= l recording.datetime.utc, format: :ical %>
+DTEND:<%= l recording.datetime.utc + 1.hour, format: :ical %>
+CREATED:<%= l recording.created_at.utc + 1.hour, format: :ical %>
+LAST-MODIFIED:<%= l recording.updated_at.utc, format: :ical %>
 SUMMARY:Recording - <%= recording.user.full_name %>
-DESCRIPTION:<%= recording.user.full_name %>\n<%= recording.context %>\n<%= recording.level %>\nCDs - <%= recording.cds %>\nDVDs - <%= recording.dvds %>
+DESCRIPTION:<%= recording.user.full_name %>\n
+ <%= recording.context %>\n
+ <%= recording.level %>\n
+ CDs - <%= recording.cds %>\n
+ DVDs - <%= recording.dvds %>
 LOCATION:<%= recording.location %>
 STATUS:<%= recording.state == "confirmed" ? "CONFIRMED" : "TENTATIVE" %>
 BEGIN:VALARM
