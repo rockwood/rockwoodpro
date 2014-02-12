@@ -56,4 +56,8 @@ class Recording < ActiveRecord::Base
   def to_s
     "#{datetime.strftime("%Y-%m-%d")} #{user.full_name}"
   end
+
+  def uid
+    "recording-#{id}@rockwoodpro.com"
+  end
 end
