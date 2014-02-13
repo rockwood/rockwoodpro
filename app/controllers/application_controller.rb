@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path
-    return admin_dashboard_path if current_user.admin?
+    return admin_recordings_path if current_user.admin?
     app_path
   end
 
