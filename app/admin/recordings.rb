@@ -1,4 +1,6 @@
 ActiveAdmin.register Recording do
+  config.sort_order = "datetime_desc"
+
   controller do
     def permitted_params
       params.permit!
