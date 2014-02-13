@@ -7,29 +7,32 @@ ActiveAdmin.register Recording do
     end
   end
 
+  member_action :confirm, :method => :post do
+    recording = Recording.find(params[:id])
+    recording.confirm!
+    redirect_to action: :show
+  end
+
   member_action :discover, :method => :post do
     recording = Recording.find(params[:id])
     recording.discover_pieces
     redirect_to action: :show
   end
 
-  action_item only: :show do
-    link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
-  end
-
   index do
-    column :state do |recording|
-      status_tag(recording.state, color_for_state(recording.state))
-    end
     column :user
-    column "Date/Time", :datetime
+    column "Date/Time", :datetime, format: :short
     column :location
     column :context
     column :level
-    column "CDs", :cds
-    column "DVDs", :dvds
-    actions defaults: true do |recording|
-      link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
+    column "CD", :cds
+    column "DVD", :dvds
+    column :state do |recording|
+      status_tag(recording.state, color_for_state(recording.state))
+    end
+    column :actions do |recording|
+      @recording = recording
+      render "actions"
     end
   end
 
