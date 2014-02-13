@@ -18,10 +18,12 @@ ActiveAdmin.register Recording do
   end
 
   index do
+    column :state do |recording|
+      status_tag(recording.state, color_for_state(recording.state))
+    end
     column :user
     column "Date/Time", :datetime
     column :location
-    column :state
     column :context
     column :level
     column "CDs", :cds
