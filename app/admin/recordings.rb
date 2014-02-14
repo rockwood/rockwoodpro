@@ -7,33 +7,48 @@ ActiveAdmin.register Recording do
     end
   end
 
-  member_action :confirm, :method => :post do
+  member_action :confirm, method: :post do
     recording = Recording.find(params[:id])
     recording.confirm!
-    redirect_to action: :show
+    RecordingMailer.confirmed(recording).deliver
+    redirect_to action: :index
   end
 
-  member_action :discover, :method => :post do
+  member_action :finish, method: :post do
+    recording = Recording.find(params[:id])
+    recording.finish!
+    RecordingMailer.finished(recording).deliver
+    redirect_to action: :index
+  end
+
+  member_action :discover, method: :post do
     recording = Recording.find(params[:id])
     recording.discover_pieces
     redirect_to action: :show
   end
 
+  action_item only: [:show, :edit] do
+    link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
+  end
+
   index do
+    column "Date/Time" do |recording|
+      link_to(l(recording.datetime, format: :medium), edit_admin_recording_path(recording))
+    end
     column :user
-    column "Date/Time", :datetime, format: :short
     column :location
     column :context
     column :level
-    column "CD", :cds
-    column "DVD", :dvds
+    column :cds
+    column :dvds
+    column :pieces do |recording|
+      recording.pieces.count
+    end
     column :state do |recording|
       status_tag(recording.state, color_for_state(recording.state))
     end
-    column :actions do |recording|
-      @recording = recording
-      render "actions"
-    end
+    column { |r| link_to('Confirm', confirm_admin_recording_path(r), method: :post, class: "button") }
+    column { |r| link_to('Finish', finish_admin_recording_path(r), method: :post, class: "button") }
   end
 
   show do |recording|
@@ -62,7 +77,6 @@ ActiveAdmin.register Recording do
       f.input :user
       f.input :datetime, :ampm => true
       f.input :location
-      f.input :state_event, as: :radio, collection: recording.state_transitions.map { |s| [s.human_to_name, s.event, checked: recording.state == s.human_to_name] }
       f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]
       f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
       f.input :directory

@@ -21,9 +21,9 @@ feature "process recording" do
   end
 
   describe 'finishing' do
-    let(:recording){ FactoryGirl.create(:recording, state: :confirmed) }
+    let!(:recording){ FactoryGirl.create(:recording, state: :confirmed) }
     scenario do
-      edit_admin_recording_page.visit_page(recording)
+      admin_recordings_index_page.visit_page
       admin_recording_row.finish
       recording.reload
       expect(recording.state).to eq("finished")

@@ -63,25 +63,24 @@ describe Recording do
     let(:recording) { FactoryGirl.build(:recording, user: user) }
 
     describe "request!" do
-      before { recording.request! }
-
       it "moves to the unconfirmed state" do
+        recording.request!
         expect(recording.state).to eq("requested")
       end
     end
 
     describe "confirm!" do
-      before { recording.confirm! }
-
       it "moves to the confirmed state" do
+        recording.confirm!
         expect(recording.state).to eq("confirmed")
       end
     end
 
     describe "finish!" do
-      before { recording.finish! }
-
       it "moves to the confirmed state" do
+        recording.stub(:discover_pieces)
+        expect(recording).to receive(:discover_pieces)
+        recording.finish!
         expect(recording.state).to eq("finished")
       end
     end

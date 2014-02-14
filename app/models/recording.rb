@@ -18,6 +18,10 @@ class Recording < ActiveRecord::Base
     event :finish do
       transition all => :finished
     end
+
+    before_transition any => :finished do |recording|
+      recording.discover_pieces
+    end
   end
 
   def discover_pieces

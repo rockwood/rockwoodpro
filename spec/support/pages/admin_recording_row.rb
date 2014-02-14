@@ -9,11 +9,7 @@ class AdminRecordingRow
     row.click_on "Confirm"
   end
 
-  def discover
-    row.click_on "Discover"
-  end
-
-  def finsih
+  def finish
     row.click_on "Finish"
   end
 
