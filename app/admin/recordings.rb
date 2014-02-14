@@ -33,7 +33,7 @@ ActiveAdmin.register Recording do
 
   index do
     column "Date/Time" do |recording|
-      link_to(l(recording.datetime, format: :medium), edit_admin_recording_path(recording))
+      link_to(l(recording.datetime, format: :medium), admin_recording_path(recording))
     end
     column :user
     column :location
