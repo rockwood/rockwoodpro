@@ -6,8 +6,10 @@ class RecordingsController < ApplicationController
 
   def create
     if recording.save
-      recording.create_directory
       recording.request!
+      recording.create_directory
+      RecordingMailer.requested(recording).deliver
+      AdminMailer.requested_recording(User.admins, recording).deliver
       redirect_to app_path, notice: "Thanks! I'll be contacting you soon"
     else
       render :new

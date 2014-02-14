@@ -61,50 +61,26 @@ describe Recording do
   describe "state" do
     let(:user) { FactoryGirl.build(:user) }
     let(:recording) { FactoryGirl.build(:recording, user: user) }
-    let(:email) { double("email") }
-
-    before do
-      allow(UserMailer).to receive(:requested_recording).and_return(email)
-      allow(UserMailer).to receive(:confirmed_recording).and_return(email)
-      allow(UserMailer).to receive(:finished_recording).and_return(email)
-      allow(email).to receive(:deliver)
-    end
 
     describe "request!" do
-      before { recording.request! }
-
-      it "sends an unconfirmed email" do
-        expect(UserMailer).to have_received(:requested_recording).with(recording)
-        expect(email).to have_received(:deliver)
-      end
-
       it "moves to the unconfirmed state" do
+        recording.request!
         expect(recording.state).to eq("requested")
       end
     end
 
     describe "confirm!" do
-      before { recording.confirm! }
-
-      it "sends a confirmation email" do
-        expect(UserMailer).to have_received(:confirmed_recording).with(recording)
-        expect(email).to have_received(:deliver)
-      end
-
       it "moves to the confirmed state" do
+        recording.confirm!
         expect(recording.state).to eq("confirmed")
       end
     end
 
     describe "finish!" do
-      before { recording.finish! }
-
-      it "sends a finished email" do
-        expect(UserMailer).to have_received(:finished_recording).with(recording)
-        expect(email).to have_received(:deliver)
-      end
-
       it "moves to the confirmed state" do
+        recording.stub(:discover_pieces)
+        expect(recording).to receive(:discover_pieces)
+        recording.finish!
         expect(recording.state).to eq("finished")
       end
     end

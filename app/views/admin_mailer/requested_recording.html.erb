@@ -11,7 +11,7 @@
     </br>
 
     From: <a href="mailto:<%= @recording.user.email %>"><%= @recording.user.full_name %></a><br />
-    Time: <%= @recording.datetime %><br />
+    Time: <%= l(@recording.datetime, format: :long) %><br />
     Location: <%= @recording.location %><br />
     For: <%= @recording.context %><br />
     Type: <%= @recording.level %><br />

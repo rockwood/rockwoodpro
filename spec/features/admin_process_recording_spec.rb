@@ -2,16 +2,17 @@ require 'spec_helper'
 
 feature "process recording" do
   let(:admin_user){ FactoryGirl.create(:user, admin: true) }
-  let(:edit_admin_recording_page){ EditAdminRecordingPage.new }
+  let(:admin_recordings_index_page){ AdminRecordingsIndexPage.new }
+  let(:admin_recording_row){ AdminRecordingRow.new(recording) }
 
   before { sign_in admin_user }
 
   describe 'confirming' do
-    let(:recording){ FactoryGirl.create(:recording) }
+    let!(:recording){ FactoryGirl.create(:recording) }
 
     scenario do
-      edit_admin_recording_page.visit_page(recording)
-      edit_admin_recording_page.confirm_recording
+      admin_recordings_index_page.visit_page
+      admin_recording_row.confirm
       recording.reload
       expect(recording.state).to eq("confirmed")
       expect(Email.last.to).to include(recording.user.email)
@@ -20,10 +21,10 @@ feature "process recording" do
   end
 
   describe 'finishing' do
-    let(:recording){ FactoryGirl.create(:recording, state: :confirmed) }
+    let!(:recording){ FactoryGirl.create(:recording, state: :confirmed) }
     scenario do
-      edit_admin_recording_page.visit_page(recording)
-      edit_admin_recording_page.finish_recording
+      admin_recordings_index_page.visit_page
+      admin_recording_row.finish
       recording.reload
       expect(recording.state).to eq("finished")
       expect(Email.last.to).to include(recording.user.email)
