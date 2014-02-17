@@ -8,6 +8,7 @@ Rockcloud.Piece = DS.Model.extend
   trackNumber  : DS.attr('number')
   year         : DS.attr('number')
   updatedAt    : DS.attr('date')
+  posterUrl    : DS.attr('string')
 
   recording    : DS.belongsTo('recording')
 

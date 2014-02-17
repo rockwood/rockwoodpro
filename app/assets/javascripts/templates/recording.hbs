@@ -1,5 +1,5 @@
 {{#if isFinished}}
-  {{media-element src=controllers.currentlyPlaying.fileUrl didEnd="videoDidEnd"}}
+  {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
   <table class="playlist">
     <tbody>
       {{#each pieces itemController="piece"}}
