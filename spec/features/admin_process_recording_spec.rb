@@ -17,6 +17,7 @@ feature "process recording" do
       expect(recording.state).to eq("confirmed")
       expect(Email.last.to).to include(recording.user.email)
       expect(Email.last.body).to match("confirmed")
+      expect(recording.reload.directory).to_not be_nil
     end
   end
 

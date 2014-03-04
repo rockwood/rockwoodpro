@@ -19,6 +19,10 @@ class Recording < ActiveRecord::Base
       transition all => :finished
     end
 
+    before_transition any => :confirmed do |recording|
+      recording.create_directory
+    end
+
     before_transition any => :finished do |recording|
       recording.discover_pieces
     end
