@@ -8,8 +8,6 @@
   border-bottom: 2px solid #ddd
   background: #fff
   z-index: 100
-  .button
-    margin-bottom: 0
 
 .flashes
   position: fixed
@@ -64,7 +62,7 @@
 
 .hero
   background: image-url('hero.jpg') no-repeat
-  @include background-size(cover)
+  background-size: cover
   background-position: 40% center
   min-height: 500px
   margin-bottom: 50px
@@ -121,20 +119,6 @@
 // Buttons
 /////////////////////////////////
 
-.button
-  display: inline-block
-  padding: 10px 16px
-  border-radius: 5px
-  background: $brand-lightgrey
-  color: #fff
-  &:hover
-    background: lighten($brand-lightgrey, 10%)
-    color: #fff
-
-.button--info
-  background: $brand-blue
-  &:hover
-    background: lighten($brand-blue, 10%)
 
 
 /////////////////////////////////
@@ -149,15 +133,12 @@
 .nav__header
   padding: 10px
   border-bottom: 1px solid #ddd
-  @include background-image(linear-gradient(lighten($brand-grey, 78%), lighten($brand-grey, 70%)))
+  @include gradient-vertical(lighten($brand-grey, 78%), lighten($brand-grey, 70%))
   @include clearfix
   h1
     float: left
     font-size: 22px
     margin-bottom: 0
-  .button
-    float: right
-    margin: 0
 
 .nav__item
   display: block
@@ -247,4 +228,3 @@
 
 .icon--featured
   color: $brand-orange
-

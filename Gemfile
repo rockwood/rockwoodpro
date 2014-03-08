@@ -20,7 +20,7 @@ gem 'state_machine'
 gem 'ember-rails'
 gem 'aws-sdk'
 gem 'compass-rails'
-gem 'zurb-foundation', '~> 4.0.0'
+gem 'bootstrap-sass'
 gem 'font-awesome-rails', '~> 4.0.0'
 
 group :development do
