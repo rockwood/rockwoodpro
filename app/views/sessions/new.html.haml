@@ -1,55 +1,61 @@
 .hero
+  .container
+    .row
+      .col-md-6.col-md-offset-6
+        .hero__login
+          %h1 Create, Listen, Share
+          = form_for :session, url: sessions_path do |f|
+            .form-group
+              = f.label :email
+              = f.text_field :email, required: true, autofocus: true, class: "form-control"
+            .form-group
+              = f.label :password
+              = f.password_field :password, required: true, class: "form-control"
+
+            = f.submit "Sign in now", class: "btn btn-primary"
+          %label
+            Don't have an account?
+            %a{href: new_user_path} Sign up
+          %label
+            Forgot your password?
+            %a{href: new_password_reset_path} Reset it
+
+.container
   .row
-    .large-5.columns
-      .hero__login
-        %h1 Create, Listen, Share
-        = simple_form_for :session, url: sessions_path do |f|
-          = f.input :email, required: true, autofocus: true
-          = f.input :password, required: true
-          = f.submit "Sign in now", class: "button button--info"
-        %label
-          Don't have an account?
-          %a{href: new_user_path} Sign up
-        %label
-          Forgot your password?
-          %a{href: new_password_reset_path} Reset it
+    .col-md-4.featured-tile
+      .row
+        .col-md-3
+          %span.fa-stack.fa-2x
+            %i.icon--featured.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-microphone.fa-stack-1x.fa-inverse
 
-.row
-  .large-4.columns.featured-tile
-    .row
-      .large-3.columns
-        %span.fa-stack.fa-2x
-          %i.icon--featured.fa.fa-circle.fa-stack-2x
-          %i.fa.fa-microphone.fa-stack-1x.fa-inverse
+        .col-md-9
+          %h3 Highest quality
+          %p.light We use professional equipment and the most advanced recording techniques
 
-      .large-9.columns
-        %h3 Highest quality
-        %p.light We use professional equipment and the most advanced recording techniques
+    .col-md-4.featured-tile
+      .row
+        .col-md-3
+          %span.fa-stack.fa-2x
+            %i.icon--featured.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-cloud-download.fa-stack-1x.fa-inverse
 
-  .large-4.columns.featured-tile
-    .row
-      .large-3.columns
-        %span.fa-stack.fa-2x
-          %i.icon--featured.fa.fa-circle.fa-stack-2x
-          %i.fa.fa-cloud-download.fa-stack-1x.fa-inverse
+        .col-md-9
+          %h3 Digital downloads
+          %p.light All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
 
-      .large-9.columns
-        %h3 Digital downloads
-        %p.light All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
+    .col-md-4.featured-tile
+      .row
+        .col-md-3
+          %span.fa-stack.fa-2x
+            %i.icon--featured.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-rocket.fa-stack-1x.fa-inverse
 
-  .large-4.columns.featured-tile
-    .row
-      .large-3.columns
-        %span.fa-stack.fa-2x
-          %i.icon--featured.fa.fa-circle.fa-stack-2x
-          %i.fa.fa-rocket.fa-stack-1x.fa-inverse
+        .col-md-9
+          %h3 Fast turnaround
+          %p.light Get your recordings delivered quickly and without hassle.
 
-      .large-9.columns
-        %h3 Fast turnaround
-        %p.light Get your recordings delivered quickly and without hassle.
 
-.row
-  .columns
-    %h1.callout Pricing
+  %h1.callout Pricing
 
-= render partial: "recordings/prices"
+  = render partial: "recordings/prices"

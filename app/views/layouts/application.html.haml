@@ -13,18 +13,19 @@
 
   %body
     .brand-bar
-      .row
-        .large-4.columns
-          %a.brand-bar__logo{href: root_path}
-            %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
+      .container
+        .row
+          .col-md-4
+            %a.brand-bar__logo{href: root_path}
+              %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-        .large-8.columns
-          %nav.brand-bar__nav
-            - if current_user
-              %a.button.button--info{href: sign_out_path} Sign Out
-              %a.button.button--info{href: new_recording_path} Request a Recording
-            - else
-              %a.button.button--info{href: new_user_path} Sign Up
+          .col-md-8
+            %nav.brand-bar__nav
+              - if current_user
+                %a.btn.btn-default{href: sign_out_path} Sign Out
+                %a.btn.btn-default{href: new_recording_path} Request a Recording
+              - else
+                %a.btn.btn-default{href: new_user_path} Sign Up
 
     - if flash.present?
       .flashes

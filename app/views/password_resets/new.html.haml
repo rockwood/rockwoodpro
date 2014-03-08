@@ -1,5 +1,5 @@
 .row
-  .large-6.columns
+  .col-md-6
     %h2 Reset your password
     = simple_form_for :user, url: password_resets_path do |f|
       = f.input :email
