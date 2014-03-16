@@ -31,8 +31,9 @@
       .flashes
         - flash.each do |level, message|
           %div{class: "flash flash--#{level}"}
-            %span.flash__message= message
-            %a.flash__dismiss &times;
+            .flash__content
+              %span.flash__message= message
+              %a.flash__dismiss &times;
 
     = yield
     = javascript_include_tag "application"

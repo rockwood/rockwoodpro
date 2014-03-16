@@ -1,26 +1,23 @@
-.flashes
-  position: fixed
-  top: $rockwoodpro-bar-height + 10px
-  width: 48%
-  margin: 0 26%
-  z-index: 100
-
 .flash
-  position: relative
   padding: 10px
-  border-radius: 4px
   border: 1px solid transparent
   color: darken($rockwoodpro-grey, 20%)
   background: lighten($rockwoodpro-grey, 30%)
   border-color: lighten($rockwoodpro-grey, 20%)
 
+.flash__content
+  width: $container-large-desktop - 40px
+  position: relative
+  margin: 0 auto
+  padding: 0 20px
+
 .flash__dismiss
   position: absolute
-  right: 10px
-  top: 2px
+  right: 0
+  top: 0
   color: inherit
   font-size: 30px
-  line-height: 1
+  line-height: 16px
   &:hover
     cursor: pointer
     color: #000
