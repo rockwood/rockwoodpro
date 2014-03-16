@@ -1,0 +1,22 @@
+.brand-bar
+  height: $brand-bar-height
+  padding: 8px 0
+  border-bottom: 2px solid #ddd
+  background: #fff
+  z-index: 100
+
+
+.brand-bar__nav
+  text-align: right
+  margin: 0 2px
+  a
+    margin-left: 30px
+    display: inline-block
+
+@media screen and (max-width: $screen-xs)
+  .brand-bar
+    position: relative
+    height: auto
+    a
+      display: block
+      margin: 5px

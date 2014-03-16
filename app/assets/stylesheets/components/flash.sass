@@ -1,0 +1,41 @@
+.flashes
+  position: fixed
+  top: $brand-bar-height + 10px
+  width: 48%
+  margin: 0 26%
+  z-index: 100
+
+.flash
+  position: relative
+  padding: 10px
+  border-radius: 4px
+  border: 1px solid transparent
+  color: darken($brand-grey, 20%)
+  background: lighten($brand-grey, 30%)
+  border-color: lighten($brand-grey, 20%)
+
+.flash__dismiss
+  position: absolute
+  right: 10px
+  top: 2px
+  color: inherit
+  font-size: 30px
+  line-height: 1
+  &:hover
+    cursor: pointer
+    color: #000
+
+.flash--notice
+  color: darken($brand-green, 20%)
+  background: lighten($brand-green, 30%)
+  border-color: lighten($brand-green, 20%)
+
+.flash--alert
+  color: darken($brand-red, 20%)
+  background: lighten($brand-red, 30%)
+  border-color: lighten($brand-red, 20%)
+
+.flash--error
+  color: darken($brand-red, 20%)
+  background: lighten($brand-red, 30%)
+  border-color: lighten($brand-red, 20%)

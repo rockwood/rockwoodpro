@@ -8,10 +8,12 @@ Rockcloud.RecordingController = Ember.ObjectController.extend
     videoDidEnd: ->
       @get('controllers.currentlyPlaying').playNext()
 
-  badgeClass: (->
+  labelClass: (->
     switch @get('state')
+      when 'requested'
+        return 'label-default'
       when 'confirmed'
-        return 'badge--normal'
+        return 'label-primary'
       when 'finished'
-        return 'badge--success'
+        return 'label-success'
   ).property('state')
