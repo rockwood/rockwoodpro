@@ -5,9 +5,9 @@
       {{#each pieces itemController="piece"}}
         <tr {{action 'play' this}} {{bindAttr class=":playlist__item playing:playlist__item--active"}}>
           <td class="playlist__actions">
-            <a {{action 'download' fileUrl bubbles=false}}><i class="fa fa-cloud-download"></i></a>
+            <a class="playlist__action" {{action 'download' fileUrl}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
-              <a {{action 'play' this}}><i class="fa fa-play-circle"></i></a>
+              <a class="playlist__action" {{action 'play' this}}><i class="fa fa-play-circle"></i></a>
             {{/if}}
           </td>
           <td>{{filename}}</td>

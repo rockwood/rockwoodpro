@@ -1,15 +1,22 @@
-<nav class="nav nav--vertical">
-  <header class="nav__header">
-    <h1>My Recordings</h1>
-  </header>
-  {{#each}}
-    {{#link-to 'recording' this class="nav__item"}}
-      <h3 class="nav__supertitle">{{datetime datetime}}</h3>
-      <h2 class="nav__title">{{location}}</h2>
-    {{/link-to}}
-  {{/each}}
-</nav>
+<div class="row">
+  <div class="col-md-3">
+    <nav class="panel panel-default">
+      <header class="panel-heading">
+        <h4>My Recordings</h4>
+      </header>
 
-<div class="main">
-  {{outlet}}
+      <div class="list-group">
+        {{#each}}
+          {{#link-to 'recording' this class="list-group-item"}}
+            <h4 class="list-group-item-heading">{{location}}</h4>
+            <small class="list-group-item-text">{{datetime datetime}}</small>
+          {{/link-to}}
+        {{/each}}
+      </div>
+    </nav>
+  </div>
+
+  <div class="col-md-9">
+    {{outlet}}
+  </div>
 </div>

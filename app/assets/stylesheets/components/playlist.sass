@@ -1,27 +1,31 @@
 .playlist
   width: 100%
-  border: solid 1px #eee
 
 .playlist__item
-  &:nth-of-type(even)
-    background: #f1f1f1
   &:hover
-    background: lighten($brand-blue, 35%)
+    background: $rockwoodpro-lightgrey
     cursor: pointer
-
-.playlist__item--active
-  background: lighten($brand-blue, 25%) !important
+  td
+    border-top: 1px solid #ddd
 
 .playlist__actions
-  width: 75px
-  text-align: right
-  a
-    font-size: 18px
-    margin: 0 3px
-    display: inline-block
-    color: #666
+  width: 100px
+
+.playlist__action
+  font-size: 22px
+  margin-right: 4px
+  display: inline-block
+  color: $rockwoodpro-grey
+  &:hover
+    color: $rockwoodpro-blue
+
+.playlist__item--active, .playlist__item--active:hover
+  background: $rockwoodpro-blue !important
+  color: #fff
+  .playlist__action
+    color: inherit
     &:hover
-      color: $brand-blue
+      color: #ddd
 
 @media screen and (max-width: $screen-xs)
   .playlist__actions, .playlist__filetype
