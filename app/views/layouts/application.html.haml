@@ -15,11 +15,11 @@
     .brand-bar
       .container
         .row
-          .col-md-4
+          .col-md-8.col-sm-8
             %a.brand-bar__logo{href: root_path}
               %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-          .col-md-8
+          .col-md-4.col-sm-4
             %nav.brand-bar__nav
               - if current_user
                 %a.btn.btn-default{href: sign_out_path} Sign Out
