@@ -1,0 +1,33 @@
+<form {{action 'create' model on="submit"}}>
+  <div class="form-group">
+    <label class="control-label" for="recording-datetime">When</label>
+    {{bootstrap-datepicker value=datetime id="recording-datetime" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="recording-location">Where</label>
+    {{input value=location id="recording-location" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="recording-context">What will this recording be for?</label>
+    {{input value=context id="recording-context" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="recording-level">What type of recording do you need?</label>
+    {{input value=level id="recording-level" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="recording-cds">Number of CDs</label>
+    {{input type="number" value=cds id="recording-cds" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="recording-dvds">Number of DVDs</label>
+    {{input type="number" value=dvds id="recording-dvds" class="form-control"}}
+  </div>
+  
+  <button type="submit" class="btn btn-primary pull--right">Request recording</button>
+</form>

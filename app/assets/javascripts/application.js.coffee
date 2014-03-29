@@ -1,4 +1,5 @@
 #= require jquery
+#= require bootstrap-datetimepicker
 #= require mediaelement
 #= require moment
 #= require handlebars
