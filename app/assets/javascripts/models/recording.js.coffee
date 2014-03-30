@@ -6,11 +6,11 @@ Rockcloud.Recording = DS.Model.extend
   created_at   : DS.attr('date')
   updated_at   : DS.attr('date')
 
-  cds          : DS.attr('number')
-  dvds         : DS.attr('number')
+  cds          : DS.attr('number', defaultValue: 0)
+  dvds         : DS.attr('number', defaultValue: 0)
 
-  context      : DS.attr('string')
-  level        : DS.attr('string')
+  context      : DS.attr('string', defaultValue: "Live Performance")
+  level        : DS.attr('string', defaultValue: "Audio and Video")
   state        : DS.attr('string')
 
   programFile  : DS.attr('string')
