@@ -3,7 +3,7 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
   actions:
     play: (piece) ->
       return unless piece.get('isPlayable')
-      @set('controllers.currentlyPlaying.model', piece)
+      @get('controllers.currentlyPlaying').play(piece)
 
     videoDidEnd: ->
       @get('controllers.currentlyPlaying').playNext()

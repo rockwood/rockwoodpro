@@ -1,4 +1,7 @@
 Rockcloud.CurrentlyPlayingController = Ember.ObjectController.extend
+  play: (piece) ->
+    @set('model', piece)
+
   playNext: ->
     nextPiece = @get('next')
     return unless nextPiece.get('isPlayable')
