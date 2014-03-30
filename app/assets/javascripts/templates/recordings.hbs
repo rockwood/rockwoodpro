@@ -7,7 +7,7 @@
 
       <div class="list-group">
         {{#each}}
-          {{#link-to 'recording' this class="list-group-item"}}
+          {{#link-to 'recordings.show' this class="list-group-item"}}
             <h4 class="list-group-item-heading">{{location}}</h4>
             <small class="list-group-item-text">{{datetime datetime}}</small>
           {{/link-to}}

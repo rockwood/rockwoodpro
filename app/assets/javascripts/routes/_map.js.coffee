@@ -1,4 +1,6 @@
 Rockcloud.Router.map ->
   @resource 'recordings', ->
-    @resource 'recording', path: ':recording_id'
+    @route 'show', path: ':recording_id'
+
+  @resource 'recording', ->
     @route 'new'

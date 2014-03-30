@@ -1,4 +1,4 @@
-Rockcloud.RecordingController = Ember.ObjectController.extend
+Rockcloud.RecordingsShowController = Ember.ObjectController.extend
   needs: ['currentlyPlaying']
   actions:
     play: (piece) ->

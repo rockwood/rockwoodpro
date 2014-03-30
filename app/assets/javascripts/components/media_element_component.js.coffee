@@ -20,7 +20,7 @@ Rockcloud.MediaElementComponent = Ember.Component.extend
       @sendAction("didEnd")
 
   loadVideo: ->
-    return unless @player
+    return unless @player && @get('src')?
     @player.setSrc(@get('src'))
     @player.setPoster(@get('poster'))
     @player.load()

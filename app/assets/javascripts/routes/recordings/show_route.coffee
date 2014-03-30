@@ -1,4 +1,4 @@
-Rockcloud.RecordingRoute = Ember.Route.extend
+Rockcloud.RecordingsShowRoute = Ember.Route.extend
   actions:
     download: (url) ->
       window.open(url)
