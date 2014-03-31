@@ -12,7 +12,8 @@
 
         {{#form-group errors=errors.location}}
           <label class="control-label" for="recording-location">Where</label>
-          {{input value=location id="recording-location" class="form-control" placeholder="Werner Hall, CCM"}}
+          {{input value=location id="recording-location" class="form-control"}}
+          <p class="help-block">example: Werner Hall, CCM</p>
         {{/form-group}}
 
         {{#form-group errors=errors.context}}
