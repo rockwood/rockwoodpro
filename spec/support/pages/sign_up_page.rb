@@ -18,7 +18,7 @@ class SignUpPage
   end
 
   def successful?
-    page.current_path == '/recordings/new' && page.has_content?("Welcome to Rockwood Productions")
+    page.has_content?("Welcome to Rockwood Productions")
   end
 
   def sign_up(user)

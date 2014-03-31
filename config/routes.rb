@@ -4,7 +4,6 @@ Rockwoodpro::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :recordings, only: [:new, :create]
   resources :password_resets do
     get :edit_legacy, on: :member
   end
