@@ -1,7 +1,7 @@
 Rockcloud.NumberPickerComponent = Ember.Component.extend
   classNames: ['number-picker', 'input-group']
 
-  events:
+  actions:
     increment: ->
       @incrementProperty('value')
 

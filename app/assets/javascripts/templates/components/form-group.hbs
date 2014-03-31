@@ -1,0 +1,7 @@
+{{yield}}
+{{#each errors}}
+  <span {{bind-attr class=":help-block :error attribute"}}>
+    <span class='error__message'>{{message}}</span>
+  </span>
+{{/each}}
+

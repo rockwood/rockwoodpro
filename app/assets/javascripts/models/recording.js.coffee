@@ -17,6 +17,10 @@ Rockcloud.Recording = DS.Model.extend
 
   pieces: DS.hasMany('piece')
 
+  isRequested: (->
+    @get('state') == 'requested'
+  ).property('state')
+
   isFinished: (->
     @get('state') == 'finished'
   ).property('state')

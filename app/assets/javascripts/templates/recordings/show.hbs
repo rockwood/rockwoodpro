@@ -17,8 +17,16 @@
     </tbody>
   </table>
 {{else}}
+
+  {{#if isRequested}}
+    <div class="alert alert-success">
+      <h4>Thanks for requesting!</h4>
+      <p>I'll take a look at my schedule and let you know if I'm available.</p>
+    </div>
+  {{/if}}
+
   <div class="push">
-    <dl>
+       <dl>
       <dt>Status:</dt>
       <dd class="recording__state">
         <label {{bind-attr class=":label labelClass"}}>{{state}}</label>

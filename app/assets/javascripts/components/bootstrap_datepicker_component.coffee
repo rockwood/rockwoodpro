@@ -11,3 +11,10 @@ Rockcloud.BootstrapDatepickerComponent = Ember.Component.extend
       autoclose: true
       todayBtn: true
 
+  valueProxy: ((key, value) ->
+    if value?
+      date = moment(value)
+      @set('value', date.toDate()) if date && date.isValid()
+    @get('value')
+  ).property('value')
+

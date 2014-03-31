@@ -1,5 +1,5 @@
 Rockcloud.RecordingNewController = Ember.ObjectController.extend
-  basePrice: (->
+  recordingPrice: (->
     switch @get('level')
       when 'Audio and Video'
         return 150
@@ -10,3 +10,7 @@ Rockcloud.RecordingNewController = Ember.ObjectController.extend
   discPrice: (->
     (@get('cds') + @get('dvds')) * 15
   ).property('cds', 'dvds')
+
+  totalPrice: (->
+    @get('discPrice') + @get('recordingPrice')
+  ).property('discPrice', 'recordingPrice')

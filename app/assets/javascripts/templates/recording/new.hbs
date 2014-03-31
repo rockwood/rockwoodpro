@@ -1,70 +1,91 @@
 <div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-      <label class="control-label" for="recording-datetime">When</label>
-      {{bootstrap-datepicker value=datetime inputId="recording-datetime"}}
-    </div>
-
-    <div class="form-group">
-      <label class="control-label" for="recording-location">Where</label>
-      {{input value=location id="recording-location" class="form-control" placeholder="Werner Hall, CCM"}}
-    </div>
-
-    <div class="form-group">
-      <label class="control-label" for="recording-context">What will this recording be for?</label>
-       <div class="radio">
-        <label>{{radio-button name="recording-context" value="Live Performance" selection=context}}Live Performance</label>
+  <div class="col-md-5 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Recording Details
       </div>
+      <div class="panel-body">
+        {{#form-group errors=errors.datetime}}
+          <label class="control-label" for="recording-datetime">When</label>
+          {{bootstrap-datepicker value=datetime inputId="recording-datetime"}}
+        {{/form-group}}
 
-      <div class="radio">
-        <label>{{radio-button name="recording-context" value="Private Recording Session" selection=context}}Private Recording Session</label>
+        {{#form-group errors=errors.location}}
+          <label class="control-label" for="recording-location">Where</label>
+          {{input value=location id="recording-location" class="form-control" placeholder="Werner Hall, CCM"}}
+        {{/form-group}}
+
+        {{#form-group errors=errors.context}}
+          <label class="control-label" for="recording-context">What will this recording be for?</label>
+          <div class="radio">
+            <label>
+              {{radio-button name="recording-context" value="Live Performance" selection=context}}
+              Live Performance
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              {{radio-button name="recording-context" value="Private Recording Session" selection=context}}
+              Private Recording Session
+            </label>
+          </div>
+        {{/form-group}}
+
+        {{#form-group errors=errors.level}}
+          <label class="control-label">What type of recording do you need?</label>
+          <div class="radio">
+            <label>
+              {{radio-button name="recording-level" value="Audio and Video" selection=level}}
+              Audio and Video
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              {{radio-button name="recording-level" value="Audio Only" selection=level}}
+              Audio Only
+            </label>
+          </div>
+        {{/form-group}}
+
+        {{#form-group errors=errors.cds}}
+          <label class="control-label" for="recording-cds">Number of CDs</label>
+          {{number-picker value=cds inputId="recording-cds"}}
+        {{/form-group}}
+
+        {{#form-group errors=errors.dvds}}
+          <label class="control-label" for="recording-dvds">Number of DVDs</label>
+          {{number-picker value=dvds inputId="recording-dvds"}}
+        {{/form-group}}
+
+        <div class="actions push">
+          <button {{action "save" this}} class="btn btn-primary btn-block">Request recording</button>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label">What type of recording do you need?</label>
-      <div class="radio">
-        <label>{{radio-button name="recording-level" value="Audio and Video" selection=level}}Audio & Video</label>
-      </div>
-
-      <div class="radio">
-        <label>{{radio-button name="recording-level" value="Audio Only" selection=level}}Audio Only</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="control-label" for="recording-cds">Number of CDs</label>
-      {{number-picker value=cds inputId="recording-cds"}}
-    </div>
-
-    <div class="form-group">
-      <label class="control-label" for="recording-dvds">Number of DVDs</label>
-      {{number-picker value=dvds inputId="recording-dvds"}}
-    </div>
-
-    <div class="actions text--right">
-      <button {{action "create"}} class="btn btn-primary">Request recording</button>
     </div>
   </div>
 
-  <div class="col-md-4 col-md-offset-2">
+  <div class="col-md-3">
     <div class="panel panel-default">
-      <div class="panel-heading">Current Price</div>
+      <div class="panel-heading">
+        Price Summary
+      </div>
       <table class="table price-table">
         <tbody>
-          <tr> 
-            <td>Recording</td>
-            <td>{{basePrice}}</td>
-          </tr>
-          <tr>
-            <td>Discs</td>
-            <td>{{discPrice}}</td>
-          </td>
+        <tr> 
+          <td>Recording</td>
+          <td class="price-table__price">{{currency recordingPrice}}</td>
+        </tr>
+        <tr>
+          <td>Discs</td>
+          <td class="price-table__price">{{currency discPrice}}</td>
+        </td>
         </tbody>
         <tfoot>
           <tr>
             <td>Total</td>
-            <td>{{totalPrice}}</td>
+            <td class="price-table__price">{{currency totalPrice}}</td>
           </tr>
         </tfoot>
       </table>
