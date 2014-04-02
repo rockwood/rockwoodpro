@@ -8,10 +8,11 @@ Rockcloud.RecordingNewRoute = Ember.Route.extend
   actions:
     save: (recording) ->
       recording.get('errors').clear()
-      recording.save().then (=> @handleSuccess(recording)), (=> @handleError(recording))
+      recording.save().then (=> @handleSuccess(recording)), ((e)=> @handleError(e))
 
   handleSuccess: (recording) ->
     @transitionTo "recordings.show", recording
 
-  handleError: (recording) ->
-    @controller.set("hasError", true)
+  handleError: (error) ->
+    if error.status?
+      @controllerFor('recordingNew').set("hasError", true)

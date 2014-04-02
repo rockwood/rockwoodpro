@@ -61,8 +61,18 @@
         {{/form-group}}
 
         <div class="actions push">
-          <button {{action "save" this}} class="btn btn-primary btn-block">Request recording</button>
+          {{#if model.isSaving}}
+            <button disabled="disabled" class="btn btn-primary btn-block">Saving...</button>
+          {{else}}
+            <button {{action "save" this}} class="btn btn-primary btn-block">Request recording</button>
+          {{/if}}
         </div>
+
+        {{#if hasError}}
+          <div class="alert alert-danger">
+            <p>Uh-oh! Something went wrong. Please contact <a href="mailto:kevin@rockwoodpro.com">kevin@rockwoodpro.com</a> and we'll get it figured out.</p>
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
