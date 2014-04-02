@@ -2,7 +2,7 @@ class Recording < ActiveRecord::Base
   PLACEHOLDER_FILE = "temp.txt"
 
   belongs_to :user
-  has_many :pieces
+  has_many :pieces, dependent: :destroy
 
   validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
 
