@@ -29,8 +29,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-core'
-  gem 'rspec-rails'
+  gem 'rspec-core', '~> 2.14.0'
+  gem 'rspec-rails', '~> 2.14.0'
   gem 'email_spec'
   gem 'dotenv-rails'
   gem 'pry'
