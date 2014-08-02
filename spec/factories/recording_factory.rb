@@ -7,6 +7,9 @@ FactoryGirl.define do
     level "Audio and Video"
     context "Live Performance"
     directory "testing"
-    association :user
+    user
+    trait :finished do
+      state "finished"
+    end
   end
 end

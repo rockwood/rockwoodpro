@@ -1,4 +1,7 @@
 {{#if isFinished}}
+  <div class="group text-right">
+    <button {{action "share" model}} class="btn btn-primary share">Share</button>
+  <div>
   {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
   <table class="playlist">
     <tbody>

@@ -1,6 +1,5 @@
 module Api
   class RecordingsController < ApplicationController
-    before_filter :require_login
     respond_to :json
 
     def index
@@ -8,7 +7,13 @@ module Api
     end
 
     def show
-      render json: current_user.recordings.find(params[:id])
+      recording = Recording.find(params[:id])
+      return render json: {}, status: 404 unless recording
+      if RecordingPolicy.new(current_user, recording).show?
+        render json: recording
+      else
+        render json: {}, status: :unauthorized
+      end
     end
 
     def create
@@ -17,6 +22,15 @@ module Api
         recording.request!
         RecordingMailer.requested(recording).deliver
         AdminMailer.requested_recording(User.admins, recording).deliver
+        render json: recording
+      else
+        render json: { errors: recording.errors }, status: :unprocessable_entity
+      end
+    end
+
+    def update
+      recording = current_user.recordings.find(params[:id])
+      if recording.update(recording_params)
         render json: recording
       else
         render json: { errors: recording.errors }, status: :unprocessable_entity

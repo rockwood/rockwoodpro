@@ -1,8 +1,11 @@
-class ShowRecordingPage
-  include Capybara::DSL
-
+class ShowRecordingPage < Page
   def visit_page(recording)
     visit "/app/#/recordings/#{recording.id}"
+  end
+
+  def showing?(recording)
+    binding.pry
+    current_url == "/app/#/recordings/#{recording.id}"
   end
 
   def play_piece(piece)
@@ -15,6 +18,10 @@ class ShowRecordingPage
 
   def state
     find('.recording__state').text
+  end
+
+  def share
+    find('.share').click
   end
 end
 
