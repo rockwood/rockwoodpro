@@ -1,3 +1,4 @@
 RSpec.configure do |config|
-  config.include Features::SessionHelpers, type: :feature
+  config.include SessionHelpers, type: :feature
+  config.include PageFinder, type: :feature
 end
