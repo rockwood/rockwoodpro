@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.1.0'
 
 gem 'rails', '4.0.0'
-gem 'puma'
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
 gem 'high_voltage'
@@ -46,4 +45,5 @@ end
 
 group :staging, :production do
   gem 'rails_12factor'
+  gem 'unicorn'
 end
