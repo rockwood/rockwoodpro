@@ -66,6 +66,9 @@ ActiveAdmin.register Recording do
           t.column(:filename) do |obj|
             link_to obj.filename, edit_admin_piece_path(obj)
           end
+          t.column(:file_url) do |obj|
+            link_to obj.file_url, obj.file_url
+          end
           t.column(:filetype)
         end
       end
