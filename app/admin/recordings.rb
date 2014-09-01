@@ -7,17 +7,29 @@ ActiveAdmin.register Recording do
     end
   end
 
-  member_action :confirm, method: :post do
+  member_action :confirm do
+    @recording = Recording.find(params[:id])
+  end
+
+  member_action :process_confirmed, method: :post do
     recording = Recording.find(params[:id])
     recording.confirm!
-    RecordingMailer.confirmed(recording).deliver
+    if params[:email][:deliver]
+      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver
+    end
     redirect_to action: :index
   end
 
-  member_action :finish, method: :post do
+  member_action :finish do
+    @recording = Recording.find(params[:id])
+  end
+
+  member_action :process_finished, method: :post do
     recording = Recording.find(params[:id])
     recording.finish!
-    RecordingMailer.finished(recording).deliver
+    if params[:email][:deliver]
+      RecordingMailer.finished(recording, params[:email][:comments]).deliver
+    end
     redirect_to action: :index
   end
 
@@ -47,8 +59,8 @@ ActiveAdmin.register Recording do
     column :state do |recording|
       status_tag(recording.state, color_for_state(recording.state))
     end
-    column { |r| link_to('Confirm', confirm_admin_recording_path(r), method: :post, class: "button") }
-    column { |r| link_to('Finish', finish_admin_recording_path(r), method: :post, class: "button") }
+    column { |r| link_to('Confirm', confirm_admin_recording_path(r), class: "button") }
+    column { |r| link_to('Finish', finish_admin_recording_path(r), class: "button") }
   end
 
   show do |recording|
