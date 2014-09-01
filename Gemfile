@@ -25,6 +25,7 @@ gem 'font-awesome-rails', '~> 4.0.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
 end
 
 group :development, :test do
