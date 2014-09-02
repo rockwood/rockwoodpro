@@ -1,8 +1,5 @@
 <%= semantic_form_for :email, url: [:process_finished, :admin, @recording] do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :deliver, label: "Send email", as: :boolean, input_html: { checked: 'checked' } %>
-    <%= f.input :comments, as: :text %>  
-  <% end %>
+  <%= render partial: "inputs", locals: { f: f } %>
   <%= f.actions do %>
     <%= f.action :submit, label: "Finish Recording" %>
   <% end %>
