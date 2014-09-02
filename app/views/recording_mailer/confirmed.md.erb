@@ -1,0 +1,10 @@
+Hi <%= @recording.user.first_name %>,
+
+Your recording request for <%= @recording.datetime.strftime("%A, %B %e at %l:%M%P") %> has been confirmed. I typically show up about 45 minutes prior to the performance.
+
+<%= @comments %>
+
+Please let me know if you have any questions.
+
+Thanks,
+Kevin

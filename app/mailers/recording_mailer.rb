@@ -2,9 +2,8 @@ class RecordingMailer < ActionMailer::Base
   default from: 'kevin@rockwoodpro.com', subject: 'Rockwood Productions - Your Recording'
   add_template_helper(ApplicationHelper)
 
-  def requested(recording, comments=nil)
+  def requested(recording)
     @recording = recording
-    @comments = comments
     mail(to: @recording.user.email)
   end
 

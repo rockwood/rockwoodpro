@@ -157,6 +157,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    kramdown (1.4.1)
     launchy (2.4.2)
       addressable (~> 2.3)
     letter_opener (1.2.0)
@@ -164,6 +165,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maildown (1.0.2)
+      kramdown
+      rails (>= 4.0.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
@@ -297,6 +301,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   letter_opener
+  maildown
   pg
   poltergeist
   pry

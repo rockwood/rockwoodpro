@@ -6,7 +6,7 @@ feature "process recording" do
   before { sign_in admin_user }
 
   describe 'confirming' do
-    let!(:recording){ FactoryGirl.create(:recording) }
+    let!(:recording){ FactoryGirl.create(:recording, state: :requested) }
 
     scenario do
       admin_recordings_index_page.visit_page
@@ -15,7 +15,7 @@ feature "process recording" do
       recording.reload
       expect(recording.state).to eq("confirmed")
       expect(Email.last.to).to include(recording.user.email)
-      expect(Email.last.body).to match("test_comments")
+      expect(Email.last.text_part.body).to match("test_comments")
       expect(recording.reload.directory).to_not be_nil
     end
   end
@@ -30,7 +30,7 @@ feature "process recording" do
       recording.reload
       expect(recording.state).to eq("finished")
       expect(Email.last.to).to include(recording.user.email)
-      expect(Email.last.body).to match("test_comments")
+      expect(Email.last.text_part.body).to match("test_comments")
     end
   end
 end
