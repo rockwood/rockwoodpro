@@ -7,18 +7,30 @@ ActiveAdmin.register Recording do
     end
   end
 
-  member_action :confirm, method: :post do
-    recording = Recording.find(params[:id])
-    recording.confirm!
-    RecordingMailer.confirmed(recording).deliver
-    redirect_to action: :index
+  member_action :confirm do
+    @recording = Recording.find(params[:id])
   end
 
-  member_action :finish, method: :post do
+  member_action :process_confirmed, method: :post do
+    recording = Recording.find(params[:id])
+    recording.confirm!
+    if params[:email][:deliver] == "1"
+      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver
+    end
+    redirect_to action: :index, notice: "Recording confirmed"
+  end
+
+  member_action :finish do
+    @recording = Recording.find(params[:id])
+  end
+
+  member_action :process_finished, method: :post do
     recording = Recording.find(params[:id])
     recording.finish!
-    RecordingMailer.finished(recording).deliver
-    redirect_to action: :index
+    if params[:email][:deliver] == "1"
+      RecordingMailer.finished(recording, params[:email][:comments]).deliver
+    end
+    redirect_to action: :index, notice: "Recording finsihed"
   end
 
   member_action :discover, method: :post do
@@ -47,8 +59,13 @@ ActiveAdmin.register Recording do
     column :state do |recording|
       status_tag(recording.state, color_for_state(recording.state))
     end
-    column { |r| link_to('Confirm', confirm_admin_recording_path(r), method: :post, class: "button") }
-    column { |r| link_to('Finish', finish_admin_recording_path(r), method: :post, class: "button") }
+    column do |recording|
+      if recording.requested?
+        link_to('Confirm', confirm_admin_recording_path(recording), class: "button")
+      elsif recording.confirmed?
+        link_to('Finish', finish_admin_recording_path(recording), class: "button")
+      end 
+    end
   end
 
   show do |recording|
@@ -82,6 +99,7 @@ ActiveAdmin.register Recording do
       f.input :location
       f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]
       f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
+      f.input :state_event, as: :radio, collection: recording.state_transitions.map { |s| [s.human_to_name, s.event, checked: recording.state == s.human_to_name] }
       f.input :directory
       f.input :cds
       f.input :dvds

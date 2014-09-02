@@ -7,13 +7,15 @@ class RecordingMailer < ActionMailer::Base
     mail(to: @recording.user.email)
   end
 
-  def confirmed(recording)
+  def confirmed(recording, comments=nil)
     @recording = recording
+    @comments = comments
     mail(to: @recording.user.email)
   end
 
-  def finished(recording)
+  def finished(recording, comments=nil)
     @recording = recording
+    @comments = comments
     mail(to: @recording.user.email)
   end
 end

@@ -1,0 +1,6 @@
+<%= semantic_form_for :email, url: [:process_finished, :admin, @recording] do |f| %>
+  <%= render partial: "inputs", locals: { f: f } %>
+  <%= f.actions do %>
+    <%= f.action :submit, label: "Finish Recording" %>
+  <% end %>
+<% end %>

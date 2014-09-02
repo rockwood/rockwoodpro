@@ -21,6 +21,7 @@ gem 'aws-sdk'
 gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails', '~> 4.0.0'
+gem 'maildown'
 
 group :development do
   gem 'better_errors'
