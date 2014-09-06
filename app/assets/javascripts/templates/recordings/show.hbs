@@ -1,9 +1,14 @@
 {{#if isFinished}}
-  <div class="group text-right">
-    <button {{action "share" model}} class="btn btn-primary share">Share</button>
-  <div>
   {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
   <table class="playlist">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Filename</th>
+        <th>Type</th>
+        <th>Shared</th>
+      </tr>
+    </thead>
     <tbody>
       {{#each pieces itemController="piece"}}
         <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}}>
@@ -15,6 +20,9 @@
           </td>
           <td>{{filename}}</td>
           <td class="playlist__filetype">{{filetype}}</td>
+          <td>
+            {{toggle-switch isOn=shared action="savePiece"}} 
+          </td>
         </tr>
       {{/each}}
     </tbody>
