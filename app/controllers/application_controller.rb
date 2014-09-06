@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    return redirect_to root_path, alert: "Please sign in" if current_user.blank?
+    return redirect_to root_path, alert: "Please sign in" if current_user.new_record?
   end
 
   def require_admin_login

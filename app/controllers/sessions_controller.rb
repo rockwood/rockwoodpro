@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to after_sign_in_path if current_user.present?
+    flash[:error] = params[:error] if params[:error]
   end
 
   def create

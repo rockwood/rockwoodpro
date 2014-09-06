@@ -4,8 +4,7 @@ class ShowRecordingPage < Page
   end
 
   def showing?(recording)
-    binding.pry
-    current_url == "/app/#/recordings/#{recording.id}"
+    current_url.include?("/recordings/#{recording.id}")
   end
 
   def play_piece(piece)
