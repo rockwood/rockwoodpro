@@ -8,8 +8,8 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
     videoDidEnd: ->
       @get('controllers.currentlyPlaying').playNext()
 
-    share: (recording) ->
-      recording.set('shared', true).save()
+    download: (url) ->
+      window.open(url)
 
   labelClass: (->
     switch @get('state')
