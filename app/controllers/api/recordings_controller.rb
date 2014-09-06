@@ -8,12 +8,8 @@ module Api
 
     def show
       recording = Recording.find(params[:id])
-      return render json: {}, status: 404 unless recording
-      if RecordingPolicy.new(current_user, recording).show?
-        render json: recording
-      else
-        render json: {}, status: :unauthorized
-      end
+      authorize recording
+      render json: recording
     end
 
     def create

@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       {{#each pieces itemController="piece"}}
-        <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}}>
+      <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}} data-test="piece-{{unbound id}}">
           <td class="playlist__actions">
             <a class="playlist__action" {{action 'download' fileUrl}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
@@ -21,7 +21,7 @@
           <td>{{filename}}</td>
           <td class="playlist__filetype">{{filetype}}</td>
           <td>
-            {{toggle-switch isOn=shared action="savePiece"}} 
+            {{toggle-switch isOn=shared action="savePiece" data-test="share-piece"}} 
           </td>
         </tr>
       {{/each}}

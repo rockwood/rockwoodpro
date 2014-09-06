@@ -19,8 +19,10 @@ class ShowRecordingPage < Page
     find('.recording__state').text
   end
 
-  def share
-    find('.share').click
+  def share_piece(piece)
+    within test_selector("piece-#{piece.id}") do
+      find(test_selector("share-piece")).click
+    end
   end
 end
 

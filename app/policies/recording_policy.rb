@@ -1,5 +1,9 @@
 class RecordingPolicy < ApplicationPolicy
   def show?
-    record.shared? || record.user == user
+    true
+  end
+
+  def scoped_pieces
+    record.user == user ? record.pieces : record.pieces.where(shared: true)
   end
 end
