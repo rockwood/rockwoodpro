@@ -1,6 +1,6 @@
 class SharedRecordingPage < Page
   def visit_page(recording)
-    visit app_path(anchor: "recording/shared/#{recording.id}")
+    visit app_path(anchor: "recording/#{recording.id}/shared")
   end
 
   def has_piece?(piece)
