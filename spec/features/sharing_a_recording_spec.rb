@@ -11,7 +11,7 @@ feature "Sharing a recording", js: true do
       show_recording_page.visit_page(recording)
       show_recording_page.share_piece(piece)
       eventually do
-        expect(show_recording_page).to have_share_link
+        expect(show_recording_page).to have_share_link_for(recording)
         expect(piece.reload).to be_shared
       end
     end

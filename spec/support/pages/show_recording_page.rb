@@ -19,8 +19,8 @@ class ShowRecordingPage < Page
     find('.recording__state').text
   end
 
-  def has_share_link?
-    find(test_selector("preview-link"))[:value]
+  def has_share_link_for?(recording)
+    find(test_selector("preview-link"))[:value].include?("/app/recording/#{recording.id}/shared")
   end
 
   def share_piece(piece)
