@@ -19,6 +19,10 @@ class ShowRecordingPage < Page
     find('.recording__state').text
   end
 
+  def has_share_link?
+    find(test_selector("preview-link"))[:value]
+  end
+
   def share_piece(piece)
     within test_selector("piece-#{piece.id}") do
       find(test_selector("share-piece")).click

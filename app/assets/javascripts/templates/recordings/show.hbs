@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       {{#each pieces itemController="piece"}}
-      <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}} data-test="piece-{{unbound id}}">
+        <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}} data-test="piece-{{unbound id}}">
           <td class="playlist__actions">
             <a class="playlist__action" {{action 'download' fileUrl}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
@@ -27,6 +27,30 @@
       {{/each}}
     </tbody>
   </table>
+  
+  <h1 class="push--bottom">Share</h1>
+  <div class="row">
+    <div class="col-md-2 text-right">
+      <h5>Share link:</h5>
+    </div>
+
+    <div class="col-md-8">
+      <div class="form-group">
+        <div class="input-group">
+          <input {{bind-attr value=shareLink}} class="form-control" readonly="readonly" data-test="preview-link"></input>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-copy"></i> copy</button>
+          </span>
+        </div>
+        <span class="help-block">Use this link to share your recording with others. Only shared pieces will be visible</span>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      {{#link-to 'recording.shared' model class="btn btn-primary btn-block"}}Preview{{/link-to}}
+    </div>
+  </div>
+
 {{else}}
 
   {{#if isRequested}}

@@ -10,3 +10,8 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
       when 'finished'
         return 'label-success'
   ).property('state')
+
+  shareLink: (->
+    hash = @container.lookup("router:main").generate('recording.shared', @get('model'))
+    window.location.host + window.location.pathname + hash
+  ).property('id')

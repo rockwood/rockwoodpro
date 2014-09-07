@@ -45,4 +45,5 @@ RSpec.configure do |config|
   config.before(:each) { ActionMailer::Base.deliveries.clear }
 
   config.include FactoryGirl::Syntax::Methods
+  config.include AsyncHelpers
 end
