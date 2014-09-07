@@ -1,0 +1,11 @@
+$share-twitter-color: #55ACEE
+$share-facebook-color: #3b5998
+$share-width: 40px
+
+.btn--share-facebook
+  @include button-variant(#fff, $share-facebook-color, darken($share-facebook-color, 5%))
+  width: $share-width
+
+.btn--share-twitter
+  @include button-variant(#fff, $share-twitter-color, darken($share-twitter-color, 5%))
+  width: $share-width

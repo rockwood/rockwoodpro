@@ -26,15 +26,15 @@
         </tr>
       {{/each}}
     </tbody>
+
   </table>
   
-  <h1 class="push--bottom">Share</h1>
   <div class="row">
-    <div class="col-md-2 text-right">
-      <h5>Share link:</h5>
+    <div class="col-md-4 text-right">
+      <h5>Share:</h5>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="form-group">
         <div class="input-group">
           <input {{bind-attr value=shareLink}} class="form-control" readonly="readonly" data-test="preview-link"></input>
@@ -42,13 +42,17 @@
             <button class="btn btn-default" type="button"><i class="fa fa-copy"></i> copy</button>
           </span>
         </div>
-        <span class="help-block">Use this link to share your recording with others. Only shared pieces will be visible</span>
       </div>
     </div>
 
     <div class="col-md-2">
-      {{#link-to 'recording.shared' model class="btn btn-primary btn-block"}}Preview{{/link-to}}
+      <a class="btn btn--share-twitter" target="_blank" {{bind-attr href=twitterLink}}><i class="fa fa-twitter fa-lg"></i></a>
+      <a class="btn btn--share-facebook" target="_blank" {{bind-attr href=facebookLink}}><i class="fa fa-facebook fa-lg"></i></a>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="help-block col-md-8 col-md-offset-4">Use this link to share your recording with others. Only shared pieces will be visible</div>
   </div>
 
 {{else}}
