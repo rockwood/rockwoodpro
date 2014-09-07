@@ -23,7 +23,7 @@
             %nav.brand-bar__nav
               - if current_user.persisted?
                 %a.btn.btn-default{href: sign_out_path} Sign Out
-                %a.btn.btn-default{href: app_path(anchor: "/recording/new")} Request a Recording
+                %a.btn.btn-default{href: "/app/recording/new"} Request a Recording
               - else
                 %a.btn.btn-default{href: new_user_path} Sign Up
 

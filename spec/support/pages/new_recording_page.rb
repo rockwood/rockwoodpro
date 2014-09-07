@@ -2,7 +2,7 @@ class NewRecordingPage
   include Capybara::DSL
 
   def visit_page
-    visit "/app/#/recording/new"
+    visit "/app/recording/new"
   end
 
   def fill_form(recording)

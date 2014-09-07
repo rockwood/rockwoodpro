@@ -43,6 +43,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path
-    app_path(anchor: "/recording/new")
+    "/app/recording/new"
   end
 end

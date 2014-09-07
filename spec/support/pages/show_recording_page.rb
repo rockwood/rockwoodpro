@@ -1,6 +1,6 @@
 class ShowRecordingPage < Page
   def visit_page(recording)
-    visit "/app/#/recordings/#{recording.id}"
+    visit "/app/recordings/#{recording.id}"
   end
 
   def showing?(recording)

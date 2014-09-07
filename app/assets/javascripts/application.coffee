@@ -18,6 +18,10 @@ window.Rockcloud = Ember.Application.create
 
 Rockcloud.deferReadiness()
 
+Rockcloud.Router.reopen
+  location: 'history'
+  rootURL: '/app'
+
 $ ->
   $('.flash').on "click", ->
     $(this).remove()
