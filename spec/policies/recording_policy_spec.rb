@@ -10,7 +10,7 @@ describe RecordingPolicy do
     context "owner" do
       let(:recording) { create(:recording, user: user) }
       specify do
-        expect(policy.scoped_pieces).to eq([shared_piece, unshared_piece])
+        expect(policy.scoped_pieces).to include(shared_piece, unshared_piece)
       end
     end
 
