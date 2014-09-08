@@ -12,8 +12,8 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
   ).property('state')
 
   shareLink: (->
-    hash = @container.lookup("router:main").generate('recording.shared', @get('model'))
-    window.location.host + window.location.pathname + hash
+    path = @container.lookup("router:main").generate('recording.shared', @get('model'))
+    window.location.origin + path
   ).property('id')
 
   encodedShareLink: (->
