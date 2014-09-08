@@ -25,6 +25,7 @@
                 %a.btn.btn-default{href: sign_out_path} Sign Out
                 %a.btn.btn-default{href: "/app/recording/new"} Request a Recording
               - else
+                %a.btn.btn-default{href: new_session_path} Sign In
                 %a.btn.btn-default{href: new_user_path} Sign Up
 
     - if flash.present?

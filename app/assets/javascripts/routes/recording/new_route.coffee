@@ -1,4 +1,4 @@
-Rockcloud.RecordingNewRoute = Ember.Route.extend
+Rockcloud.RecordingNewRoute = Rockcloud.AuthenticatedRoute.extend
   model: ->
     @store.createRecord('recording')
 
