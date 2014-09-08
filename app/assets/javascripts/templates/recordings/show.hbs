@@ -1,21 +1,55 @@
 {{#if isFinished}}
   {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
   <table class="playlist">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Filename</th>
+        <th>Type</th>
+        <th class="text-center">Shared</th>
+      </tr>
+    </thead>
     <tbody>
       {{#each pieces itemController="piece"}}
-        <tr {{action 'play' this}} {{bind-attr class=":playlist__item playing:playlist__item--active"}}>
+        <tr {{bind-attr class=":playlist__item playing:playlist__item--active"}} data-test="piece-{{unbound id}}">
           <td class="playlist__actions">
             <a class="playlist__action" {{action 'download' fileUrl}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
               <a class="playlist__action" {{action 'play' this}}><i class="fa fa-play-circle"></i></a>
             {{/if}}
           </td>
-          <td>{{filename}}</td>
-          <td class="playlist__filetype">{{filetype}}</td>
+          <td {{action 'play' this}} class="playlist__filename">{{filename}}</td>
+          <td {{action 'play' this}} class="playlist__filetype">{{filetype}}</td>
+          <td class="playlist__is-shared">
+            {{check-box checked=shared action="savePiece" data-test="share-piece"}}
+          </td>
         </tr>
       {{/each}}
     </tbody>
+
   </table>
+  
+  <div class="row">
+    <div class="col-md-4 text-right">
+      <h5>Share:</h5>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        {{copyable-input value=shareLink}}
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <a class="btn btn--share-twitter" target="_blank" {{bind-attr href=twitterLink}}><i class="fa fa-twitter fa-lg"></i></a>
+      <a class="btn btn--share-facebook" target="_blank" {{bind-attr href=facebookLink}}><i class="fa fa-facebook fa-lg"></i></a>
+    </div>
+  </div>
+
+  <div class="row push--bottom">
+    <div class="help-block col-md-8 col-md-offset-4">Use this link to share your recording with others. Only shared pieces will be visible</div>
+  </div>
+
 {{else}}
 
   {{#if isRequested}}

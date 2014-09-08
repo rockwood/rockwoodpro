@@ -11,7 +11,9 @@ Rockwoodpro::Application.routes.draw do
 
   get "sign_up", to: "users#new"
   get "sign_out", to: "sessions#destroy"
+
   get "app", to: "app#show"
+  get "app/*path", to: "app#show"
 
   root to: "sessions#new"
 

@@ -1,17 +1,30 @@
 module Api
   class PiecesController < ApplicationController
     before_filter :require_login
-    respond_to :json
-
-    expose(:pieces) { current_user.pieces }
-    expose(:piece)
 
     def index
-      respond_with(pieces)
+      render json: current_user.pieces 
     end
 
     def show
-      respond_with(piece)
+      piece = Piece.find(params[:id])
+      render json: piece
+    end
+
+    def update
+      piece = Piece.find(params[:id])      
+      authorize piece
+      if piece.update(piece_params)
+        render json: piece
+      else
+        render json: piece.errors, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def piece_params
+      params.require(:piece).permit(:shared)
     end
   end
 end

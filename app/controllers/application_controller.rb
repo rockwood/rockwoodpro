@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include Pundit
   protect_from_forgery with: :exception
 
   decent_configuration do
@@ -8,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= session[:user_id] ? User.find(session[:user_id]) : User.new
   end
   helper_method :current_user
 
@@ -22,25 +21,28 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    return redirect_to root_path, alert: "Please sign in" if current_user.blank?
+    return redirect_to root_path, alert: "Please sign in" if current_user.new_record?
   end
 
   def require_admin_login
-    return redirect_to '/' if current_user.present? && !current_user.admin?
+    return redirect_to '/' unless current_user.admin?
     require_login
   end
 
   def current_admin_user
-    return nil if current_user.present? && !current_user.admin?
+    return nil unless current_user.admin?
     current_user
   end
 
   def after_sign_in_path
-    return admin_recordings_path if current_user.admin?
-    app_path
+    if current_user.admin?
+      admin_recordings_path    
+    else
+      app_path
+    end
   end
 
   def after_sign_up_path
-    app_path(anchor: "/recording/new")
+    "/app/recording/new"
   end
 end

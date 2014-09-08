@@ -1,5 +1,6 @@
 class PieceSerializer < ActiveModel::Serializer
-  attributes :id, :composer, :filename, :filetype, :performer, :recording_id, :track_number, :title, :updated_at, :year, :file_url, :poster_url
+  attributes :id, :composer, :filename, :filetype, :performer, :recording_id, :track_number, 
+    :title, :updated_at, :year, :file_url, :poster_url, :shared
 
   def poster_url
     "#{ENV.fetch('CDN_ROOT')}/poster.jpg"

@@ -15,8 +15,7 @@ Rockcloud.Recording = DS.Model.extend
 
   programFile  : DS.attr('string')
 
-  shared       : DS.attr('boolean')
-
+  user: DS.belongsTo('user')
   pieces: DS.hasMany('piece')
 
   isRequested: (->

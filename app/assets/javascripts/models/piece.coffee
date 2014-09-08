@@ -9,6 +9,7 @@ Rockcloud.Piece = DS.Model.extend
   year         : DS.attr('number')
   updatedAt    : DS.attr('date')
   posterUrl    : DS.attr('string')
+  shared       : DS.attr('boolean', defaultValue: false)
 
   recording    : DS.belongsTo('recording')
 
