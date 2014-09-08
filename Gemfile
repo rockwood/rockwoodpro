@@ -49,4 +49,5 @@ end
 group :staging, :production do
   gem 'rails_12factor'
   gem 'unicorn'
+  gem 'asset_sync'
 end
