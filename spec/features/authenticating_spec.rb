@@ -17,7 +17,7 @@ feature 'Authenticating', js: true do
     existing_user = FactoryGirl.create(:user)
     sign_in_page.sign_in(existing_user)
     sign_in_page.visit_page
-    expect(page.current_path).to eq("/app")
+    expect(page.current_path).to_not eq("/")
   end
 
   scenario 'siging out' do
