@@ -23,7 +23,7 @@ class ShowRecordingPage < Page
     find(test_selector("copyable-input"))[:value].include?("/app/recording/#{recording.id}/shared")
   end
 
-  def share_piece(piece)
+  def unshare_piece(piece)
     within test_selector("piece-#{piece.id}") do
       find(test_selector("share-piece")).click
     end
