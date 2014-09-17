@@ -21,7 +21,7 @@
             %a{href: new_password_reset_path} Reset it
 
 .container
-  .row
+  .row.push--bottom
     .col-md-4
       .featured-tile
         .featured-tile__icon-group
@@ -54,7 +54,11 @@
         .featured-tile__content
           %h3.flush--top Fast turnaround
           %p.light Get your recordings delivered quickly and without hassle.
-
+  
+  - if demo_recording
+    .row
+      .col-md-2.col-md-offset-5
+        %a.btn.btn-primary.btn-block.btn-lg{ href: shared_recording_path(demo_recording), data: { test: "view-demo" } } View Demo
 
   %h1.callout Pricing
 

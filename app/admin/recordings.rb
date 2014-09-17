@@ -64,7 +64,7 @@ ActiveAdmin.register Recording do
         link_to('Confirm', confirm_admin_recording_path(recording), class: "button")
       elsif recording.confirmed?
         link_to('Finish', finish_admin_recording_path(recording), class: "button")
-      end 
+      end
     end
   end
 
@@ -78,6 +78,7 @@ ActiveAdmin.register Recording do
       row :level
       row :cds
       row :dvds
+      row :demo
       row :pieces do
         table_for recording.pieces do |t|
           t.column(:filename) do |obj|
@@ -103,6 +104,7 @@ ActiveAdmin.register Recording do
       f.input :directory
       f.input :cds
       f.input :dvds
+      f.input :demo
     end
     f.actions
   end
