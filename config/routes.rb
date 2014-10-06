@@ -8,6 +8,7 @@ Rockwoodpro::Application.routes.draw do
     get :edit_legacy, on: :member
   end
   resource :calendar, only: [:show]
+  resource :live, controller: :live
 
   get "sign_up", to: "users#new"
   get "sign_out", to: "sessions#destroy"
