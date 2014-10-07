@@ -79,6 +79,7 @@ ActiveAdmin.register Recording do
       row :cds
       row :dvds
       row :demo
+      row :embed_code
       row :pieces do
         table_for recording.pieces do |t|
           t.column(:filename) do |obj|
@@ -104,6 +105,7 @@ ActiveAdmin.register Recording do
       f.input :directory
       f.input :cds
       f.input :dvds
+      f.input :embed_code
       f.input :demo
     end
     f.actions

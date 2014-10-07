@@ -55,4 +55,8 @@ class Recording < ActiveRecord::Base
   def uid
     "recording-#{id}@rockwoodpro.com"
   end
+
+  def self.live_now
+    Recording.find_by("embed_code IS NOT NULL AND datetime >= ? AND datetime <= ?", 6.hour.ago, 6.hours.from_now)
+  end
 end

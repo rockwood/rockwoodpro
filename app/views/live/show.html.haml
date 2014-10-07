@@ -1,3 +1,7 @@
-.container
-  .flex-video.push--top
-    %iframe{ id: "ytplayer", type: "text/html", src: "https://www.youtube.com/embed/?listType=user_uploads&list=rockwoodprovideo&enablejsapi=1&fs=1&autohide=0", frameborder:"0", allowfullscreen: "allowfullscreen"}
+.container.push--top
+  - if @recording
+    .flex-video
+      %iframe{ id: "ytplayer", type: "text/html", src: "//www.youtube.com/embed/#{@recording.embed_code}", frameborder:"0", allowfullscreen: "allowfullscreen"}
+  - else
+    %h4.text--center{ data: { test: 'inactive'} } Sorry, there are no live events at the moment. Please check back later.
+

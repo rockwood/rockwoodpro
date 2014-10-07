@@ -85,4 +85,31 @@ describe Recording do
       end
     end
   end
+
+  describe ".live_now" do
+    let!(:recording) { create(:recording, embed_code: embed_code, datetime: datetime) }
+    context "no embed_code" do
+      let(:embed_code) { nil }
+      let(:datetime) { Time.now }
+      it "is nil" do
+        expect(Recording.live_now).to be_nil
+      end
+    end
+
+    context "with datetime in the future datetime and embed_code set" do
+      let(:embed_code) { "123" }
+      let(:datetime) { 1.day.from_now }
+      it "is nil" do
+        expect(Recording.live_now).to be_nil
+      end
+    end
+
+    context "with a datetime of now and embed_code set" do
+      let(:embed_code) { "123" }
+      let(:datetime) { Time.now }
+      it "returns the recording" do
+        expect(Recording.live_now).to eq(recording)
+      end
+    end
+  end
 end
