@@ -4,7 +4,7 @@ Rockcloud.RadioButtonComponent = Ember.Component.extend
   attributeBindings : [ "name", "type", "value", "checked:checked" ]
 
   click: ->
-      @set("selection", @$().val())
+    @set("selection", @$().val())
 
   checked: (->
     @get("value") == @get("selection")
