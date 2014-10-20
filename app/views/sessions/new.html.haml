@@ -22,7 +22,7 @@
 
 .container
   .row.push--bottom
-    .col-md-4
+    .col-md-3
       .featured-tile
         .featured-tile__icon-group
           %span.fa-stack.fa-2x.icon
@@ -33,7 +33,7 @@
           %h3.flush--top Highest quality
           %p.light We use professional equipment and the most advanced recording techniques
 
-    .col-md-4
+    .col-md-3
       .featured-tile
         .featured-tile__icon-group
           %span.fa-stack.fa-2x.icon
@@ -44,7 +44,7 @@
           %h3.flush--top Digital downloads
           %p.light All recordings are available as digital downloads at no extra charge! DVDs and CDs are also available.
 
-    .col-md-4
+    .col-md-3
       .featured-tile
         .featured-tile__icon-group
           %span.fa-stack.fa-2x.icon
@@ -54,6 +54,17 @@
         .featured-tile__content
           %h3.flush--top Fast turnaround
           %p.light Get your recordings delivered quickly and without hassle.
+
+    .col-md-3
+      .featured-tile
+        .featured-tile__icon-group
+          %span.fa-stack.fa-2x.icon
+            %i.fa.fa-circle.fa-stack-2x
+            %i.fa.fa-video-camera.fa-stack-1x.fa-inverse
+
+        .featured-tile__content
+          %h3.flush--top Live Streaming
+          %p.light Live streaming for those who can't make it to your performance. #{link_to " Available here", live_path}
   
   - if demo_recording
     .row
