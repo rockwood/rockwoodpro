@@ -33,6 +33,25 @@
           </div>
         {{/form-group}}
 
+        {{#if isLivePerformance}}
+          {{#form-group errors=errors.live_stream}}
+            <label class="control-label">Do you want your performance live streamed?</label>
+            <div class="radio">
+              <label>
+                {{boolean-radio-button name="recording-live-stream" value="0" selection=liveStream}}
+                No
+              </label>
+            </div>
+
+            <div class="radio">
+              <label>
+                {{boolean-radio-button name="recording-live-stream" value="1" selection=liveStream}}
+                Yes
+              </label>
+            </div>
+          {{/form-group}}
+        {{/if}}
+
         {{#form-group errors=errors.level}}
           <label class="control-label">What type of recording do you need?</label>
           <div class="radio">

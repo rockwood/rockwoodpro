@@ -11,6 +11,7 @@ Rockcloud.Recording = DS.Model.extend
 
   context      : DS.attr('string', defaultValue: "Live Performance")
   level        : DS.attr('string', defaultValue: "Audio and Video")
+  liveStream   : DS.attr('boolean', defaultValue: false)
   state        : DS.attr('string')
 
   programFile  : DS.attr('string')
@@ -29,3 +30,7 @@ Rockcloud.Recording = DS.Model.extend
   firstPiece: (->
     @get('pieces').filterBy('isPlayable', true).get('firstObject')
   ).property('pieces@each')
+
+  isLivePerformance: (->
+    @get('context') == "Live Performance"
+  ).property('context')

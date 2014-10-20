@@ -56,6 +56,7 @@ ActiveAdmin.register Recording do
     column :pieces do |recording|
       recording.pieces.count
     end
+    column :live_stream
     column :state do |recording|
       status_tag(recording.state, color_for_state(recording.state))
     end

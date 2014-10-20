@@ -8,6 +8,7 @@ FactoryGirl.define do
     context "Live Performance"
     directory "testing"
     user
+    live_stream true
     trait :finished do
       state "finished"
     end

@@ -16,9 +16,9 @@ feature 'Creating a recording', js: true do
         expect(Email.recipients).to include(user.email)
       end
     end
-    
+
     context 'with an invalid recording' do
-      let(:invalid_recording) { FactoryGirl.build(:recording, location: nil) } 
+      let(:invalid_recording) { FactoryGirl.build(:recording, location: nil) }
       scenario do
         new_recording_page.create(invalid_recording)
         expect(new_recording_page).to_not be_successful
@@ -26,8 +26,19 @@ feature 'Creating a recording', js: true do
         expect(Email.recipients).to_not include(admin_user.email)
       end
     end
+
+    context 'live streamed' do
+      let(:live_recording) { FactoryGirl.build(:recording, live_stream: true) }
+      scenario do
+        new_recording_page.create(live_recording)
+        expect(new_recording_page).to be_successful
+        eventually do
+          expect(user.recordings.last.live_stream).to eq(true)
+        end
+      end
+    end
   end
-  
+
   describe "viewing price" do
 
   end
