@@ -6,7 +6,7 @@ X-WR-CALNAME:RockwoodPro
 X-WR-TIMEZONE:America/New_York
 <% recordings.each do |recording| %>
 BEGIN:VEVENT
-UID:recording-<%= recording.uid %>@rockwoodpro.com
+UID:<%= recording.uid %>
 DTSTAMP:<%= l recording.created_at.utc, format: :ical %>
 SEQUENCE:<%= recording.change_count %>
 STATUS:CONFIRMED
