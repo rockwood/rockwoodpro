@@ -9,7 +9,6 @@ BEGIN:VEVENT
 UID:<%= recording.uid %>
 DTSTAMP:<%= l recording.created_at.utc, format: :ical %>
 SEQUENCE:<%= recording.change_count %>
-STATUS:CONFIRMED
 ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
 DTSTART:<%= l recording.datetime.utc, format: :ical %>
 DTEND:<%= l recording.datetime.utc + 1.hour, format: :ical %>
@@ -23,7 +22,7 @@ DESCRIPTION:<%= recording.user.full_name %>\n
  CDs - <%= recording.cds %>\n
  DVDs - <%= recording.dvds %>
 LOCATION:<%= recording.location %>
-STATUS:<%= recording.state == "confirmed" ? "CONFIRMED" : "TENTATIVE" %>
+STATUS:<%= recording.confirmed? ? "CONFIRMED" : "TENTATIVE" %>
 BEGIN:VALARM
 TRIGGER:-PT2H
 ACTION:DISPLAY
