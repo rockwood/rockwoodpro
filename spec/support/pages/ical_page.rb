@@ -15,4 +15,8 @@ class IcalPage
   def has_event_status?(status)
     has_content?("STATUS:#{status}")
   end
+
+  def has_sequence?(sequence)
+    has_content?("SEQUENCE:#{sequence}")
+  end
 end

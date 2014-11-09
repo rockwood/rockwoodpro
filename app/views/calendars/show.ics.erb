@@ -8,6 +8,7 @@ X-WR-TIMEZONE:America/New_York
 BEGIN:VEVENT
 UID:recording-<%= recording.uid %>@rockwoodpro.com
 DTSTAMP:<%= l recording.created_at.utc, format: :ical %>
+SEQUENCE:<%= recording.change_count %>
 STATUS:CONFIRMED
 ORGANIZER;CN=<%= recording.user.full_name %>:MAILTO:<%= recording.user.email %>
 DTSTART:<%= l recording.datetime.utc, format: :ical %>

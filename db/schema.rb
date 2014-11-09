@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019202301) do
+ActiveRecord::Schema.define(version: 20141109175133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141019202301) do
     t.boolean  "demo",         default: false
     t.string   "embed_code"
     t.boolean  "live_stream"
+    t.integer  "change_count", default: 1
   end
 
   add_index "recordings", ["state"], name: "index_recordings_on_state", using: :btree

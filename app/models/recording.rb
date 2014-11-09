@@ -6,6 +6,8 @@ class Recording < ActiveRecord::Base
 
   validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
 
+  before_save :increment_change_count
+
   state_machine do
     event :request do
       transition all => :requested
@@ -58,5 +60,9 @@ class Recording < ActiveRecord::Base
 
   def self.live_now
     Recording.find_by("embed_code IS NOT NULL AND datetime >= ? AND datetime <= ?", 6.hour.ago, 6.hours.from_now)
+  end
+
+  def increment_change_count
+    self.change_count = change_count + 1
   end
 end
