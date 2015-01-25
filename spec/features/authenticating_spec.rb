@@ -27,7 +27,7 @@ feature 'Authenticating', js: true do
   end
 
   scenario 'trying to access a secure path' do
-    visit "/app"
+    visit "/app/recording/new"
     eventually do
       expect(page.current_path).to eq("/")
       expect(page).to have_content("Please sign in")
