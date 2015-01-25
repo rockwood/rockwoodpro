@@ -4,23 +4,23 @@
   <table class="playlist">
     <thead>
       <tr>
-        <th></th>
+        <th class="hidden-xs"></th>
         <th>Filename</th>
-        <th>Type</th>
+        <th class="hidden-xs">Type</th>
         <th class="text-center">Shared <i class="clickable fa fa-question-circle fa-lg" {{action 'helpShare'}}></i></th>
       </tr>
     </thead>
     <tbody>
       {{#each pieces itemController="piece"}}
         <tr {{bind-attr class=":playlist__item playing:playlist__item--active"}} data-test="piece-{{unbound id}}">
-          <td class="playlist__actions">
+          <td class="playlist__actions hidden-xs">
             <a class="playlist__action" {{action 'download' fileUrl}}><i class="fa fa-cloud-download"></i></a>
             {{#if isPlayable}}
               <a class="playlist__action" {{action 'play' this}}><i class="fa fa-play-circle"></i></a>
             {{/if}}
           </td>
           <td {{action 'play' this}} class="playlist__filename">{{filename}}</td>
-          <td {{action 'play' this}} class="playlist__filetype">{{filetype}}</td>
+          <td {{action 'play' this}} class="playlist__filetype hidden-xs">{{filetype}}</td>
           <td class="playlist__is-shared">
             {{check-box checked=shared action="savePiece" data-test="share-piece"}}
           </td>
@@ -31,17 +31,17 @@
 
   {{#if isSharable}}
     <div class="row">
-      <div class="col-md-4 text-right">
+      <div class="col-md-4 text-right hidden-xs">
         <h5>Share link:</h5>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-8">
         <div class="form-group">
           {{copyable-input value=shareLink}}
         </div>
       </div>
 
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 col-xs-4 text-right">
         <a class="btn btn--share-twitter" target="_blank" {{bind-attr href=twitterLink}}><i class="fa fa-twitter fa-lg"></i></a>
         <a class="btn btn--share-facebook" target="_blank" {{bind-attr href=facebookLink}}><i class="fa fa-facebook fa-lg"></i></a>
       </div>
