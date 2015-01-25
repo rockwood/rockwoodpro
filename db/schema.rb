@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109175133) do
+ActiveRecord::Schema.define(version: 20150125183250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141109175133) do
     t.integer  "recording_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "shared",       default: true
+    t.boolean  "shared",       default: false
   end
 
   create_table "recordings", force: true do |t|
