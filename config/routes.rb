@@ -18,7 +18,7 @@ Rockwoodpro::Application.routes.draw do
 
   root to: "sessions#new"
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     resources :recordings
     resources :pieces
   end
