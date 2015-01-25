@@ -16,6 +16,9 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
         return 'label-success'
   ).property('state')
 
+  sharedPieces: Ember.computed.filterBy('pieces', 'shared', true)
+  isSharable: Ember.computed.notEmpty('sharedPieces')
+
   shareLink: (->
     path = @container.lookup("router:main").generate('recording.shared', @get('model'))
     window.location.origin + path

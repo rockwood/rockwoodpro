@@ -1,21 +1,4 @@
 {{#if isFinished}} 
-  <div class="row">
-    <div class="col-md-4 text-right">
-      <h5>Share:</h5>
-    </div>
-
-    <div class="col-md-6">
-      <div class="form-group">
-        {{copyable-input value=shareLink}}
-      </div>
-    </div>
-
-    <div class="col-md-2 text-right">
-      <a class="btn btn--share-twitter" target="_blank" {{bind-attr href=twitterLink}}><i class="fa fa-twitter fa-lg"></i></a>
-      <a class="btn btn--share-facebook" target="_blank" {{bind-attr href=facebookLink}}><i class="fa fa-facebook fa-lg"></i></a>
-    </div>
-  </div>
-
   {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
 
   <table class="playlist">
@@ -44,8 +27,26 @@
         </tr>
       {{/each}}
     </tbody>
-
   </table>
+
+  {{#if isSharable}}
+    <div class="row">
+      <div class="col-md-4 text-right">
+        <h5>Share link:</h5>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          {{copyable-input value=shareLink}}
+        </div>
+      </div>
+
+      <div class="col-md-2 text-right">
+        <a class="btn btn--share-twitter" target="_blank" {{bind-attr href=twitterLink}}><i class="fa fa-twitter fa-lg"></i></a>
+        <a class="btn btn--share-facebook" target="_blank" {{bind-attr href=facebookLink}}><i class="fa fa-facebook fa-lg"></i></a>
+      </div>
+    </div>
+  {{/if}}
 
 {{else}}
 
@@ -83,6 +84,5 @@
 {{/if}}
 
 {{#modal-dialog active=isHelpingShare}}
-  <p>Only shared pieces will be visible to those who view this recording.</p>
-  <p>Uncheck the boxes for pieces you'd like to keep private</p>
+  <p>Share individual recordings with others by checking the box next to each piece you'd like to share. Only shared pieces will be visible to those who visit.</p>
 {{/modal-dialog}}
