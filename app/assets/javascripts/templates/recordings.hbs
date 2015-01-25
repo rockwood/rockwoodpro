@@ -1,22 +1,24 @@
 <div class="row">
-  <div class="col-md-3">
-    <nav class="panel panel-default">
-      <header class="panel-heading">
-        <h4>My Recordings</h4>
-      </header>
+  {{#if currentUser}}
+    <div class="col-md-3">
+      <nav class="panel panel-default">
+        <header class="panel-heading">
+          <h4>Recordings</h4>
+        </header>
 
-      <div class="list-group">
-        {{#each}}
-          {{#link-to 'recordings.show' this class="list-group-item"}}
-            <h4 class="list-group-item-heading">{{location}}</h4>
-            <small class="list-group-item-text">{{datetime datetime}}</small>
-          {{/link-to}}
-        {{/each}}
-      </div>
-    </nav>
-  </div>
+        <div class="list-group">
+          {{#each}}
+            {{#link-to 'recordings.show' this class="list-group-item"}}
+              <h4 class="list-group-item-heading">{{location}}</h4>
+              <small class="list-group-item-text">{{datetime datetime}}</small>
+            {{/link-to}}
+          {{/each}}
+        </div>
+      </nav>
+    </div>
+  {{/if}}
 
-  <div class="col-md-9">
+  <div {{bind-attr class="currentUser:col-md-9:col-md-12"}}>
     {{outlet}}
   </div>
 </div>

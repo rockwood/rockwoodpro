@@ -29,7 +29,7 @@ Rockcloud.RecordingsShowController = Ember.ObjectController.extend
   ).property('shareLink')
 
   encodedShareCaption: (->
-    encodeURIComponent("Checkout my performance: ")
+    encodeURIComponent("Checkout this performance: ")
   ).property()
 
   facebookLink: (->

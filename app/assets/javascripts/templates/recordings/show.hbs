@@ -7,7 +7,9 @@
         <th class="hidden-xs"></th>
         <th>Filename</th>
         <th class="hidden-xs">Type</th>
-        <th class="text-center">Shared <i class="clickable fa fa-question-circle fa-lg" {{action 'helpShare'}}></i></th>
+        {{#if permissions.update}}
+          <th class="text-center">Shared <i class="clickable fa fa-question-circle fa-lg" {{action 'helpShare'}}></i></th>
+        {{/if}}
       </tr>
     </thead>
     <tbody>
@@ -21,9 +23,11 @@
           </td>
           <td {{action 'play' this}} class="playlist__filename">{{filename}}</td>
           <td {{action 'play' this}} class="playlist__filetype hidden-xs">{{filetype}}</td>
-          <td class="playlist__is-shared">
-            {{check-box checked=shared action="savePiece" data-test="share-piece"}}
-          </td>
+          {{#if permissions.update}}
+            <td class="playlist__is-shared">
+              {{check-box checked=shared action="savePiece" data-test="share-piece"}}
+            </td>
+          {{/if}}
         </tr>
       {{/each}}
     </tbody>
