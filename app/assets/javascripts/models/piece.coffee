@@ -13,6 +13,8 @@ Rockcloud.Piece = DS.Model.extend
 
   recording    : DS.belongsTo('recording')
 
+  permissions  : DS.attr()
+
   isPlayable: (->
     @get('filetype') == "audio" || @get('filetype') == "video"
   ).property('filetype')

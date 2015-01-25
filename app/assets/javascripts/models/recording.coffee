@@ -19,6 +19,8 @@ Rockcloud.Recording = DS.Model.extend
   user: DS.belongsTo('user')
   pieces: DS.hasMany('piece')
 
+  permissions: DS.attr()
+
   isRequested: (->
     @get('state') == 'requested'
   ).property('state')

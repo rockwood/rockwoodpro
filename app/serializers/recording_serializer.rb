@@ -1,6 +1,6 @@
 class RecordingSerializer < ActiveModel::Serializer
-  attributes :id, :location, :cds, :dvds, :datetime, :program_file, :directory, :created_at, :updated_at, 
-    :level, :context, :state
+  attributes :id, :location, :cds, :dvds, :datetime, :program_file, :directory, :created_at, :updated_at,
+    :level, :context, :state, :permissions
 
   embed :ids, include: true
 
@@ -8,6 +8,16 @@ class RecordingSerializer < ActiveModel::Serializer
   has_one :user
 
   def pieces
-    RecordingPolicy.new(scope, object).scoped_pieces
+    policy.scoped_pieces
+  end
+
+  def permissions
+    {
+      update: policy.update?
+    }
+  end
+
+  def policy
+    @policy ||= RecordingPolicy.new(scope, object)
   end
 end
