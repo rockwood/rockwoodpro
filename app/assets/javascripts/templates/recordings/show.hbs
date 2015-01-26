@@ -1,4 +1,8 @@
 {{#if isFinished}} 
+  {{#unless permissions.update}}
+    <h2>{{user.fullName}}</h2>
+  {{/unless}}
+
   {{media-element src=controllers.currentlyPlaying.fileUrl poster=controllers.currentlyPlaying.posterUrl didEnd="videoDidEnd"}}
 
   <table class="playlist">
