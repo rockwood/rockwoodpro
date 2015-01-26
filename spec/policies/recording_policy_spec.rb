@@ -36,4 +36,33 @@ describe RecordingPolicy do
       specify { expect(policy.update?).to eq(false) }
     end
   end
+
+  describe "#show?" do
+    let(:user) { build(:user) }
+
+    context "when the user owns the recording" do
+      let(:recording) { build(:recording, user: user) }
+
+      it "returns true" do
+        expect(policy.show?).to eq(true)
+      end
+    end
+
+    context "when the recording has no shared peices" do
+      let(:recording) { build(:recording) }
+
+      it "returns false" do
+        expect(policy.show?).to eq(false)
+      end
+    end
+
+    context "when the recording has shared pieces" do
+      let(:shared_piece) { create(:piece, shared: true) }
+      let(:recording) { build(:recording, pieces: [shared_piece]) }
+
+      it "returns true" do
+        expect(policy.show?).to eq(true)
+      end
+    end
+  end
 end

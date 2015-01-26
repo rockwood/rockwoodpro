@@ -1,6 +1,6 @@
 class RecordingPolicy < ApplicationPolicy
   def show?
-    true
+    user == record.user || record.pieces.any? { |p| p.shared? }
   end
 
   def update?

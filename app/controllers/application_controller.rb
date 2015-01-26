@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
-  include Pundit
   protect_from_forgery with: :exception
+  include Pundit
+
+  rescue_from Pundit::NotAuthorizedError do |e|
+    respond_to do |format|
+      format.html { redirect_to root_path, alert: e.message }
+      format.json { render json: { errors: e.message }, status: 401 }
+    end
+  end
 
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
@@ -36,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path
     if current_user.admin?
-      admin_recordings_path    
+      admin_recordings_path
     else
       app_path
     end
