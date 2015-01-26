@@ -1,5 +1,5 @@
 <div class="row">
-  {{#if currentUser}}
+  {{#if hasRecordings}}
     <div class="col-md-3">
       <nav class="panel panel-default">
         <header class="panel-heading">
@@ -18,7 +18,7 @@
     </div>
   {{/if}}
 
-  <div {{bind-attr class="currentUser:col-md-9:col-md-12"}}>
+  <div {{bind-attr class="hasRecordings:col-md-9:col-md-12"}}>
     {{outlet}}
   </div>
 </div>
