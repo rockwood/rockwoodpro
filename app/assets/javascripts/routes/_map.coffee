@@ -4,5 +4,5 @@ Rockcloud.Router.map ->
 
   @resource 'recording', ->
     @route 'new'
-    @route 'shared', path: ':recording_id/shared'
+    @route 'shared', path: ':recording_id/shared' # TODO: remove this at some point
 

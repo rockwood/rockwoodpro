@@ -20,7 +20,7 @@ class ShowRecordingPage < Page
   end
 
   def has_share_link_for?(recording)
-    find(test_selector("copyable-input"))[:value].include?("/app/recording/#{recording.id}/shared")
+    find(test_selector("copyable-input"))[:value].include?("/app/recordings/#{recording.id}")
   end
 
   def unshare_piece(piece)

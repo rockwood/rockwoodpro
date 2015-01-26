@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Viewing the demo', js: true do
-  let!(:demo_recording) { create(:recording, demo: true) }
+  let!(:demo_recording) { create(:recording, demo: true, state: 'finished') }
   let!(:demo_piece) { create(:piece, recording: demo_recording, shared: true) }
   let!(:non_demo_piece) { create(:piece) }
 

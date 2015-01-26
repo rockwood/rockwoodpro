@@ -7,7 +7,7 @@ module ApplicationHelper
     @demo_recording ||= Recording.find_by(demo: true)
   end
 
-  def shared_recording_path(recording)
-    "#{app_path}/recording/#{demo_recording.id}/shared"
+  def recording_path(recording)
+    "#{app_path}/recordings/#{demo_recording.id}"
   end
 end
