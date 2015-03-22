@@ -106,6 +106,7 @@ ActiveAdmin.register Recording do
       f.input :directory
       f.input :cds
       f.input :dvds
+      f.input :live_stream
       f.input :embed_code
       f.input :demo
     end
