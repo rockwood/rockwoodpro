@@ -1,6 +1,9 @@
 ActiveAdmin.register Recording do
   config.sort_order = "datetime_desc"
 
+  preserve_default_filters!
+  filter :user, collection: User.order('last_name')
+
   controller do
     def permitted_params
       params.permit!
@@ -97,7 +100,7 @@ ActiveAdmin.register Recording do
 
   form do |f|
     f.inputs do
-      f.input :user
+      f.input :user, collection: User.order('last_name')
       f.input :datetime, :ampm => true
       f.input :location
       f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]

@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  config.sort_order = 'last_name_asc'
+
   controller do
     def permitted_params
       params.permit!
