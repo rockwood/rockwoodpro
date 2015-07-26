@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'active_model_serializers', '~> 0.8.3'
 gem 'aasm'
 gem 'ember-rails'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2'
 gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -31,11 +31,11 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
   gem 'rspec-core', '~> 2.14.0'
   gem 'rspec-rails', '~> 2.14.0'
   gem 'email_spec'
   gem 'dotenv-rails'
-  gem 'pry'
 end
 
 group :test do
