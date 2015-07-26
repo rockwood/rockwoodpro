@@ -42,7 +42,7 @@ ActiveAdmin.register Recording do
     redirect_to action: :show
   end
 
-  action_item only: [:show, :edit] do
+  action_item :discover_pieces_link do
     link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
   end
 

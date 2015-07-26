@@ -7,14 +7,14 @@ ActiveAdmin.register User do
     end
   end
 
-  member_action :switch, :method => :post do
+  member_action :switch_to_user, :method => :post do
     user = User.find(params[:id])
     sign_out
     sign_in(user)
     redirect_to root_path, notice: "Signed in as: #{user.full_name}"
   end
 
-  action_item only: :show do
+  action_item :switch_to_user_link do
     link_to('Switch to User', switch_admin_user_path(user), method: :post)
   end
 
