@@ -45,7 +45,7 @@ class Recording < ActiveRecord::Base
   end
 
   def file_store
-    @store ||= FileStore.new
+    @store ||= FileStore.current
   end
 
   def to_s
