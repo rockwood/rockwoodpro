@@ -13,9 +13,7 @@ class FileStore
         path = path + "/"
       end
 
-      bucket.objects(prefix: path).map { |object_summary|
-        object_summary.key.gsub(path, "")
-      }
+      bucket.objects(prefix: path).map { |o| o.key.gsub(path, "") }.reject { |f| f == "" }
     end
 
     private
