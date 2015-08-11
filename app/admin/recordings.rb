@@ -18,7 +18,7 @@ ActiveAdmin.register Recording do
     recording = Recording.find(params[:id])
     recording.confirm!
     if params[:email][:deliver] == "1"
-      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver
+      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver_now
     end
     redirect_to action: :index, notice: "Recording confirmed"
   end
@@ -31,7 +31,7 @@ ActiveAdmin.register Recording do
     recording = Recording.find(params[:id])
     recording.finish!
     if params[:email][:deliver] == "1"
-      RecordingMailer.finished(recording, params[:email][:comments]).deliver
+      RecordingMailer.finished(recording, params[:email][:comments]).deliver_now
     end
     redirect_to action: :index, notice: "Recording finsihed"
   end
@@ -42,7 +42,7 @@ ActiveAdmin.register Recording do
     redirect_to action: :show
   end
 
-  action_item only: [:show, :edit] do
+  action_item :discover_pieces_link, only: :show do
     link_to('Discover Pieces', discover_admin_recording_path(recording), method: :post)
   end
 
@@ -105,7 +105,9 @@ ActiveAdmin.register Recording do
       f.input :location
       f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]
       f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
-      f.input :state_event, as: :radio, collection: recording.state_transitions.map { |s| [s.human_to_name, s.event, checked: recording.state == s.human_to_name] }
+      f.input :state, as: :radio, collection: Recording.aasm.states.map { |s|
+        [s.name, s.name, checked: recording.state == s.name.to_s]
+      }
       f.input :directory
       f.input :cds
       f.input :dvds

@@ -14,7 +14,7 @@ ActiveAdmin.register User do
     redirect_to root_path, notice: "Signed in as: #{user.full_name}"
   end
 
-  action_item only: :show do
+  action_item :switch_to_user_link, only: :show do
     link_to('Switch to User', switch_admin_user_path(user), method: :post)
   end
 

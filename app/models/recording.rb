@@ -8,25 +8,23 @@ class Recording < ActiveRecord::Base
 
   before_save :increment_change_count
 
-  state_machine do
+  include AASM
+
+  aasm column: 'state' do
+    state :requested, initial: true
+    state :confirmed
+    state :finished
+
     event :request do
-      transition all => :requested
+      transitions to: :requested
     end
 
-    event :confirm do
-      transition all => :confirmed
+    event :confirm, after: :create_directory do
+      transitions to: :confirmed
     end
 
-    event :finish do
-      transition all => :finished
-    end
-
-    before_transition any => :confirmed do |recording|
-      recording.create_directory
-    end
-
-    before_transition any => :finished do |recording|
-      recording.discover_pieces
+    event :finish, after: :discover_pieces do
+      transitions to: :finished
     end
   end
 
@@ -47,7 +45,7 @@ class Recording < ActiveRecord::Base
   end
 
   def file_store
-    @store ||= FileStore.new
+    @store ||= FileStore.current
   end
 
   def to_s

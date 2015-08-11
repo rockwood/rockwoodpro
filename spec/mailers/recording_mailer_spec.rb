@@ -5,7 +5,7 @@ describe RecordingMailer do
 
   describe "requested" do
     let(:recording) { FactoryGirl.create(:recording, user: user) }
-    before { RecordingMailer.requested(recording).deliver }
+    before { RecordingMailer.requested(recording).deliver_now }
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
       expect(Email.last.subject).to match("Your Recording")
@@ -14,7 +14,7 @@ describe RecordingMailer do
 
   describe "confirmed" do
     let(:recording) { FactoryGirl.create(:recording, user: user) }
-    before { RecordingMailer.confirmed(recording, "test_comments").deliver }
+    before { RecordingMailer.confirmed(recording, "test_comments").deliver_now }
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
       expect(Email.last.subject).to match("Your Recording")
@@ -25,7 +25,7 @@ describe RecordingMailer do
 
   describe "finished" do
     let(:recording) {FactoryGirl.create(:recording, user: user)}
-    before { RecordingMailer.finished(recording, "test_comments").deliver }
+    before { RecordingMailer.finished(recording, "test_comments").deliver_now }
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
       expect(Email.last.subject).to match("Your Recording")
