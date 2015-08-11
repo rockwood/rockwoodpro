@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/gregbell/active_admin.git
-  revision: 5a2b7b5bc683ae98a114958c3d1eb9c932234c56
+  remote: git://github.com/activeadmin/active_admin.git
+  revision: 803262417983dc1151745a2cc5d297e70d0c0c54
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -489,3 +489,6 @@ DEPENDENCIES
   simple_form
   uglifier
   unicorn
+
+BUNDLED WITH
+   1.10.6
