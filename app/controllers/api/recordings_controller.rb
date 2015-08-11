@@ -17,7 +17,7 @@ module Api
       if recording.save
         recording.request!
         RecordingMailer.requested(recording).deliver
-        AdminMailer.requested_recording(User.admins, recording).deliver
+        AdminMailer.requested_recording(User.admins, recording).deliver_now
         render json: recording
       else
         render json: { errors: recording.errors }, status: :unprocessable_entity

@@ -18,7 +18,7 @@ ActiveAdmin.register Recording do
     recording = Recording.find(params[:id])
     recording.confirm!
     if params[:email][:deliver] == "1"
-      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver
+      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver_now
     end
     redirect_to action: :index, notice: "Recording confirmed"
   end
@@ -31,7 +31,7 @@ ActiveAdmin.register Recording do
     recording = Recording.find(params[:id])
     recording.finish!
     if params[:email][:deliver] == "1"
-      RecordingMailer.finished(recording, params[:email][:comments]).deliver
+      RecordingMailer.finished(recording, params[:email][:comments]).deliver_now
     end
     redirect_to action: :index, notice: "Recording finsihed"
   end

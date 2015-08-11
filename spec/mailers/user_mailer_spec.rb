@@ -7,7 +7,7 @@ describe UserMailer do
     let(:user) {FactoryGirl.create(:user)}
     before do
       user.generate_password_reset
-      UserMailer.password_reset(user).deliver
+      UserMailer.password_reset(user).deliver_now
     end
 
     it "has the correct stuff" do
