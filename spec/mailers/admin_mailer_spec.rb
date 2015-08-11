@@ -5,7 +5,7 @@ describe AdminMailer do
 
   describe "requested_recording" do
     let(:recording) {FactoryGirl.create(:recording, location: "Right Here")}
-    before { AdminMailer.requested_recording(User.admins, recording).deliver }
+    before { AdminMailer.requested_recording(User.admins, recording).deliver_now }
 
     it "has the correct stuff" do
       expect(Email.last.body).to match(recording.user.email)
