@@ -35,7 +35,7 @@
 
         {{#if isLivePerformance}}
           {{#form-group errors=errors.live_stream}}
-            <label class="control-label">Do you want your performance live streamed?</label>
+            <label class="control-label">Would you like your performance live streamed?</label>
             <div class="radio">
               <label>
                 {{boolean-radio-button name="recording-live-stream" value="0" selection=liveStream}}
@@ -46,7 +46,7 @@
             <div class="radio">
               <label>
                 {{boolean-radio-button name="recording-live-stream" value="1" selection=liveStream}}
-                Yes
+                Yes - <span class="light">$50</span>
               </label>
             </div>
           {{/form-group}}
@@ -56,28 +56,46 @@
           <label class="control-label">What type of recording do you need?</label>
           <div class="radio">
             <label>
+              {{radio-button name="recording-level" value="Multi Camera Audio and Video" selection=level}}
+              Multi Camera Audio and Video - <span class="light">$225 per hour</span>
+            </label>
+          </div>
+          
+          <div class="radio">
+            <label>
               {{radio-button name="recording-level" value="Audio and Video" selection=level}}
-              Audio and Video
+              Audio and Video - <span class="light">$150 per hour</span>
             </label>
           </div>
 
           <div class="radio">
             <label>
               {{radio-button name="recording-level" value="Audio Only" selection=level}}
-              Audio Only
+              Audio Only - <span class="light">$100 per hour</span>
             </label>
           </div>
         {{/form-group}}
 
-        {{#form-group errors=errors.cds}}
-          <label class="control-label" for="recording-cds">Number of CDs</label>
-          {{number-picker value=cds inputId="recording-cds"}}
+        {{#form-group errors=errors.duration}}
+          <label class="control-label" for="recording-duration">How many hours of recording do you anticipate needing?</label>
+          {{number-picker value=duration inputId="recording-duration" min="1" step="0.5"}}
         {{/form-group}}
 
-        {{#form-group errors=errors.dvds}}
-          <label class="control-label" for="recording-dvds">Number of DVDs</label>
-          {{number-picker value=dvds inputId="recording-dvds"}}
-        {{/form-group}}
+        <div class="row">
+          <div class="col-md-4">
+            {{#form-group errors=errors.cds}}
+              <label class="control-label" for="recording-cds">CDs - <span class="light">$20 each</span></label>
+              {{number-picker value=cds inputId="recording-cds"}}
+            {{/form-group}}
+          </div>
+          
+          <div class="col-md-6">
+            {{#form-group errors=errors.dvds}}
+              <label class="control-label" for="recording-dvds">DVDs - <span class="light">$20 each</span></label>
+              {{number-picker value=dvds inputId="recording-dvds"}}
+            {{/form-group}}
+          </div>
+        </div>
 
         <div class="actions push">
           {{#if model.isSaving}}

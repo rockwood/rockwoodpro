@@ -9,6 +9,7 @@ Rockcloud.Recording = DS.Model.extend
   cds          : DS.attr('number', defaultValue: 0)
   dvds         : DS.attr('number', defaultValue: 0)
 
+  duration     : DS.attr('number', defaultValue: 1)
   context      : DS.attr('string', defaultValue: "Live Performance")
   level        : DS.attr('string', defaultValue: "Audio and Video")
   liveStream   : DS.attr('boolean', defaultValue: false)

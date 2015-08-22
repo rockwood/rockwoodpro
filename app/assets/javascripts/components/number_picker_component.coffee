@@ -1,15 +1,17 @@
 Rockcloud.NumberPickerComponent = Ember.Component.extend
+  min: 0,
+  step: 1,
   classNames: ['number-picker', 'input-group']
 
   actions:
     increment: ->
-      @incrementProperty('value')
+      @incrementProperty('value', +@get('step'))
 
     decrement: ->
-      @decrementProperty('value') if @get('decrementable')
+      @decrementProperty('value', +@get('step')) if @get('decrementable')
 
   decrementable: (->
-    typeof @get('value') == 'number' && @get('value') > 0
+    typeof @get('value') == 'number' && @get('value') > +@get('min')
   ).property('value')
 
   checkType: (->

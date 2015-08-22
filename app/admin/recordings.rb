@@ -103,7 +103,7 @@ ActiveAdmin.register Recording do
       f.input :user, collection: User.order('last_name')
       f.input :datetime, :ampm => true
       f.input :location
-      f.input :level, as: :radio, collection: ["Audio and Video", "Audio Only"]
+      f.input :level, as: :radio, collection: ["Multi Camera Audio and Video", "Audio and Video", "Audio Only"]
       f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
       f.input :state, as: :radio, collection: Recording.aasm.states.map { |s|
         [s.name, s.name, checked: recording.state == s.name.to_s]
