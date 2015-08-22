@@ -51,4 +51,5 @@ group :staging, :production do
   gem 'rails_12factor'
   gem 'unicorn'
   gem 'asset_sync'
+  gem 'airbrake'
 end
