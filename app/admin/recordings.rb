@@ -54,6 +54,7 @@ ActiveAdmin.register Recording do
     column :location
     column :context
     column :level
+    column :duration
     column :cds
     column :dvds
     column :pieces do |recording|
@@ -80,6 +81,7 @@ ActiveAdmin.register Recording do
       row :state
       row :context
       row :level
+      row :duration
       row :cds
       row :dvds
       row :demo
@@ -103,11 +105,12 @@ ActiveAdmin.register Recording do
       f.input :user, collection: User.order('last_name')
       f.input :datetime, :ampm => true
       f.input :location
-      f.input :level, as: :radio, collection: ["Multi Camera Audio and Video", "Audio and Video", "Audio Only"]
+      f.input :level, as: :radio, collection: ["Multi Camer a Audio and Video", "Audio and Video", "Audio Only"]
       f.input :context, as: :radio, collection: ["Live Performance", "Private Recording Session"]
       f.input :state, as: :radio, collection: Recording.aasm.states.map { |s|
         [s.name, s.name, checked: recording.state == s.name.to_s]
       }
+      f.input :duration
       f.input :directory
       f.input :cds
       f.input :dvds
