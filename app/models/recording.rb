@@ -4,7 +4,7 @@ class Recording < ActiveRecord::Base
   belongs_to :user
   has_many :pieces, dependent: :destroy
 
-  validates :cds, :datetime, :dvds, :location, :level, :context, :user, :presence => true
+  validates :cds, :datetime, :dvds, :location, :level, :context, :user, :duration, presence: true
 
   before_save :increment_change_count
 

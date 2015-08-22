@@ -12,8 +12,8 @@ class NewRecordingPage
     choose recording.context
     choose recording.level
     choose recording.live_stream ? "Yes" : "No"
-    fill_in 'Number of CDs', with: recording.cds
-    fill_in 'Number of DVDs', with: recording.dvds
+    fill_in 'CDs', with: recording.cds
+    fill_in 'DVDs', with: recording.dvds
   end
 
   def submit_form
