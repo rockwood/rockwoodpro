@@ -4,7 +4,7 @@ FactoryGirl.define do
     cds 1
     dvds 2
     location "here"
-    level "Audio and Video"
+    level "Single Camera"
     context "Live Performance"
     directory "testing"
     user

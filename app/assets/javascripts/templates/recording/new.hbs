@@ -54,18 +54,18 @@
         {{/if}}
 
         {{#form-group errors=errors.level}}
-          <label class="control-label">What type of recording do you need?</label>
+          <label class="control-label">What type of recording do you need? <a href="#" {{action 'openModal' 'recording-level-help'}}>Learn More</a></label>
           <div class="radio">
             <label>
-              {{radio-button name="recording-level" value="Multi Camera Audio and Video" selection=level}}
-              Multi Camera Audio and Video - <span class="light">$225 per hour</span>
+              {{radio-button name="recording-level" value="Multi Camera" selection=level}}
+              Multi Camera - <span class="light">$225 per hour</span>
             </label>
           </div>
           
           <div class="radio">
             <label>
-              {{radio-button name="recording-level" value="Audio and Video" selection=level}}
-              Audio and Video - <span class="light">$150 per hour</span>
+              {{radio-button name="recording-level" value="Single Camera" selection=level}}
+              Single Camera - <span class="light">$150 per hour</span>
             </label>
           </div>
 
@@ -108,7 +108,7 @@
 
         {{#if hasError}}
           <div class="alert alert-danger">
-            <p>Uh-oh! Something went wrong. Please contact <a href="mailto:kevin@rockwoodpro.com">kevin@rockwoodpro.com</a> and we'll get it figured out.</p>
+            <p>Uh-oh! Something went wrong. Please try again, or contact <a href="mailto:kevin@rockwoodpro.com">kevin@rockwoodpro.com</a> and we'll get it figured out.</p>
           </div>
         {{/if}}
       </div>

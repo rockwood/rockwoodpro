@@ -11,7 +11,7 @@ Rockcloud.Recording = DS.Model.extend
 
   duration     : DS.attr('number', defaultValue: 1)
   context      : DS.attr('string', defaultValue: "Live Performance")
-  level        : DS.attr('string', defaultValue: "Audio and Video")
+  level        : DS.attr('string', defaultValue: "Multi Camera")
   liveStream   : DS.attr('boolean', defaultValue: false)
   state        : DS.attr('string')
 
@@ -37,3 +37,25 @@ Rockcloud.Recording = DS.Model.extend
   isLivePerformance: (->
     @get('context') == "Live Performance"
   ).property('context')
+
+  recordingPrice: (->
+    switch @get('level')
+      when 'Multi Camera'
+        return 225 * @get('duration')
+      when 'Single Camera'
+        return 150 * @get('duration')
+      when 'Audio Only'
+        return 100 * @get('duration')
+  ).property('level', 'duration')
+
+  liveStreamPrice: (->
+    if @get('liveStream') then 50 else 0
+  ).property('liveStream')
+
+  discPrice: (->
+    (@get('cds') + @get('dvds')) * 20
+  ).property('cds', 'dvds')
+
+  totalPrice: (->
+    @get('discPrice') + @get('recordingPrice') + @get('liveStreamPrice')
+  ).property('discPrice', 'recordingPrice', 'liveStreamPrice')
