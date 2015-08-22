@@ -1,11 +1,6 @@
 Rockcloud.RecordingsShowController = Ember.ObjectController.extend
   needs: ['currentlyPlaying']
 
-  actions:
-    helpShare: ->
-      @toggleProperty('isHelpingShare')
-      false
-
   labelClass: (->
     switch @get('state')
       when 'requested'

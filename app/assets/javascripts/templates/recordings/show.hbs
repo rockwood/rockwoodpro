@@ -12,7 +12,7 @@
         <th>Filename</th>
         <th class="hidden-xs">Type</th>
         {{#if permissions.update}}
-          <th class="text-center">Shared <i class="clickable fa fa-question-circle fa-lg" {{action 'helpShare'}}></i></th>
+          <th class="text-center">Shared <i class="clickable fa fa-question-circle fa-lg" {{action 'openModal' 'share-help'}}></i></th>
         {{/if}}
       </tr>
     </thead>
@@ -90,7 +90,3 @@
     </dl>
   </div>
 {{/if}}
-
-{{#modal-dialog active=isHelpingShare}}
-  <p>Share individual recordings with others by checking the box next to each piece you'd like to share. Only shared pieces will be visible to those who visit.</p>
-{{/modal-dialog}}
