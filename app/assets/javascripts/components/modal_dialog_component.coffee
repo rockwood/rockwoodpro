@@ -1,7 +1,6 @@
 Rockcloud.ModalDialogComponent = Ember.Component.extend
-  classNames: "modal"
-  classNameBindings: ['active:modal--active']
+  classNames: "modal modal--active"
 
   actions:
-    deactivate: ->
-      @set('active', false)
+    close: ->
+      @sendAction('onClose')

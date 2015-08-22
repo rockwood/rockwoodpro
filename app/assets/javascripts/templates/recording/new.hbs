@@ -35,7 +35,8 @@
 
         {{#if isLivePerformance}}
           {{#form-group errors=errors.live_stream}}
-            <label class="control-label">Would you like your performance live streamed?</label>
+            <label class="control-label">Would you like your performance live streamed? <a href="#" {{action 'openModal' 'live-stream-help'}}>Learn More</a></label>
+
             <div class="radio">
               <label>
                 {{boolean-radio-button name="recording-live-stream" value="0" selection=liveStream}}

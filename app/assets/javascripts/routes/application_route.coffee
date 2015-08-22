@@ -13,3 +13,9 @@ Rockcloud.ApplicationRoute = Ember.Route.extend
 
     download: (url) ->
       window.open(url)
+
+    openModal: (modalName) ->
+      @render("modals/#{modalName}", { into: 'application', outlet: 'modal' })
+
+    closeModal: ->
+      @disconnectOutlet({ outlet: 'modal', parentView: 'application' })
