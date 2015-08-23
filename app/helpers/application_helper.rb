@@ -1,6 +1,6 @@
 module ApplicationHelper
   def ember_recording_url(recording)
-    "#{app_url}#/recordings/#{recording.id}"
+    "#{app_url}/recordings/#{recording.id}"
   end
 
   def demo_path

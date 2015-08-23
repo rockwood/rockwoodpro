@@ -29,7 +29,7 @@ describe RecordingMailer do
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
       expect(Email.last.subject).to match("Your Recording")
-      expect(Email.last.text_part.body).to match("#/recordings/#{recording.id}")
+      expect(Email.last.text_part.body).to match("/recordings/#{recording.id}")
       expect(Email.last.text_part.body).to match("test_comments")
     end
   end
