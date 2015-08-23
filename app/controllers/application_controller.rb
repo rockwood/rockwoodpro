@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  decent_configuration do
-    strategy DecentExposure::StrongParametersStrategy
-  end
-
   def current_user
     @current_user ||= session[:user_id] ? User.find(session[:user_id]) : User.new
   end

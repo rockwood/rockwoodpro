@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-  expose(:user, attributes: :user_params)
+  def new
+    @user = User.new
+  end
 
   def create
-    if user.save
-      sign_in(user)
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
       redirect_to after_sign_up_path, notice: "Welcome to Rockwood Productions! Request a recording now or come back later."
     else
       render :new
