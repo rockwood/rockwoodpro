@@ -19,3 +19,6 @@ Rockcloud.ApplicationRoute = Ember.Route.extend
 
     closeModal: ->
       @disconnectOutlet({ outlet: 'modal', parentView: 'application' })
+
+    willTransition: ->
+      @send('closeModal')
