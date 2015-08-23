@@ -4,7 +4,7 @@
   <div class="modal__content">
     <p>
       Each recording option includes professional quality digital audio and video files for you to download.
-      CDs and DVDs are also available. For an example of each recording option, {{#link-to 'recordings.show' 'demo'}}view the demo{{/link-to}}.
+      CDs and DVDs are also available.
     </p>
 
     <h4>Multi Camera - <span class="light">$225/hour</span></h4>
@@ -16,14 +16,18 @@
 
     <h4>Single Camera - <span class="light">$150/hour</span></h4>
     <p>
-      Using the highest quality audio and video equipment, this is great option for those seeking an archival or
-      audition recording. The camera will capture your entire performance from the audience perspective.
+      This is great option for those seeking an archival or audition recording. The camera will capture your 
+      entire performance from the audience perspective.
     </p>
     
     <h4>Audio Only - <span class="light">$100/hour</span></h4>
     <p>
       Capture you're performance with the highest quality audio recording. This is a great option for those who
       don't require video.
+    </p>
+
+    <p class="text-center">
+      {{#link-to 'recordings' (query-params demo=true) class="btn btn-primary"}}See examples{{/link-to}}.
     </p>
   </div>
 {{/modal-dialog}}

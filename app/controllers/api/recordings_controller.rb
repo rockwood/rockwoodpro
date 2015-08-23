@@ -3,7 +3,11 @@ module Api
     respond_to :json
 
     def index
-      render json: current_user.recordings
+      if params[:demo].present?
+        render json: Recording.where(demo: true)
+      else
+        render json: current_user.recordings
+      end
     end
 
     def show

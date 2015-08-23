@@ -66,10 +66,9 @@
           %h3.flush--top Live Streaming
           %p.light Live streaming for those who can't make it to your performance. #{link_to " Available here", live_path}
   
-  - if demo_recording
-    .row
-      .col-md-2.col-md-offset-5
-        %a.btn.btn-primary.btn-block.btn-lg{ href: recording_path(demo_recording), data: { test: "view-demo" } } View Demo
+  .row
+    .col-md-2.col-md-offset-5
+      %a.btn.btn-primary.btn-block.btn-lg{ href: demo_path, data: { test: "view-demo" } } View Demo
 
   %h1.callout Pricing
 
