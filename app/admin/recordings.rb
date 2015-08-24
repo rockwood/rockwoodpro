@@ -11,7 +11,7 @@ ActiveAdmin.register Recording do
   end
 
   member_action :confirm do
-    @recording = Recording.find(params[:id])
+    @mail_template = MailTemplate.confirmation(Recording.find(params[:id]))
   end
 
   member_action :process_confirmed, method: :post do
