@@ -20,5 +20,10 @@ module Rockwoodpro
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
+
+    # make url helpers availible to mail_templates/
+    config.after_initialize do
+      Rails.application.routes.default_url_options = config.action_mailer.default_url_options
+    end
   end
 end

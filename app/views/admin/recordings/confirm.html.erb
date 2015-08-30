@@ -1,4 +1,4 @@
-<%= semantic_form_for :email, url: [:process_confirmed, :admin, @recording] do |f| %>
+<%= semantic_form_for @mail_template, url: [:process_confirmed, :admin, @recording] do |f| %>
   <%= render partial: "inputs", locals: { f: f } %> 
   <%= f.actions do %>
     <%= f.action :submit, label: "Confirm Recording" %>

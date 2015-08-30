@@ -9,7 +9,6 @@ FactoryGirl.define do
     directory "testing"
     user
     live_stream true
-    duration 1
     trait :finished do
       state "finished"
     end

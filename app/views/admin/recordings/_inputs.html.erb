@@ -1,4 +1,6 @@
 <%= f.inputs do %>
-  <%= f.input :deliver, label: "Send email", as: :radio, collection: [["Yes", 1, checked: true], ["No", 0]] %>
-  <%= f.input :comments, as: :text %>  
+  <%= f.input :deliver_email, as: :radio, collection: [["Yes", 1, checked: true], ["No", 0]] %>
+  <%= f.input :to %>
+  <%= f.input :subject %>
+  <%= f.input :body, as: :text %>
 <% end %>

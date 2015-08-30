@@ -2,14 +2,7 @@ Hi <%= @recording.user.first_name %>,
 
 Your recording request for <%= @recording.datetime.strftime("%A, %B %e at %l:%M%P") %> has been confirmed. I typically start setting up about 30 minutes prior to the performance.
 
-<% if @recording.live_stream? %>
-Your performance will be streamed live at [rockwoodpro.com/live](<%= live_url %>).
-<% end %>
-
-<%= @comments %>
-
 Please let me know if you have any questions.
 
 Thanks,
-
 Kevin

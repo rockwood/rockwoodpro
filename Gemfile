@@ -23,10 +23,9 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'maildown'
 gem 'pundit'
+gem 'redcarpet'
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'letter_opener'
 end
 
