@@ -9,7 +9,7 @@ feature "Requesting a password reset" do
     user.reload #  reload to get the updated password
     expect(create_password_reset_page).to be_successful
     expect(Email.last.to).to include(user.email)
-    expect(Email.last.body).to match(user.password_reset_token)
+    expect(Email.last.html_part.body).to match(user.password_reset_token)
   end
 
   scenario "with an invalid email" do

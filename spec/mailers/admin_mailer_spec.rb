@@ -8,9 +8,9 @@ describe AdminMailer do
     before { AdminMailer.requested_recording(User.admins, recording).deliver_now }
 
     it "has the correct stuff" do
-      expect(Email.last.body).to match(recording.user.email)
-      expect(Email.last.body).to match(recording.location)
-      expect(Email.last.body).to match(admin_recording_url(recording))
+      expect(Email.last.html_part.body).to match(recording.user.first_name)
+      expect(Email.last.html_part.body).to match(recording.location)
+      expect(Email.last.html_part.body).to match(admin_recording_url(recording))
     end
   end
 end

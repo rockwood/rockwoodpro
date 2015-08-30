@@ -12,7 +12,7 @@ describe UserMailer do
 
     it "has the correct stuff" do
       expect(Email.last.to).to include(user.email)
-      expect(Email.last.body).to match(edit_password_reset_url(user.password_reset_token))
+      expect(Email.last.html_part.body).to match(edit_password_reset_url(user.password_reset_token))
     end
   end
 
