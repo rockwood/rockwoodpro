@@ -2,7 +2,7 @@
 # http://stoneship.org/essays/erb-and-the-context-object/
 
 class ERBContext
-  include Rails.application.routes.url_helpers
+  include Routes
 
   def initialize(hash)
     hash.each_pair do |key, value|
