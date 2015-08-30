@@ -3,15 +3,24 @@ class MailTemplate
   include ActiveModel::Conversion
 
   def self.recording_confirmed(options)
+    build('recording_confirmed.md.erb', options)
+  end
+
+  def self.recording_finished(options)
+    build('recording_finished.md.erb', options)
+  end
+
+  def self.build(template_name, options)
+    template = File.read(Rails.root.join('app', 'views', 'mail_templates', template_name))
     new(
       to: options.fetch(:to),
       subject: options.fetch(:subject, "Rockwood Productions - Your Recording"),
-      body: parse_erb(read_template('recording_confirmed.md.erb'), recording: options.fetch(:recording)),
+      body: parse_erb(template, options)
     )
   end
 
   attr_reader :to, :subject, :body
-  attr_accessor :deliver
+  attr_accessor :deliver_email
 
   def initialize(options)
     @to = options.fetch(:to)
@@ -24,14 +33,10 @@ class MailTemplate
   end
 
   def deliver
-    Mailer.from_mail_template(self).deliver_now
+    UserMailer.from_mail_template(self).deliver_now
   end
 
   private
-
-  def self.read_template(template_name)
-    File.read(Rails.root.join('app', 'views', 'mail_templates', template_name))
-  end
 
   def self.parse_erb(template, context)
     parser = ERB.new(template)

@@ -20,7 +20,7 @@ module Api
       recording = current_user.recordings.new(recording_params)
       if recording.save
         recording.request!
-        RecordingMailer.requested(recording).deliver_now
+        UserMailer.recording_requested(recording).deliver_now
         AdminMailer.requested_recording(User.admins, recording).deliver_now
         render json: recording
       else
