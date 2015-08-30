@@ -25,4 +25,12 @@ class MailTemplate
     @body = options.fetch(:body)
     @subject = options.fetch(:subject)
   end
+
+  def body_html
+    markdown.render(@body)
+  end
+
+  def markdown
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
 end

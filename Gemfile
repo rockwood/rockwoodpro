@@ -23,6 +23,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'maildown'
 gem 'pundit'
+gem 'redcarpet'
 
 group :development do
   gem 'letter_opener'
