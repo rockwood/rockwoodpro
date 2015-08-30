@@ -19,7 +19,7 @@ ActiveAdmin.register Recording do
     recording = Recording.find(params[:id])
     recording.confirm!
     if params[:mail_template][:deliver] == "1"
-      MailTemplate.new(params[:mail_template]).deliver_now
+      MailTemplate.new(params[:mail_template]).deliver
     end
     redirect_to action: :index, notice: "Recording confirmed"
   end

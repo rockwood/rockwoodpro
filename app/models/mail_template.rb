@@ -2,19 +2,12 @@ class MailTemplate
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  def self.recording_confirmation(options)
-    template = File.read(Rails.root.join('app', 'views', 'recording_mailer', 'confirmed.md.erb'))
+  def self.recording_confirmed(options)
     new(
       to: options.fetch(:to),
       subject: options.fetch(:subject, "Rockwood Productions - Your Recording"),
-      body: parse_erb(template, recording: options.fetch(:recording)),
+      body: parse_erb(read_template('recording_confirmed.md.erb'), recording: options.fetch(:recording)),
     )
-  end
-
-  def self.parse_erb(template, context)
-    parser = ERB.new(template)
-    binding = ERBContext.new(context).get_binding
-    parser.result(binding)
   end
 
   attr_reader :to, :subject, :body
@@ -28,6 +21,22 @@ class MailTemplate
 
   def body_html
     markdown.render(@body)
+  end
+
+  def deliver
+    Mailer.from_mail_template(self).deliver_now
+  end
+
+  private
+
+  def self.read_template(template_name)
+    File.read(Rails.root.join('app', 'views', 'mail_templates', template_name))
+  end
+
+  def self.parse_erb(template, context)
+    parser = ERB.new(template)
+    binding = ERBContext.new(context).get_binding
+    parser.result(binding)
   end
 
   def markdown
