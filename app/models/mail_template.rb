@@ -2,19 +2,27 @@ class MailTemplate
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  def self.confirmation(recording)
+  def self.recording_confirmation(options)
     template = File.read(Rails.root.join('app', 'views', 'recording_mailer', 'confirmed.md.erb'))
-    parser = ERB.new(template)
-    binding = ERBContext.new(recording: recording).get_binding
-    new(recording: recording, body: parser.result(binding))
+    new(
+      to: options.fetch(:to),
+      subject: options.fetch(:subject, "Rockwood Productions - Your Recording"),
+      body: parse_erb(template, recording: options.fetch(:recording)),
+    )
   end
 
-  attr_reader :recording, :subject, :body
+  def self.parse_erb(template, context)
+    parser = ERB.new(template)
+    binding = ERBContext.new(context).get_binding
+    parser.result(binding)
+  end
+
+  attr_reader :to, :subject, :body
   attr_accessor :deliver
 
   def initialize(options)
-    @recording = options.fetch(:recording)
-    @subject = options.fetch(:subject, "Rockwood Productions - Your Recording")
+    @to = options.fetch(:to)
     @body = options.fetch(:body)
+    @subject = options.fetch(:subject)
   end
 end

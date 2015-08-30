@@ -11,14 +11,15 @@ ActiveAdmin.register Recording do
   end
 
   member_action :confirm do
-    @mail_template = MailTemplate.confirmation(Recording.find(params[:id]))
+    @recording = Recording.find(params[:id])
+    @mail_template = MailTemplate.recording_confirmation(to: @recording.user.email, recording: @recording)
   end
 
   member_action :process_confirmed, method: :post do
     recording = Recording.find(params[:id])
     recording.confirm!
-    if params[:email][:deliver] == "1"
-      RecordingMailer.confirmed(recording, params[:email][:comments]).deliver_now
+    if params[:mail_template][:deliver] == "1"
+      MailTemplate.new(params[:email_template]).deliver_now
     end
     redirect_to action: :index, notice: "Recording confirmed"
   end
