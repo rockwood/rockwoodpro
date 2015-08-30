@@ -27,12 +27,12 @@ describe MailTemplate do
     end
   end
 
-  describe "deliver" do
-    subject { MailTemplate.new(to: "bob@example.com", subject: "Subject", body: "some **markdown**") }
+  describe "#process" do
+    subject { MailTemplate.new(to: "bob@example.com", body: "some **markdown**", deliver_email: "1") }
 
     before do
       allow(UserMailer).to receive(:from_mail_template).and_return(double(deliver_now: true))
-      subject.deliver
+      subject.process
     end
 
     it "sends the email" do

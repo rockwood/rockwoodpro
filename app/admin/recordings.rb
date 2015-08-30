@@ -18,9 +18,7 @@ ActiveAdmin.register Recording do
   member_action :process_confirmed, method: :post do
     recording = Recording.find(params[:id])
     recording.confirm!
-    if params[:mail_template][:deliver_email] == "1"
-      MailTemplate.new(params[:mail_template]).deliver
-    end
+    MailTemplate.new(params[:mail_template]).process
     redirect_to action: :index, notice: "Recording confirmed"
   end
 
@@ -32,9 +30,7 @@ ActiveAdmin.register Recording do
   member_action :process_finished, method: :post do
     recording = Recording.find(params[:id])
     recording.finish!
-    if params[:mail_template][:deliver_email] == "1"
-      MailTemplate.new(params[:mail_template]).deliver
-    end
+    MailTemplate.new(params[:mail_template]).process
     redirect_to action: :index, notice: "Recording finsihed"
   end
 

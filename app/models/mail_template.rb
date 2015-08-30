@@ -25,15 +25,18 @@ class MailTemplate
   def initialize(options)
     @to = options.fetch(:to)
     @body = options.fetch(:body)
-    @subject = options.fetch(:subject)
+    @subject = options.fetch(:subject, "")
+    @deliver_email = options[:deliver_email] == "1"
   end
 
   def body_html
     markdown.render(@body)
   end
 
-  def deliver
-    UserMailer.from_mail_template(self).deliver_now
+  def process
+    if @deliver_email
+      UserMailer.from_mail_template(self).deliver_now
+    end
   end
 
   private
