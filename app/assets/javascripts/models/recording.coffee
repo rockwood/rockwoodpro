@@ -41,11 +41,11 @@ Rockcloud.Recording = DS.Model.extend
   recordingPrice: (->
     switch @get('level')
       when 'Multi Camera'
-        return 225 * @get('duration')
+        return 250 * @get('duration')
       when 'Single Camera'
-        return 150 * @get('duration')
+        return 200 * @get('duration')
       when 'Audio Only'
-        return 100 * @get('duration')
+        return 150 * @get('duration')
   ).property('level', 'duration')
 
   liveStreamPrice: (->
