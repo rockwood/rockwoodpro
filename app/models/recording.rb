@@ -36,7 +36,7 @@ class Recording < ActiveRecord::Base
   end
 
   def create_directory
-    self.directory = default_directory if directory.blank?
+    update(directory: default_directory) if directory.blank?
     file_store.write_file("#{directory}/#{PLACEHOLDER_FILE}", location)
   end
 
