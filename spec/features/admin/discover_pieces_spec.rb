@@ -4,6 +4,7 @@ feature 'Discover pieces' do
   let(:admin_user){ FactoryGirl.create(:user, admin: true) }
   let(:admin_recording_page){ AdminRecordingPage.new }
   let(:recording) { FactoryGirl.create(:recording, directory: "file_discovery_test") }
+  let!(:existing_piece) { FactoryGirl.create(:piece, recording: recording) }
   before { sign_in admin_user }
 
   scenario do

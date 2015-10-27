@@ -33,6 +33,7 @@ describe Recording do
     let(:recording) { FactoryGirl.create(:recording, directory: "test_dir") }
     let(:file_list) { ["file1.mp4", "file2.mp4"] }
     let(:file_store_mock) { double("file_store") }
+
     before do
       allow(file_store_mock).to receive(:list_directory).and_return(file_list)
       allow(recording).to receive(:file_store).and_return(file_store_mock)
@@ -46,6 +47,7 @@ describe Recording do
     it "doesn't create duplicates" do
       recording.discover_pieces
       recording.discover_pieces
+      recording.reload
       expect(recording.pieces.count).to eq(2)
       expect(recording.pieces.first.filename).to eq("file1.mp4")
       expect(recording.pieces.first.filetype).to eq("video")

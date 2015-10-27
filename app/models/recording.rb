@@ -29,6 +29,7 @@ class Recording < ActiveRecord::Base
   end
 
   def discover_pieces
+    pieces.destroy_all
     file_store.list_directory(directory).each do |filename|
       next if filename == PLACEHOLDER_FILE
       pieces.from_filename(filename).save
