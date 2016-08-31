@@ -43,9 +43,9 @@ Rockcloud.Recording = DS.Model.extend
       when 'Multi Camera'
         return 250 * @get('duration')
       when 'Single Camera'
-        return 200 * @get('duration')
-      when 'Audio Only'
         return 150 * @get('duration')
+      when 'Audio Only'
+        return 100 * @get('duration')
   ).property('level', 'duration')
 
   liveStreamPrice: (->
