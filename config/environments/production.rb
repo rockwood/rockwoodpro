@@ -81,13 +81,11 @@ Rockwoodpro::Application.configure do
   config.action_mailer.default_url_options = { host: 'rockwoodpro.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'rockwoodpro.com',
-    :user_name            => ENV.fetch("GMAIL_USERNAME"),
-    :password             => ENV.fetch("GMAIL_PASSWORD"),
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :user_name => ENV.fetch("MAILGUN_USERNAME"),
+    :password => ENV.fetch("MAILGUN_PASSWORD")
   }
 
   config.ember.variant = :development
