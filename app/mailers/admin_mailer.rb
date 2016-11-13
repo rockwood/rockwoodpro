@@ -1,5 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default from: 'kevin@rockwoodpro.com'
+  default from: 'hello@rockwoodpro.com'
 
   def requested_recording(admin_users, recording)
     @recording = recording

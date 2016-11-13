@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'kevin@rockwoodpro.com'
+  default from: 'hello@rockwoodpro.com'
   add_template_helper(ApplicationHelper)
 
   def recording_requested(recording)
