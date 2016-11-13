@@ -15,15 +15,16 @@
     .brand-bar
       .container
         .row
-          .col-md-8.col-sm-8
+          .col-md-4.col-sm-4
             %a.brand-bar__logo{href: root_path}
               %img.logo__image{src: image_path('logo.png'), alt: "Rockwood Productions"}
 
-          .col-md-4.col-sm-4
+          .col-md-8.col-sm-8
             %nav.brand-bar__nav
+              %a.btn.btn-default{href: "mailto:hello@rockwoodpro.com"} Contact Us
               - if current_user.persisted?
-                %a.btn.btn-default{href: sign_out_path} Sign Out
                 %a.btn.btn-default{href: "/app/recording/new"} Request a Recording
+                %a.btn.btn-default{href: sign_out_path} Sign Out
               - else
                 %a.btn.btn-default{href: new_session_path} Sign In
                 %a.btn.btn-default{href: new_user_path} Sign Up
