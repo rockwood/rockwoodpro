@@ -1,7 +1,0 @@
-#rockcloud.container.push--top
-
-= content_for :javascript do
-  :javascript
-    #{"Rockcloud.ENV.CURRENT_USER_ATTRIBUTES = #{current_user.to_json}" if current_user.persisted?}
-    Rockcloud.advanceReadiness()
- 

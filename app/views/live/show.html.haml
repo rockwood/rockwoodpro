@@ -1,7 +1,0 @@
-.container.push--top
-  - if @recording
-    .flex-video
-      %iframe{ id: "ytplayer", type: "text/html", src: "//www.youtube.com/embed/#{@recording.embed_code}", frameborder:"0", allowfullscreen: "allowfullscreen"}
-  - else
-    %h4.text--center{ data: { test: 'inactive'} } Sorry, there are no live events at the moment. Please check back later.
-
